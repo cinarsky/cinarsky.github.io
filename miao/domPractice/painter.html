@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  html{
+    position:resolute;
+  }
+  input{
+    width: 50px;
+    height: 20px;
+    z-index: 10;
+  }
+  .dot{
+    width: 5px;
+    height: 5px;
+    border-radius: 100%;
+    position: absolute;
+  }
+</style>
+<body>
+    <input style="position:absolute;left:30px;" type="color" id="color" >
+</body>
+<script>
+document.addEventListener('mousedown',function(){
+  var f=function(){
+  var a=document.createElement('div')
+  a.classList.add('dot');
+  a.style.background=color.value
+  a.style.left=event.clientX+'px'
+  a.style.top=event.clientY+'px'
+  // console.log(e.clientX,e.clientY)
+  document.body.appendChild(a)
+}
+document.addEventListener('mousemove',f)
+document.addEventListener('mouseup',function(){
+  f()
+document.removeEventListener('mousemove',f)
+})
+
+})
+</script>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+<style>
+  html {
+    position: relative;
+  }
+
+  .point {
+    width: 30px;
+    position: absolute;
+    height: 30px;
+    left: 0px;
+    line-height: 30px;
+    text-align: center;
+    background-color: rgb(255, 196, 0);
+    border-radius: 100%;
+  }
+</style>
+
+<body>
+  <div class='point' id='point'>1</div>
+</body>
+<script>
+  
+  var a=2
+  function render() {
+    if ((parseInt(point.style.left) || 0) > 500) {
+      a = 0 - a
+    } else if ((parseInt(point.style.left) || 0) < 0) {
+      a = 0 - a
+    }
+    point.style.left = (parseInt(point.style.left) || 0) + a + 'px'
+    requestAnimationFrame(render)
+  }
+  requestAnimationFrame(render)
+
+
+
+  // 动画2
+  // var start = new Date()
+  // var a=2
+  // var timer = setInterval(function () {
+  //   var time = new Date()
+  //   if (time - start < 20000) {
+  //     if((parseInt(point.style.left) || 0 )>500){
+  //       a=0-a
+  //     }
+  //     else if((parseInt(point.style.left) || 0 )<0){
+  //       a=0-a
+  //     }
+  //     point.style.left = (parseInt(point.style.left) || 0 )+a + 'px'
+  //   }
+  // }, 20)
+</script>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    html,body{
+        height: 100%;
+        width:100%;
+    }
+    *{
+        margin: 0;
+        border:0px;
+        }
+    .top{
+        width: calc(100% - 10px);
+        height:70px;
+        margin-left: 10px;
+        background: rgb(223, 255, 182);
+    }
+    .mian{
+        margin-left: 10px;
+        background: rgb(166, 204, 115);
+        width: calc(100% - 10px);
+        height:calc(100% - 70px);
+        border-left:10px solid green;
+        border-top:10px solid green;
+        border-radius: 10px;
+        box-sizing: border-box;
+        display: flex;
+
+    }
+    .left{
+        border-bottom:10px solid green;
+        border-right:10px solid green;
+        border-radius: 10px;
+        box-sizing: border-box;
+        height: 100%;
+        width: 25%;
+        max-width: 160px;
+        min-width: 120px;
+        background: rgb(101, 181, 255);
+    }
+    .right{
+        width: auto;
+        background: rgb(230, 61, 174);
+        height: 100%;
+        flex-grow: 1;
+    }
+
+
+    </style>
+</head>
+<body>
+    <div class="top">
+
+    </div>
+    <div class="mian">
+        <div class="left"></div>
+        <div class="right"></div>
+    </div>
+</body>
+</html>

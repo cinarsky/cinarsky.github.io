@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    .main,
+    .item {
+        width: 300px;
+        height: 200px;
+        position: relative;
+    }
+
+    .main {
+        overflow: hidden;
+    }
+
+    .item {
+        position: absolute;
+        top: 0;
+        left: 0;
+        transition: 0.5s;
+    }
+
+    .item:nth-child(1) {
+        background: rgb(156, 115, 115);
+    }
+
+    .item:nth-child(2) {
+        background: rgb(125, 156, 115);
+    }
+
+    .item:nth-child(3) {
+        background: rgb(115, 141, 156);
+    }
+
+    .item:nth-child(4) {
+        background: rgb(115, 125, 156);
+    }
+
+    .l,
+    .r {
+        width: 30px;
+        height: 70px;
+        background: rgb(238, 238, 238);
+    }
+
+    .l {
+        position: absolute;
+        top: 30%;
+        left: 0;
+    }
+
+    .r {
+        position: absolute;
+        right: 0;
+        top: 30%;
+    }
+</style>
+
+<body>
+    <div class="main" id='main'>
+        <div class="item">1</div>
+        <div class="item">2</div>
+        <div class="item">3</div>
+        <div class="item">4</div>
+        <div class="l" id='l'>l</div>
+        <div class="r" id='r'>r</div>
+    </div>
+</body>
+<script>
+    for (var i = 0; i < 4; i++) {
+        main.children[i].style.left = i * 300 + 'px'
+    }
+    var timer=setInterval(() => {
+        if (main.children[3].style.left == '0px') {
+            for (var i = 0; i < 4; i++) {
+                main.children[i].style.left = i * 300 + 'px'
+            }
+            return
+        }
+        for (var i = 0; i < 4; i++) {
+            main.children[i].style.left = parseInt(main.children[i].style.left) - 300 + 'px'
+        }
+    }, 2000)
+    main.addEventListener('mouseover',()=>{
+        console.log('over')
+        clearInterval(timer)
+    })
+    main.addEventListener('mouseout',()=>{
+        console.log('out')
+        timer=setInterval(() => {
+        if (main.children[3].style.left == '0px') {
+            for (var i = 0; i < 4; i++) {
+                main.children[i].style.left = i * 300 + 'px'
+            }
+            return
+        }
+        for (var i = 0; i < 4; i++) {
+            main.children[i].style.left = parseInt(main.children[i].style.left) - 300 + 'px'
+        }
+    }, 2000)
+   
+    })
+
+
+
+    r.addEventListener('click', function () {
+        if (main.children[3].style.left == '0px') {
+            return
+        }
+        for (var i = 0; i < 4; i++) {
+            main.children[i].style.left = parseInt(main.children[i].style.left) - 300 + 'px'
+        }
+    })
+    l.addEventListener('click', function () {
+        if (main.children[0].style.left == '0px') {
+            return
+        }
+        for (var i = 0; i < 4; i++) {
+            main.children[i].style.left = parseInt(main.children[i].style.left) + 300 + 'px'
+        }
+    })
+</script>
+
+</html>

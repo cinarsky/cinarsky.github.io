@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+<style>
+*{margin: 0 ;
+  padding:0;
+}
+.top{
+background-color: rgb(255, 255, 255);  
+height:50px;
+margin-top: 50px;
+}
+.top>ul>li{float: left;}
+ul{
+    list-style-type:none; 
+    color: aliceblue;
+    position: relative;
+}
+ul>li{
+    width:100px;
+    height:50px;
+    background-color: rgb(80, 80, 80); 
+    text-align: center;
+    line-height:50px;
+    position: relative;
+}
+li>ul>li{
+    display:none;
+}
+li:hover{
+    background-color: rgb(252, 182, 86);
+
+}
+
+.top>ul>li:hover>ul{
+    position: absolute;
+    top:100%;
+    left:0%;;
+}
+li>ul{
+    position: absolute;
+    top:0%;
+    left:100%;;
+
+}
+li>ul::before{
+    content:'>';
+    position:absolute;
+    left:-1em;
+}
+li:hover>ul>li{
+    display: block;
+}
+</style>
+</head>
+<body>
+   <div class="top">   
+
+    <ul>
+        <li>手机<ul>
+            <li>小米1
+                    <ul>
+                         <li>价格</li>
+                         <li>配置</li>
+                    </ul>
+            </li>
+            <li>小米2 
+                <ul>
+                    <li>价格
+                            <ul>
+                                    <li>1999</li>
+                                    <li>2999</li>
+                            </ul>
+                    </li>
+                    <li>配置</li>
+               </ul>
+            </li>
+            <li>小米3</li>
+            <li>小米4</li>
+            <li>小米5
+                    <ul>
+                            <li>价格</li>
+                            <li>配置</li>
+                    </ul>
+            </li>
+        </ul></li>
+        <li>电脑<ul>
+                <li>mac
+                        <ul>
+                             <li>价格</li>
+                             <li>配置</li>
+                        </ul>
+                </li>
+                <li>小米pro
+                    <ul>
+                        <li>价格</li>
+                        <li>配置</li>
+                   </ul>
+                </li>
+                <li>游戏本
+                        <ul>
+                                <li>价格</li>
+                                <li>配置</li>
+                        </ul>
+                </li>
+            </ul></li>
+            <li>平板<ul>
+                    <li>小米1
+                            <ul>
+                                 <li>价格</li>
+                                 <li>配置</li>
+                            </ul>
+                    </li>
+                    <li>小米2 
+                        <ul>
+                            <li>价格</li>
+                            <li>配置</li>
+                       </ul>
+                    </li>
+                    <li>小米3</li>
+                    <li>小米4</li>
+                    <li>小米5
+                            <ul>
+                                    <li>价格</li>
+                                    <li>配置</li>
+                            </ul>
+                    </li>
+                </ul></li>
+                <li>生活<ul>
+                        <li>T恤
+                                <ul>
+                                     <li>价格</li>
+                                     <li>配置</li>
+                                </ul>
+                        </li>
+                        <li>卫衣
+                            <ul>
+                                <li>价格</li>
+                                <li>颜色</li>
+                           </ul>
+                        </li>
+                        <li>手环</li>
+                        <li>鼠标</li>
+                        <li>键盘
+                                <ul>
+                                        <li>价格</li>
+                                        <li>配置</li>
+                                </ul>
+                        </li>
+                    </ul></li>
+
+   </div>
+</body>
+</html>

@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<!-- 生产环境中不建议使用 -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+<style>
+
+</style>
+
+<body>
+  <div id="root"></div>
+</body>
+<script type="text/babel">
+class Cat extends React.Component {
+  constructor(props) {
+    super(props);
+
+  }
+  render() {
+    return (
+      <div>
+        <h1>Move the mouse around!</h1>
+        <div onClick={this.props.click}>click</div>
+      </div>
+    );
+  }
+}
+
+class Mouse extends React.Component {
+  constructor(props) {
+    super(props);
+   console.log(props)
+  }
+  render() {
+    return (
+      <div>
+        <h1>Move the mouse around!</h1>
+        // 用箭头函数调用
+        <Cat click={()=>{this.props.click()}}/> 
+          // 调用时候绑定    
+        <Cat click={this.props.click.bind(this)}/>
+        <Cat click={this.props.click}/>
+        <Cat click={this.props.click}/>
+      </div>
+    );
+  }
+}
+
+class MouseTracker extends React.Component {
+  constructor() {
+    super();
+    this.state = { x: 0, y: 0 };
+// 用bind，或者用下面的箭头函数声明，或者用箭头函数传递
+    this.click=this.click.bind(this)
+    // this.click()
+  }
+  // 箭头函数声明
+  // click=()=>{
+  //   console.log(this.state.x)
+  // }
+  click(){
+  console.log(this.state.x)
+}
+  render() {
+    return (
+      <div>
+        <h1>Move the mouse around!</h1>
+        --------------------箭头函数传递---------------------------
+        <Mouse click={()=>{this.click()}} />
+      </div>
+    );
+  }
+}
+
+
+
+ReactDOM.render(
+  <MouseTracker/>,
+  document.getElementById('root')
+)
+
+
+
+</script>
+
+</html>

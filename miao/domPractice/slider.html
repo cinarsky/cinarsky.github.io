@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        border: 0;
+        margin: 0;
+        padding: 0;
+    }
+
+    body {
+        position: relative;
+    }
+
+    img {
+        display: inline-block;
+        vertical-align: middle;
+        width: 800px;
+        height: 600px;
+    }
+
+    .main {
+        position: relative;
+        /* overflow: hidden; */
+        margin: 100px auto;
+        width: 800px;
+        height: 600px;
+        border: 2px solid rgb(187, 187, 187);
+    }
+
+    .pics {
+        position: absolute;
+        left: 0px;
+        top: 0px;
+        font-size: 0;
+        width: max-content;
+        background: rgb(255, 255, 255);
+        transition: 0.5s all;
+    }
+
+    .btns {
+        /* background: rgb(240, 133, 133); */
+        position: absolute;
+        left: 730px;
+        top: 500px;
+        font-size: 0;
+    }
+
+    button {
+        outline: none;
+    }
+
+    .btn {
+        width: 50px;
+        height: 50px;
+        vertical-align: middle;
+        border-radius: 100%;
+        background: rgb(134, 235, 101);
+    }
+
+    /* 小坐标被选中 */
+    .btncurrent {
+        background: rgb(255, 255, 255);
+    }
+
+    .left {
+        width: 50px;
+        height: 80px;
+        background: rgb(104, 233, 97);
+        position: absolute;
+        left: 0px;
+        top: 250px;
+    }
+
+    .right {
+        width: 50px;
+        height: 80px;
+        background: rgb(157, 233, 70);
+        position: absolute;
+        left: 749px;
+        top: 250px;
+    }
+</style>
+
+<body>
+    <div class="main" id='main'>
+        <div class="pics" id='pics'>
+              
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566444813229&di=9755d8f3c78ea52a146424af62b011f2&imgtype=0&src=http%3A%2F%2Fimg4.duitang.com%2Fuploads%2Fitem%2F201409%2F17%2F20140917205819_QXTVh.png"
+                alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566444880501&di=c353da7f43da4d091f6f6eac2cd06120&imgtype=0&src=http%3A%2F%2Fpic34.nipic.com%2F20131020%2F12844826_143327516000_2.jpg"
+                alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566444929676&di=331ec48090d0bff9e637f20752e40b2c&imgtype=0&src=http%3A%2F%2Fi8.17173.itc.cn%2Fv3%2Fgjqt2%2F2014%2F01%2F18%2F011819255560622137.jpg"
+                alt="">
+            <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=963319421,956713088&fm=26&gp=0.jpg"
+                alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566445070654&di=20b3062d3ef1d2f0ae4199da57ca3d68&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fbaf7062b49a4d22e45d757e34fec45c5d42d2849.jpg"
+                alt="">
+        </div>
+        <button class="left"  id="left"></button>
+        <button class="right" id="right"></button>
+    </div>
+    <div class="btns" id='btns'>
+        <button class="btn btncurrent"></button>
+        <button class="btn"></button>
+        <button class="btn"></button>
+        <button class="btn"></button>
+        <button class="btn"></button>
+    </div>
+
+</body>
+<script>
+    // 图片伪数组
+    var imgs = document.getElementsByTagName('IMG')
+    // 小下标伪数组
+    var main = document.getElementById('main')
+    var btn = document.getElementsByClassName('btn')
+    var btns = document.getElementById('btns')
+    var pics = document.getElementById('pics')
+    var left=document.getElementById('left')
+    var right=document.getElementById('right') 
+    
+left.addEventListener('click',function(){
+    var a=document.getElementsByClassName('btncurrent')[0]
+    var index=Array.from(btn).indexOf(a)
+    var indexNew=index-1
+    if(index==0){
+        indexNew=imgs.length-1
+    }
+ 
+        pics.style.left = -(main.offsetWidth - 4) * (indexNew) + 'px'
+        btn[index].classList.remove('btncurrent')
+        btn[indexNew].classList.add('btncurrent')
+    
+   
+
+})
+right.addEventListener('click',function(){
+    var a=document.getElementsByClassName('btncurrent')[0]
+    var index=Array.from(btn).indexOf(a)
+    var indexNew=index+1
+    if(index==btn.length-1){
+        indexNew=0
+    }
+    pics.style.left = -(main.offsetWidth - 4) * (indexNew) + 'px'
+    btn[index].classList.remove('btncurrent')
+    btn[indexNew].classList.add('btncurrent')
+
+})
+    btns.addEventListener('click', function (e) {
+        if (e.target.matches('.btn')) {
+            var index = Array.from(btn).indexOf(e.target)
+            for (var i = 0; i < btn.length-1; i++) {
+                if (btn[i].classList.contains('btncurrent')) {
+                    btn[i].classList.remove('btncurrent')
+                }
+            }
+            e.target.classList.add('btncurrent')
+            pics.style.left = -(main.offsetWidth - 4) * index + 'px'
+        }
+    })
+   
+// 自动轮播
+setInterval(function() {
+// var e = new Event("click")
+right.click()
+}, 2000)
+</script>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<style>
+  /* .fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to  {
+  opacity: 0;
+} */
+</style>
+
+<body>
+  <div id="app">
+    <p>总数： {{ total }}</p>
+    <my-component @increase="handleGetTotal" @reduce="handleGetTotal" :value='total' :total='total'></my-component>
+  </div>
+</body>
+<script>
+  Vue.component('my-component', {
+        template: `
+<div>
+  <div>value:{{this.value}}</div>
+  <div>value:{{value}}</div>
+  <div>total:{{this.total}}</div>
+  <div>total:{{total}}</div>
+  <div>total:{{total==this.total}}</div>
+  <div>counter:{{counter}}</div>
+<button @click="handleincrease">+l</button>
+<button @click="handleReduce">-1</button>
+</div>`,
+        props:['total','value'],
+        data: function () {
+          return {
+            counter: this.total
+            }
+          },
+
+          methods:{
+            handleincrease: function () {
+              this.counter++
+              console.log(this.total)
+              console.log(this.value)
+              this.$emit('increase', this.counter)
+              },
+              handleReduce: function () {
+                this.counter--
+                this.$emit('reduce', this.counter)
+              }
+            }
+          })
+
+
+        var app = new Vue({
+          el: '#app',
+          data: {
+            total: 10
+          },
+          methods: {
+            handleGetTotal: function (total) {
+              this.total = total;
+            }
+          }
+        })
+</script>
+
+</html>

@@ -1,0 +1,2889 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1230">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        @font-face {
+            font-family: 'ShopCart';
+            src: url('../css/font_qf28v7i04ii/iconfont.eot');
+            src: url('../css/font_qf28v7i04ii/iconfont.eot?#iefix') format('embedded-opentype'),
+                url('../css/font_qf28v7i04ii/iconfont.woff') format('woff'),
+                url('../css/font_qf28v7i04ii/iconfont.ttf') format('truetype'),
+                url('../css/font_qf28v7i04ii/iconfont.svg#iconfont') format('svg');
+        }
+
+        @font-face {
+            font-family: 'search';
+            src: url('../css/font_15gfym6b0s8/iconfont.eot');
+            src: url('../css/font_15gfym6b0s8/iconfont.eot?#iefix') format('embedded-opentype'),
+                url('../css/font_15gfym6b0s8/iconfont.woff') format('woff'),
+                url('../css/font_15gfym6b0s8/iconfont.ttf') format('truetype'),
+                url('../css/font_15gfym6b0s8/iconfont.svg#iconfont') format('svg');
+        }
+
+        html,
+        body {
+            width: 100%;
+            position: relative;
+        }
+
+        * {
+            margin: 0 auto;
+            padding: 0;
+        }
+
+        header {
+            background: rgb(51, 51, 51);
+            width: 100%;
+            min-width: 1227px;
+            height: 40px;
+            color: rgb(66, 66, 66);
+
+        }
+
+        .main1 {
+
+            width: 1225px;
+
+            /* position: relative; */
+
+        }
+
+        header span {
+            display: inline-block;
+            height: 40px;
+            line-height: 40px;
+
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        header span a {
+            color: rgb(176, 176, 176);
+            text-decoration: none;
+            font-size: 12px;
+        }
+
+        header span a:hover {
+            color: white;
+        }
+
+        header span.right {
+            float: right;
+        }
+
+        header span.ShoppingCart {
+            margin-left: 20px;
+        }
+
+        header span.ShoppingCart a {
+            display: block;
+
+            width: 80px;
+            height: 40px;
+            text-align: center;
+        }
+
+        header span.ShoppingCart a:hover {
+            background-color: #fff;
+            color: rgb(255, 103, 0);
+        }
+
+        header span.ShoppingCart+span {
+            display: inline-block;
+            visibility: hidden;
+            /* background-color: rgb(231, 68, 68); */
+            position: absolute;
+            top: 40px;
+            right: calc(50% - 1227px/2);
+            line-height: 100px;
+            color: black;
+            text-align: center;
+            width: 315px;
+            height: 0px;
+            z-index: 1;
+            transition: 0.15s ease;
+            background: rgb(252, 252, 252);
+        }
+
+        header span.ShoppingCart:hover+span {
+            visibility: visible;
+            height: 95px;
+            box-shadow: 0 2px 5px 1px rgba(155, 155, 155, 0.3);
+
+        }
+
+        header span.ShoppingCart a::before {
+            font-family: 'ShopCart';
+            font-size: 16px;
+            content: '\f0179   ';
+        }
+
+        header span.ShoppingCart+span a {
+            font-family: 'ShopCart';
+            display: inline;
+            line-height: initial;
+            position: absolute;
+            visibility: hidden;
+            top: 0px;
+            left: 60px;
+            transition: all 0.15s ease;
+        }
+
+        header span.ShoppingCart:hover+span a {
+            top: 40px;
+            visibility: visible;
+        }
+
+
+        /* logo */
+        .mian12>ul {
+            /* background: rgb(93, 190, 255); */
+            width: 900px;
+            height: 100px;
+            display: inline-block;
+            line-height: 100px;
+            font-size: 0;
+            /* position: relative; */
+        }
+
+        .mian12>ul * {
+            font-size: initial;
+            list-style: none;
+        }
+
+        .mian12>ul img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .mian12>ul>li {
+            display: inline-block;
+            vertical-align: middle;
+            padding-right: 20px;
+            color: black;
+            cursor: pointer;
+        }
+
+        .mian12>ul li a {
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+
+        .mian12>ul li a:hover {
+            color: orange;
+        }
+
+        .mian12>ul li.logo {
+            width: 56px;
+            height: 56px;
+            margin-right: 177px;
+            padding: 0;
+        }
+
+        .search {
+            width: 32px;
+            display: inline-block;
+            background-color: rgb(255, 255, 255);
+            height: 100px;
+            line-height: 100px;
+            vertical-align: bottom;
+        }
+
+        .search input {
+            display: inline-block;
+        }
+
+        .s1 {
+            display: inline-block;
+            width: 250px;
+            height: 40px;
+            vertical-align: middle;
+            padding: 0;
+            /* font-size: 18px; */
+            border: 1px solid rgb(207, 207, 207);
+        }
+
+        .s2 {
+            width: 48px;
+            height: 52px;
+            display: inline-block;
+            vertical-align: middle;
+            font-family: search;
+            font-size: 30px;
+            color: rgb(82, 82, 82);
+            border: 1px solid rgb(207, 207, 207);
+            background-color: rgb(255, 255, 255);
+            margin-left: -1px;
+            transition: 0.15s linear;
+        }
+
+        .s2:hover {
+            background-color: rgb(255, 106, 0);
+            color: white;
+            border: rgb(255, 106, 0);
+        }
+
+        input.s2:hover~input.s1 {
+            border: 1px solid rgb(0, 0, 0);
+            background-color: rgb(255, 106, 0);
+        }
+
+        /* nav的hover */
+        .mian12>ul ul {
+            display: inline-block;
+            visibility: hidden;
+            width: 100%;
+            margin: 0;
+            background-color: rgb(255, 255, 255);
+            border-top: 1px solid rgb(202, 202, 202);
+            border-bottom: 1px solid rgb(224, 224, 224);
+            box-shadow: 0 2px 6px 0px rgba(240, 240, 240, 0.3);
+            position: absolute;
+            top: 140px;
+            left: 0;
+            z-index: 2;
+            font-size: 0;
+            overflow: hidden;
+            height: 0px;
+            transition: 0.35s cubic-bezier(.36, .14, .25, 1.44);
+        }
+
+        .mian12>ul:hover ul {
+            visibility: visible;
+            height: 230px;
+            /* transition: 0.2s ease-out; */
+            transition: 0.35s cubic-bezier(.36, .14, .25, 1.44);
+        }
+
+        .mian12>ul li:hover ul {
+            visibility: visible;
+            z-index: 200;
+        }
+
+        .mian12>ul ul>li {
+            display: inline-block;
+            width: 204.5px;
+            height: 230px;
+            line-height: 230px;
+            text-align: center;
+            background-color: rgb(255, 255, 255);
+            vertical-align: middle;
+            margin: 0;
+            line-height: initial;
+        }
+
+        .mian12>ul ul>li:first-child {
+            margin-left: calc(50% - 1227px/2)
+        }
+
+        .mian12>ul ul>li a {
+            display: block;
+            width: 165px;
+            height: 125px;
+            margin: 20px auto;
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+        /* 轮播图 */
+        .pic {
+            /* background: rgb(98, 98, 98); */
+            width: 1227px;
+            height: 460px;
+            position: relative;
+            /* overflow: hidden; */
+        }
+
+        input {
+            display: none;
+        }
+
+        .pic .radio {
+            display: inline-block;
+            height: 18px;
+            line-height: 18px;
+            text-align: center;
+            font-size: 0;
+            position: absolute;
+            right: 35px;
+            bottom: 15px;
+        }
+
+        .pic label div {
+            display: inline-block;
+            border: 7px solid rgb(102, 102, 102);
+            vertical-align: middle;
+            border-radius: 7px;
+            margin: 0px 5px;
+            cursor: pointer;
+        }
+
+        .pic label div:hover {
+            border: 7px solid rgb(209, 209, 209);
+        }
+
+        .pic aside~a {
+            position: absolute;
+            top: 0px;
+            left: 0px;
+            z-index: 0;
+            opacity: 0;
+            transition: all 0.8s ease;
+        }
+
+        .pic input:checked+a {
+            opacity: 1;
+        }
+
+        .pic #pic1:checked~.radio .pic1 {
+            border: 7px solid rgb(209, 209, 209);
+        }
+
+        .pic #pic2:checked~.radio .pic2 {
+            border: 7px solid rgb(209, 209, 209);
+        }
+
+        .pic #pic3:checked~.radio .pic3 {
+            border: 7px solid rgb(209, 209, 209);
+        }
+
+        .pic #pic4:checked~.radio .pic4 {
+            border: 7px solid rgb(209, 209, 209);
+        }
+
+        .pic #pic5:checked~.radio .pic5 {
+            border: 7px solid rgb(209, 209, 209);
+        }
+
+        .pic img {
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 隐藏悬浮菜单 */
+        aside {
+            width: 235px;
+            margin-left: 0;
+            padding: 20px 0;
+            background: rgba(0, 0, 0, 0.5);
+            color: rgb(240, 240, 240);
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+
+        aside>ul {
+            margin: 0;
+            display: inline-block;
+            list-style: none;
+            position: relative;
+        }
+
+        aside>ul>li {
+            display: inline-block;
+            width: 235px;
+            height: 42px;
+            line-height: 42px;
+            margin: 0;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        aside>ul>li:hover {
+            background-color: rgb(255, 103, 0);
+        }
+
+        aside>ul>li>ul {
+            display: none;
+            box-shadow: 1px 2px 10px 2px rgba(150, 150, 150, 0.7);
+            list-style: none;
+            width: max-content;
+            height: 460px;
+            position: absolute;
+            top: -20px;
+            left: 235px;
+            /* background-color: rgb(32, 103, 255); */
+        }
+
+        aside>ul>li>ul>li {
+            display: inline-block;
+            height: 460px;
+            /* width: 992px; */
+            margin: 0 auto 0 0;
+            font-size: 0;
+            position: relative;
+            z-index: 2;
+            vertical-align: middle;
+            /* background-color: rgb(9, 255, 9); */
+        }
+
+        aside>ul>li>ul>li * {
+            font-size: initial;
+        }
+
+        aside>ul>li:hover ul {
+            display: inline-block;
+        }
+
+        aside ul ul ul {
+            display: inline-block;
+            background-color: rgb(255, 255, 255);
+            list-style: none;
+            width: 248px;
+            height: 460px;
+            vertical-align: middle;
+        }
+
+        aside li li li {
+            background-color: #fff;
+            display: inline-block;
+            height: 77px;
+            line-height: 77px;
+            width: 248px;
+            vertical-align: middle;
+            color: black;
+            text-align: left;
+        }
+
+        .pic aside li li li img {
+            display: inline-block;
+            margin: 0 10px 0 15px;
+            height: 35px;
+            width: 55px;
+            vertical-align: middle;
+            color: black;
+        }
+
+        .pic aside li li li a {
+            display: inline-block;
+            height: 16px;
+            width: 160px;
+            line-height: 16px;
+            margin: 0;
+            vertical-align: middle;
+            color: black;
+        }
+
+        aside li:hover {
+            cursor: pointer;
+        }
+
+        aside>ul>li li:hover>a {
+            color: orange;
+        }
+
+        aside li>a {
+            display: inline-block;
+            width: 248px;
+            height: 76px;
+        }
+
+
+
+
+        /* 选购手机 */
+
+        .ad1 {
+
+            width: 1227px;
+            height: 170px;
+            margin: 15px auto 26px;
+        }
+
+        .ad1 .ad11 {
+            display: inline-block;
+            height: 170px;
+            width: 234px;
+            background: rgb(255, 207, 73);
+            float: left;
+        }
+
+        .ad1 img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .ad1 .ad12 {
+            display: inline-block;
+            height: 170px;
+            width: 317px;
+            margin-left: 14px;
+            float: left;
+        }
+
+        .ad2 {
+            background: rgb(223, 240, 128);
+            width: 1227px;
+            height: 120px;
+            margin-bottom: 42px;
+        }
+
+        .ad2 a img {
+            width: 100%;
+            height: 100%;
+        }
+
+
+        /* 点击上浮 */
+        div a:visited {
+            color: unset;
+        }
+
+        .main2Bg {
+            background: rgb(245, 245, 245);
+            width: 100%;
+
+            min-width: 1227px;
+        }
+
+        .main2 {
+            /* background: rgb(255, 105, 105); */
+            width: 1227px;
+        }
+
+        .word1 {
+            /* background: rgb(102, 216, 231); */
+            width: 1227px;
+            height: 80px;
+        }
+
+
+
+
+
+
+
+        .product {
+            /* background: rgb(231, 102, 203); */
+            width: 1227px;
+            height: 615px;
+        }
+
+        .product a img {
+            width: 100%;
+            height: 100%;
+        }
+
+        .productLeft {
+            width: 235px;
+            height: 615px;
+            /* background-color: rgb(255, 110, 110); */
+            float: left;
+            position: relative;
+            top: 0;
+            transition: 0.15s linear;
+        }
+
+        .productLeft:hover {
+            top: -4px;
+            box-shadow: 0 2px 15px 3px rgba(144, 144, 144, 0.3);
+        }
+
+        .product ul {
+            list-style: none;
+            display: block;
+            width: 992px;
+            height: 615px;
+            padding-left: 235px;
+            font-size: 0;
+            /* background-color: rgb(125, 99, 240); */
+        }
+
+        .product ul * {
+            font-size: initial;
+        }
+
+        .product li {
+            list-style: none;
+            display: inline-block;
+            background: rgb(255, 255, 255);
+            width: 235px;
+            height: 300px;
+            margin-left: 13px;
+            vertical-align: middle;
+            position: relative;
+            top: 0px;
+            transition: 0.15s linear 0s;
+        }
+
+        .product li:hover {
+            top: -4px;
+            box-shadow: 0 2px 15px 3px rgba(144, 144, 144, 0.3);
+        }
+
+        .pa div.tip {
+            width: 75px;
+            height: 28px;
+            line-height: 28px;
+            text-align: center;
+            color: rgb(255, 255, 255);
+            background-color: rgb(131, 196, 78);
+        }
+
+        .pa .tip+a {
+            display: block;
+            width: 165px;
+            height: 165px;
+        }
+
+        .atip {
+            text-align: center;
+        }
+
+        div.atip+div {
+            margin: 5px auto;
+            font-size: 5px;
+            text-align: center;
+            color: rgb(160, 160, 160);
+        }
+
+        div.atip~div.btm {
+            text-align: center;
+            margin-top: 15px;
+            color: rgb(255, 103, 0);
+        }
+
+        .pa.pb {
+            margin-top: 15px;
+        }
+
+        .pa {
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btm1 {
+            background-color: rgb(255, 103, 0);
+            color: white;
+            height: 0%;
+            position: absolute;
+            bottom: 0%;
+            right: 0;
+            width: 100%;
+            transition: 0.2s ease-out;
+            visibility: 0;
+        }
+
+        .btm1 a {
+            width: 75%;
+            height: 50%;
+            display: block;
+            margin: 5px auto 0px;
+            font-size: 12px;
+        }
+
+        .product li:hover .btm1 {
+            height: 29%;
+            box-shadow: 0 2px 15px 3px rgba(144, 144, 144, 0.3);
+            visibility: 1;
+        }
+
+
+
+
+
+
+        .productAd {
+            background: rgb(128, 240, 231);
+            width: 1227px;
+            height: 120px;
+            margin-top: 42px;
+        }
+
+        .productAd a img {
+            width: 100%;
+            height: 100%;
+        }
+
+
+
+        footer {
+            background: rgb(255, 255, 255);
+            width: 100%;
+            
+            min-width: 1227px;
+        }
+        .banner{
+            font-size: 0;
+            width: 1227px;
+            border-bottom: 1px solid rgb(211, 211, 211);;
+        }
+        .banner span{
+            font-size: 16px;
+            line-height: 75px;
+            height: 75px;
+            text-align: center;
+            color: rgb(97, 97, 97);
+        }
+        .banner>span:nth-child(2n){
+            color: rgb(212, 212, 212);;
+        }
+        .bannerItem {
+            /* background: rgb(255, 105, 105); */
+           display: inline-block;
+            width: 240px;
+            
+        }
+        .bannerItem::before{
+            font-family: 'ShopCart';
+            font-size: 16px;
+            content: '\f0179   ';
+        }
+        .helper{
+            font-size: 0;
+            width: 1227px;
+        }
+        .helper{
+            font-size: initial;
+        }
+        .helperItem {
+            /* background: rgb(255, 105, 105); */
+           display: inline-block;
+           color: rgb(121, 121, 121);
+           vertical-align: middle;
+            width: 158px;
+            height: 190px;
+        }
+        .helperItem>div{
+            font-size: 12px;
+            line-height: 30px;
+            height: 30px;
+        }
+        .helperItem>:first-child {
+            color: rgb(73, 73, 73);
+            font-size: 14px;
+            line-height: 75px;
+            height: 75px;
+        }
+        .border{
+            width: 0;
+            height: 115px;
+            /* vertical-align:top; */
+            border-left: 1px solid rgb(212, 212, 212);;
+        }
+        .tel{
+            float: right;
+            text-align: center;
+            width: 240px;
+            /* background: rgb(211, 116, 116); */
+        }
+        .tel>div{
+            height: 20px;
+            line-height: 20px;
+        }
+        .tel>div:first-child{
+            margin-top:10px ;
+            height: 50px;
+            font-size: 22px;
+            color: rgb(255,103,0); 
+        }
+        .tel>div:last-child{
+            margin-top: 20px;
+            height: 30px;
+            line-height: 30px;
+            width: 120px;
+            border:1px solid ;
+            color: rgb(255,103,0); 
+            transition: 0.7s;
+        }
+        .tel>div:last-child:hover{
+            background: rgb(255,103,0); 
+            color: rgb(255, 255, 255); 
+        }
+        .banner>span:nth-child(2n){
+            color: rgb(212, 212, 212);;
+        }
+        .hello::before{
+            font-family: 'ShopCart';
+            font-size: 16px;
+            content: '\f0179   ';
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <article class="main1 main11">
+            <span><a href="https://www.mi.com/index.html">小米商城</a>
+            </span>&nbsp;|
+            <span><a href="">小米商城</a></span>&nbsp;|
+            <span><a href="">小米商城</a></span>&nbsp;|
+            <span><a href="">小米商城</a></span>&nbsp;|
+            <span><a href="">小米商城</a></span>&nbsp;|
+            <span><a href="">小米商城</a></span>&nbsp;|
+            <span><a href="">小爱开放平台</a></span>&nbsp;|
+            <span><a href="">资质证照</a></span>&nbsp;|
+            <span><a href="">小米</a></span>
+            <!-- 右侧 -->
+            <span class="right ShoppingCart"><a href="">小米</a></span>
+            <span><a href="">购物车中还没有商品，赶紧选购吧！</a></span>
+            <span class="right"><a href="">通知</a></span>
+            <span class="right">&nbsp;|&nbsp;</span>
+            <span class="right"><a href="">注册</a></span>
+            <span class="right">&nbsp;|&nbsp;</span>
+            <span class="right"><a href="">登录</a></span>
+        </article>
+    </header>
+
+    <article class="main1 mian12">
+        <ul>
+            <li class="logo"><a href=""><img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1572193720626&di=09af8e96e1f7fcfc8242065d35c23972&imgtype=0&src=http%3A%2F%2Fcms-bucket.nosdn.127.net%2Fcatchpic%2F2%2F2d%2F2d5183480a5a7b62f77b82a54e7c28ea.png%3FimageView%26thumbnail%3D550x0"
+                        alt=""></a></span>
+            <li href="">
+                <a href="https://www.mi.com/index.html">小米 </a>
+                <ul>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                </ul>
+            </li>
+            <li href=""><a href="">小米手机</a>
+                <ul>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/13.3huise.png" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/13.3huise.png" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                </ul>
+            </li>
+            <li href=""><a href="">小米手机</a>
+                <ul>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/luyouqi4A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/luyouqi4A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                </ul>
+            </li>
+            <li href=""><a href="">小米手机</a>
+                <ul>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                </ul>
+            </li>
+            <li href="">
+                <a href="https://www.mi.com/index.html">小米 </a>
+                <ul>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2019/chuping.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                </ul>
+            </li>
+            <li href="">
+                <a href="https://www.mi.com/index.html">小米 </a>
+                <ul>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                </ul>
+            </li>
+            <li href="">
+                <a href="https://www.mi.com/index.html">小米 </a>
+                <ul>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                </ul>
+            </li>
+            <li href="">
+                <a href="https://www.mi.com/index.html">小米 </a>
+                <ul>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                    <li>
+                        <a href=""><img src="https://i1.mifile.cn/f/i/g/2015/cn-index/quanmianping55A.jpg" alt=""></a>
+                        <span>小米全面屏电视E55A</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+        <!-- 
+         -->
+        <div class="search">
+            <form action="https://www.google.com.hk/search">
+                <input class="s1" placeholder="请输入想要搜索的内容" type="text " name="q">
+                <!-- 
+            --><input class="s2" type="submit" action value="&#xe65f;">
+            </form>
+        </div>
+
+
+
+        <section class="pic">
+            <aside>
+                <ul>
+                    <li>手机 电话卡
+                        <ul>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>手机 电话卡
+                        <ul>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>手机 电话卡
+                        <ul>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li>手机 电话卡
+                        <ul>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>手机 电话卡
+                        <ul>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>手机 电话卡
+                        <ul>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+
+                                </ul>
+
+                            </li>
+                        </ul>
+                    </li>
+                    <li>手机 电话卡
+                        <ul>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>手机 电话卡
+                        <ul>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>手机 电话卡
+                        <ul>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>手机 电话卡
+                        <ul>
+                            <li>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                </ul>
+                                <ul>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/80x80.png?width=80&height=80"
+                                            alt="">
+                                        <a>小米笔记本15.6"</a>
+                                    </li>
+                                    <li>
+                                        <img src="https://i1.mifile.cn/f/i/g/2015/cn-index/mi9-80.png?width=80&height=80"
+                                            alt="">
+                                        <a href="https://www.mi.com/index.html">小米9</a>
+                                    </li>
+
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            </aside>
+            <!-- src="https://i1.mifile.cn/a4/xmad_15548066591437_Stxlj.jpg" -->
+            <input type="radio" name="pic" id="pic1" checked>
+            <a href="">
+                <img src="https://i1.mifile.cn/a4/xmad_15586648722759_MZIqD.jpg" alt="">
+            </a>
+            <input type="radio" name="pic" id="pic2">
+            <a href="">
+                <img src="https://i1.mifile.cn/a4/xmad_15586661012003_thOfZ.jpg" alt="">
+            </a>
+            <input type="radio" name="pic" id="pic3">
+            <a href="">
+                <img src="https://i1.mifile.cn/a4/xmad_15531616096346_mMwvn.jpg" alt="">
+            </a>
+            <input type="radio" name="pic" id="pic4" >
+            <a href="">
+                <img src="https://i1.mifile.cn/a4/xmad_15548066591437_Stxlj.jpg" alt="">
+            </a>
+                <input type="radio" name="pic" id="pic5">
+                <a href="">
+                    <img src="https://i1.mifile.cn/a4/xmad_15476942061027_STEvM.jpg" alt="">
+                </a>
+                <div class="radio">
+                    <label for="pic1">
+                        <div class="pic1"></div>
+                    </label>
+                    <label for="pic2">
+                        <div class="pic2"></div>
+                    </label>
+                    <label for="pic3">
+                        <div class="pic3"></div>
+                    </label>
+                    <label for="pic4">
+                        <div class="pic4"></div>
+                    </label>
+                    <label for="pic5">
+                        <div class="pic5"></div>
+                    </label>
+
+
+                </div>
+        </section>
+
+        <section class="ad1">
+            <span class="ad11"><a href=""><img src="" alt=""></a></span>
+            <span class="ad12"><a href=""><img src="https://i1.mifile.cn/a4/xmad_15586260230135_fKdxm.jpg"
+                        alt=""></a></span>
+            <span class="ad12"><a href=""><img src="https://i1.mifile.cn/a4/xmad_15410599445473_Ivjsb.jpg"
+                        alt=""></a></span>
+            <span class="ad12"><a href=""><img src="https://i1.mifile.cn/a4/xmad_15553962519926_fcMZl.jpg"
+                        alt=""></a></span>
+        </section><a href=""><img src="" alt=""></a>
+        <section class="ad2"><a href=""><img src="https://i1.mifile.cn/a4/xmad_15582560343092_JRBZf.jpg" alt=""></a>
+        </section>
+    </article>
+
+    <div class="main2Bg">
+        <article class="main2">
+            <section class="word1">手机
+            </section>
+
+            <section class="product">
+                <div class="productLeft"><a href=""><img src="https://i1.mifile.cn/a4/xmad_15578089659428_Uywcg.jpg"
+                            alt=""></a></div>
+                <ul>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                        <div class="btm1">
+                            <a href="http://www.baidu.com">好用好用好用好用好用好用好用好用</a>
+                            <a href="http://www.baidu.com">来自xxx的评价</a>
+                        </div>
+                    </li>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550646283.24414368!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 SE 6GB+64GB</a>
+                        </div>
+                        <div>索尼4800万超广角三摄，骁龙712</div>
+                        <div class="btm">1999元</div>
+                        <div class="btm1">
+                            <a href="http://www.baidu.com">好用好用好用好用好用好用好用好用</a>
+                            <a href="http://www.baidu.com">来自xxx的评价</a>
+                        </div>
+                    </li>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1547020852.30751177!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">Redmi Note 7 3GB+64G</a>
+                        </div>
+                        <div>5.84"小水滴全面屏，后置1200万 AI 双摄...</div>
+                        <div class="btm">999元</div>
+                        <div class="btm1">
+                            <a href="http://www.baidu.com">好用好用好用好用好用好用好用好用</a>
+                            <a href="http://www.baidu.com">来自xxx的评价</a>
+                        </div>
+                    </li>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1545457719.47232999!220x220.png" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                        <div class="btm1">
+                            <a href="http://www.baidu.com">好用好用好用好用好用好用好用好用</a>
+                            <a href="http://www.baidu.com">来自xxx的评价</a>
+                        </div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                        <div class="btm1">
+                            <a href="http://www.baidu.com">好用好用好用好用好用好用好用好用</a>
+                            <a href="http://www.baidu.com">来自xxx的评价</a>
+                        </div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                </ul>
+
+            </section>
+
+            <section class="productAd"><a href=""><img src="https://i1.mifile.cn/a4/xmad_15573897133137_JtYCB.jpg"
+                        alt=""></a></section>
+        </article>
+        <article class="main2">
+            <section class="word1">手机</section>
+
+            <section class="product">
+                <div class="productLeft"><a href=""><img src="https://i1.mifile.cn/a4/xmad_15578089659428_Uywcg.jpg"
+                            alt=""></a></div>
+                <ul>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550646283.24414368!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 SE 6GB+64GB</a>
+                        </div>
+                        <div>索尼4800万超广角三摄，骁龙712</div>
+                        <div class="btm">1999元</div>
+                    </li>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1547020852.30751177!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">Redmi Note 7 3GB+64G</a>
+                        </div>
+                        <div>5.84"小水滴全面屏，后置1200万 AI 双摄...</div>
+                        <div class="btm">999元</div>
+                    </li>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1545457719.47232999!220x220.png" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                </ul>
+            </section>
+            <section class="productAd"><a href=""><img src="https://i1.mifile.cn/a4/xmad_15585770579544_dTDzR.jpg"
+                        alt=""></a></section>
+        </article>
+        <article class="main2">
+            <section class="word1">手机
+            </section>
+
+            <section class="product">
+                <div class="productLeft"><a href=""><img src="https://i1.mifile.cn/a4/xmad_15578089659428_Uywcg.jpg"
+                            alt=""></a></div>
+                <ul>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                        <div class="btm1">
+                            <a href="http://www.baidu.com">好用好用好用好用好用好用好用好用</a>
+                            <a href="http://www.baidu.com">来自xxx的评价</a>
+                        </div>
+                    </li>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550646283.24414368!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 SE 6GB+64GB</a>
+                        </div>
+                        <div>索尼4800万超广角三摄，骁龙712</div>
+                        <div class="btm">1999元</div>
+                        <div class="btm1">
+                            <a href="http://www.baidu.com">好用好用好用好用好用好用好用好用</a>
+                            <a href="http://www.baidu.com">来自xxx的评价</a>
+                        </div>
+                    </li>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1547020852.30751177!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">Redmi Note 7 3GB+64G</a>
+                        </div>
+                        <div>5.84"小水滴全面屏，后置1200万 AI 双摄...</div>
+                        <div class="btm">999元</div>
+                        <div class="btm1">
+                            <a href="http://www.baidu.com">好用好用好用好用好用好用好用好用</a>
+                            <a href="http://www.baidu.com">来自xxx的评价</a>
+                        </div>
+                    </li>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1545457719.47232999!220x220.png" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                        <div class="btm1">
+                            <a href="http://www.baidu.com">好用好用好用好用好用好用好用好用</a>
+                            <a href="http://www.baidu.com">来自xxx的评价</a>
+                        </div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                        <div class="btm1">
+                            <a href="http://www.baidu.com">好用好用好用好用好用好用好用好用</a>
+                            <a href="http://www.baidu.com">来自xxx的评价</a>
+                        </div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                </ul>
+
+            </section>
+
+            <section class="productAd"><a href=""><img src="https://i1.mifile.cn/a4/xmad_15573897133137_JtYCB.jpg"
+                        alt=""></a></section>
+        </article>
+        <article class="main2">
+            <section class="word1">手机</section>
+
+            <section class="product">
+                <div class="productLeft"><a href=""><img src="https://i1.mifile.cn/a4/xmad_15578089659428_Uywcg.jpg"
+                            alt=""></a></div>
+                <ul>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550646283.24414368!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 SE 6GB+64GB</a>
+                        </div>
+                        <div>索尼4800万超广角三摄，骁龙712</div>
+                        <div class="btm">1999元</div>
+                    </li>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1547020852.30751177!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">Redmi Note 7 3GB+64G</a>
+                        </div>
+                        <div>5.84"小水滴全面屏，后置1200万 AI 双摄...</div>
+                        <div class="btm">999元</div>
+                    </li>
+                    <li class="pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1545457719.47232999!220x220.png" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                    <li class="pb pa">
+                        <div class="tip">新品</div>
+                        <a href="">
+                            <img src="https://i1.mifile.cn/a1/pms_1550642182.7527088!220x220.jpg" alt="">
+                        </a>
+                        <div class="atip">
+                            <a href="">小米9 6GB+128GB</a>
+                        </div>
+                        <div>骁龙855，索尼4800万超广角微距三摄</div>
+                        <div class="btm">2999元</div>
+                    </li>
+                </ul>
+            </section>
+            <section class="productAd"><a href=""><img src="https://i1.mifile.cn/a4/xmad_15585770579544_dTDzR.jpg"
+                        alt=""></a></section>
+        </article>
+    </div>
+
+    <footer>
+        <div class="banner">
+            <span class="bannerItem">预约维修服务</span><span>|</span>
+            <span class="bannerItem">7天无理由退货</span><span>|</span>
+            <span class="bannerItem">15天免费换货</span><span>|</span>
+            <span class="bannerItem">满150元包邮</span><span>|</span>
+            <span class="bannerItem">520余家售后网点</span>
+        </div>
+        <div class="helper">
+            <span class="helperItem">
+                <div>帮助中心</div>
+                <div>账户管理</div>
+                <div>购物指南</div>
+                <div>订单操作</div>
+            </span>
+            <span class="helperItem">
+                <div>帮助中心</div>
+                <div>账户管理</div>
+                <div>购物指南</div>
+                <div>订单操作</div>
+            </span>
+            <span class="helperItem">
+                <div>帮助中心</div>
+                <div>账户管理</div>
+                <div>购物指南</div>
+                <div>订单操作</div>
+            </span>
+            <span class="helperItem">
+                <div>帮助中心</div>
+                <div>账户管理</div>
+                <div>购物指南</div>
+                <div>订单操作</div>
+            </span>
+            <span class="helperItem">
+                <div>帮助中心</div>
+                <div>账户管理</div>
+                <div>购物指南</div>
+                <div>订单操作</div>
+            </span>
+            <span class="helperItem">
+                <div>帮助中心</div>
+                <div>账户管理</div>
+                <div>购物指南</div>
+                <div>订单操作</div>
+            </span>
+            <span class="helperItem border">
+            </span>
+            <span class="helperItem tel">
+               <div>400-100-5678</div>
+               <div>周一至周日 8:00-18:00</div>
+               <div>（仅收市话费）</div>
+               <div class="hello">人工客服</div>
+            </span>
+        </div>
+    </footer>
+</body>
+
+</html>

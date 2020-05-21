@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<meta name="robots" content="noindex">
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width">
+  <title></title>
+<style>
+* {
+  background-color: rgba(0,0,0,.03);
+}
+section {
+  position: absolute;
+  margin: 100px;
+}
+div {
+  position: relative;
+  float: left;
+  width: 100px;
+  height: 400px;
+  margin-left: 2px;
+  overflow: hidden;
+}
+span {
+  width: 100px;
+  height: 400px;
+  display: block;
+  position: absolute;
+  right:100%;
+  transition:.6s linear;
+  animation:leave .6s linear;
+}
+@keyframes leave {
+  from {
+    right:0;
+  }
+  to {
+    right:-100%;
+  }
+}
+
+.s1{
+  background-image: url(https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=2946781315,4117274966&fm=26&gp=0.jpg);
+}
+.s2{
+  background-image: url(https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3644936273,1163372164&fm=26&gp=0.jpg);
+}
+.s3{
+  background-image: url(https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2906970945,2377839073&fm=26&gp=0.jpg);
+}
+.s4{
+  background-image: url(https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=2818649990,625761106&fm=26&gp=0.jpg);
+}
+.d1 .s1,
+.d1 .s2,
+.d1 .s3,
+.d1 .s4{
+  background-position: 0 0;
+}
+.d2 .s1,
+.d2 .s2,
+.d2 .s3,
+.d2 .s4{
+  background-position: -100px 0;
+}
+.d3 .s1,
+.d3 .s2,
+.d3 .s3,
+.d3 .s4{
+  background-position: -200px 0;
+}
+.d4 .s1,
+.d4 .s2,
+.d4 .s3,
+.d4 .s4{
+  background-position: -300px 0;
+}
+input:nth-child(1):checked ~ div .s1{
+  right:0;
+  z-index:10;
+  animation:none;
+}
+input:nth-child(2):checked ~ div .s2{
+  right:0;
+  z-index:10;
+  animation:none;
+}
+input:nth-child(3):checked ~ div .s3{
+  right:0;
+  z-index:10;
+  animation:none;
+}
+input:nth-child(4):checked ~ div .s4{
+  right:0;
+  z-index:10;
+  animation:none;
+}
+input {
+  display: none;
+}
+.label {
+  position: absolute;  
+  top:360px;
+  width: auto;
+  height: auto;
+  left:130px;
+  z-index: 100;
+ 
+}
+label {
+  width: 30px;
+  height: 30px;
+  border-radius:50%;
+  border:5px solid aqua;
+  background-color: rgba(0,0,0,.1);
+  float: left;
+  margin-right: 10px;
+  cursor:pointer;
+  transition:.2s;
+  box-sizing:border-box;
+}
+label:hover {
+  border-width: 15px;
+  border-color:pink;  
+}
+
+
+
+
+</style>
+</head>
+<body>
+  <h1>百叶窗slider</h1>
+  <main id='slider'>
+    <section>
+      <input checked type="radio" name="slider" id="i1">
+      <input type="radio" name="slider" id="i2">
+      <input type="radio" name="slider" id="i3">
+      <input type="radio" name="slider" id="i4">
+      <div class="d1">
+        <span class="s1"></span>
+        <span class="s2"></span>
+        <span class="s3"></span>
+        <span class="s4"></span>
+      </div>
+      <div class="d2">
+        <span class="s1"></span>
+        <span class="s2"></span>
+        <span class="s3"></span>
+        <span class="s4"></span>
+      </div>
+      <div class="d3">
+        <span class="s1"></span>
+        <span class="s2"></span>
+        <span class="s3"></span>
+        <span class="s4"></span>
+      </div>
+      <div class="d4">
+        <span class="s1"></span>
+        <span class="s2"></span>
+        <span class="s3"></span>
+        <span class="s4"></span>
+      </div>
+  <div class="label">
+    <label for="i1"></label>
+    <label for="i2"></label>
+    <label for="i3"></label>
+    <label for="i4"></label>
+  </div>
+    
+    </section>
+
+  </main>
+</body>
+</html>

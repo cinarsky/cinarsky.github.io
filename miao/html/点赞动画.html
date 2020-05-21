@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+
+  <style>
+      *{margin: 0 auto;
+      padding:0px;
+      }
+     div{
+       margin: 0;
+       height: 100px;
+       width: 100px;
+      background-image: url(https://abs.twimg.com/a/1557861269/img/animations/web_heart_animation_edge.png?tdsourcetag=s_pctim_aiomsg);
+      background-position: 0px 0px ;
+      transition:background-position steps(1) ;
+       }
+       div:hover{
+        background-position:-2800px 0px;
+        transition:background-position 0.7s steps(28) ;
+       }
+       /* div:active{
+        background-position:-2800px 0px;
+        transition:background-position 1s steps(28) ;
+       } */
+  </style>
+
+</head>
+<body>
+  <div class="main"></div>
+</body>
+</html>

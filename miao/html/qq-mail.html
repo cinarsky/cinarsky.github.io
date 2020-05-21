@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0px;
+            padding: 0px;
+        }
+        html,body{
+            height:100%;
+        }
+    .top{
+        background-color: rgb(238, 243, 230);
+        height: 100px;
+        line-height:100px;
+        text-align: center;
+        font: 5em sans-serif;
+    }
+    .main{
+       
+        margin-top: 0;
+        margin-bottom: 0;
+        height: calc(100% - 100px);
+    }
+    .main span{
+        display:inline-block;
+    }
+    .left{
+        width: 250px;
+        border:5px solid rgb(155,187,89);
+        border-radius: 5px;
+        margin-left: 20px;
+        vertical-align: top;
+        height: calc(100% - 12px);
+    }
+    .left>div{
+        height:46px;
+        width: 100%;
+        border-bottom: 3px solid  rgb(155,187,89);
+        background-color: rgb(190, 255, 233);
+        text-align: center;
+        line-height: 50px;
+        cursor: pointer;
+    }
+    .right{
+        height:100px;
+        width: calc(100% - 290px);
+        border-top:5px solid rgb(155,187,89);
+        background: rgb(170, 144, 144);
+        
+    }
+    </style>
+</head>
+<body>
+    <div class="top">Q Q 邮 箱</div>
+    <div class="main">
+        <span class="left">
+            <div>写信</div>
+            <div>收信</div>
+            <div>垃圾箱</div>
+        </span>
+        <span class="right">
+            <span></span>
+            <span></span>
+            <span></span>
+        </span>
+    </div>
+</body>
+</html>

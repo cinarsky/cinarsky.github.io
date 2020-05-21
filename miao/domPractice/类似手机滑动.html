@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            margin: 0;
+        }
+
+        .container {
+            margin: 70px auto;
+            width: 410px;
+            height: 50px;
+            border: 3px solid rgb(255, 150, 150);
+            /* overflow: hidden; */
+            position: relative;
+        }
+
+        .main {
+            width: max-content;
+            font-size: 0;
+            position: absolute;
+            left: 0;
+            right: 0;
+            transition: 0.5s ease-out all;
+        }
+
+        .main * {
+            font-size: initial;
+        }
+
+        .main div {
+            display: inline-block;
+            height: 48px;
+            width: 80px;
+            border: 1px solid black;
+            background-color: rgb(199, 254, 255);
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="main" onselectstart="return false">
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+            <div>项目123</div>
+        </div>
+    </div>
+</body>
+<script>
+    var main = document.getElementsByClassName('main')[0]
+    main.addEventListener('mousedown', function (e) {
+        
+        var left = parseInt(main.style.left) || 0
+        var x1 = e.clientX
+        var time1 = new Date().getTime()
+
+
+
+        document.addEventListener('mousemove', move1 = function (e) {
+            
+            main.style.transition='none';
+            var x2 = e.clientX - x1
+            main.style.left = x2 + left + 'px'
+            ;
+        })
+
+
+
+        document.onmouseup = function (e) {
+            // 结束位置
+            var xe = e.clientX
+            // 速度
+            var time2 = new Date().getTime()
+            var speed = (xe - x1) / (time2 - time1)
+            console.log(speed)
+            if(Math.abs(speed)>0.5){
+            main.style.left = parseInt(main.style.left) + speed*150 + 'px'
+            main.style.transition='';
+            }
+            document.removeEventListener('mousemove', move1)
+        }
+
+        // main.addEventListener('mouseup', function (e) {
+        //     
+        //     
+        //     
+        //     
+        //     
+        //     
+        //     main.removeEventListener('mousemove', move1)
+        // })
+
+
+
+
+
+    })
+</script>
+
+</html>

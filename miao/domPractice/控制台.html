@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            width: 100%;
+        }
+
+        textarea {
+            display: inline-block;
+            width: 500px;
+            height: 300px;
+            display: block;
+        }
+
+        div.res {
+            display: inline-block;
+            width: 500px;
+            height: 300px;
+            background: rgb(255, 187, 252);
+            border: 1px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <textarea id='textarea'></textarea>
+    <div class="res" id='div'></div>
+</body>
+<script>
+    function runCode(code){
+        var logs=[]
+        var console={
+            log:function(...args){
+                logs.push(args)
+            }
+        } 
+        var res=eval(code)
+        if(logs.length>0){
+        div.innerText += logs+'\n'}
+        div.innerText += res+'\n'
+        
+    }
+    var textarea = document.getElementById('textarea')
+    var div = document.getElementById('div')
+    textarea.addEventListener('keydown', function (e) {
+        if(e.keyCode==13){
+        var a=textarea.value;    
+        runCode(a)
+        textarea.value=""
+        }
+    })
+</script>
+
+</html>
+
+
+<!-- var a = textarea.value
+        var logs=[]
+        var console={
+            log:function(...args){
+                logs.push(args)
+            }
+        }
+        var res=eval(a)
+        textarea.value=""
+        if(logs.length>0){
+        div.innerText += logs+'\n'}
+        div.innerText += res+'\n' -->

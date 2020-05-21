@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+<style>
+  * {
+    margin: 0 ;
+    vertical-align: middle;
+    padding: 2px;
+  }
+</style>
+
+<body>
+  <div id="reg">
+
+    <regular v-model='re'></regular>
+
+  </div>
+</body>
+<script>
+  Vue.component('regular', {
+    props: {
+      value: {
+        type: RegExp,
+        required: true,
+      }
+    },
+    template: `
+    <div>
+      <span  style='border:2px solid ;padding: 2px;display:inline-block;'>
+        <input type='text' v-model='regText'  @input='regChange'>
+     
+        <span 
+          style='padding-left:10px;display:inline-block;'
+          v-for="(val,index) in flagss">{{val.name}}
+          <input type='checkbox' 
+          v-model='val.value'
+          @change='regChange'
+          :name='val'
+          />
+        </span>
+      </span>
+      <div>正则表达式{{this.value.toString()}}<div>
+          <div>
+      `,
+    watch: {
+      value(val){
+        this.regText=val.source
+        this.flagss=this.getFlagArray(this.value)
+      }
+    },
+    data() {
+      return {
+        regText: this.value.source,
+        flagss: this.getFlagArray(this.value),
+      }
+    },
+    methods: {
+      getFlagArray(re) {
+          var flags = [ {
+            displayName: 'global',
+            name: 'g',
+            value: false
+          },{
+            displayName: 'ignoreCase',
+            name: 'i',
+            value: false
+          }, {
+            displayName: 'multiline',
+            name: 'm',
+            value: false
+          }]
+
+          flags.forEach(flag => {
+            if (re.flags.indexOf(flag.name) >= 0) {
+              flag.value = true
+            }
+          })
+          return flags
+        },
+    
+      regChange: function (e) {
+        var re = new RegExp(this.regText, this.flagss.filter(it => it.value == true).map(it => it.name).join(''))
+        console.log(re)
+        this.$emit('input', re)
+      },
+
+    },
+
+
+
+  })
+  var app = new Vue({
+    el: '#reg',
+    data: {
+      re: /foo/ig,
+
+    },
+
+  })
+</script>
+
+</html>

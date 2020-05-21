@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>clock</title>
+  <style>
+  div.clock-face{
+    height: 500px;
+    width: 500px;
+    border:10px solid gray;
+    background:linear-gradient(to top right, lightcoral 10%, lightblue);
+    border-radius: 999px;
+    margin:auto;
+    margin-top:100px;
+    position:relative;
+  }
+  span{
+    width: 20px;
+    height: 20px;
+    position:absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    margin:auto;
+  }
+  span:nth-child(11){
+    transform: rotate(-30deg) translatey(-230px) rotate(30deg);
+  }
+  span:nth-child(10){
+    transform: rotate(-60deg) translatey(-230px) rotate(60deg);
+  }
+  span:nth-child(9){
+    transform: rotate(-90deg) translatey(-230px) rotate(90deg);
+  }
+  span:nth-child(8){
+    transform: rotate(-120deg) translatey(-230px) rotate(120deg);
+  }
+  span:nth-child(7){
+    transform: rotate(-150deg) translatey(-230px) rotate(150deg);
+  }
+  span:nth-child(6){
+    transform: rotate(0deg) translatey(230px) rotate(0deg);
+  }
+  span:nth-child(5){
+    transform: rotate(-30deg) translatey(230px) rotate(30deg);
+  }
+  span:nth-child(4){
+    transform: rotate(-60deg) translatey(230px) rotate(60deg);
+  }
+  span:nth-child(3){
+    transform: rotate(-90deg) translatey(230px) rotate(90deg);
+  }
+  span:nth-child(2){
+    transform: rotate(-120deg) translatey(230px) rotate(120deg);
+  }
+  span:nth-child(1){
+    transform: rotate(-150deg) translatey(230px) rotate(150deg);
+  }
+  span:nth-child(12){
+    transform: rotate(0deg) translatey(-230px) rotate(0deg);
+  }
+
+  section.sec div.sec-hand{
+    width:3px;
+    height: 0px;
+    border-bottom:175px solid red;
+    border-left:2.5px solid transparent;
+    border-right:2.5px solid transparent;
+    transform-origin: 50% 40%;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    margin:auto;
+    position:absolute;
+    animation:shake-sec 1s infinite;
+  }
+  section.min div.min-hand{
+    width:5px;
+    height:150px;
+    background-color: lime;
+    transform-origin: 50% 40%;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    margin:auto;
+    position:absolute;
+    animation:shake-min 60s infinite;
+  }
+  section.hour div.hour-hand{
+    width:8px;
+    height:100px;
+    background-color: #000;
+    transform-origin: 50% 40%;
+    top:0;
+    left:0;
+    right: 0;
+    bottom: 0;
+    margin:auto;
+    position:absolute;
+    animation:shake-hour 3600s infinite;
+  }
+
+  section.hour{
+    width: 500px;
+    height: 500px;
+    animation:rotate 43200s steps(60) infinite;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin:auto;
+    position:absolute;
+  }
+  section.min{
+    width: 500px;
+    height: 500px;
+    animation:rotate 3600s steps(60) infinite;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin:auto;
+    position:absolute;
+  }
+  section.sec{
+    width: 500px;
+    height: 500px;
+    animation:rotate 60s steps(60) infinite;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin:auto;
+    position:absolute;
+  }
+
+  @keyframes rotate{
+    from{
+      transform:rotate(0deg);
+    }
+    to{
+      transform:rotate(360deg);
+    }
+  }
+  @keyframes shake-sec{
+    0%{
+      transform:rotate(0deg) translatey(-40%);
+    }
+    5%{
+      transform:rotate(2deg) translatey(-40%);
+    }
+    15%{
+      transform:rotate(-1.5deg) translatey(-40%);
+    }
+    20%{
+      transform:rotate(0deg) translatey(-40%);
+    }
+    100%{
+      transform:rotate(0deg) translatey(-40%);
+    }
+  }
+  @keyframes shake-min{
+    0%{
+      transform:rotate(0deg) translatey(-40%);
+    }
+    0.083%{
+      transform:rotate(2deg) translatey(-40%);
+    }
+    0.25%{
+      transform:rotate(-1.5deg) translatey(-40%);
+    }
+    0.33%{
+      transform:rotate(0deg) translatey(-40%);
+    }
+    100%{
+      transform:rotate(0deg) translatey(-40%);
+    }
+  }
+  @keyframes shake-hour{
+    0%{
+      transform:rotate(0deg) translatey(-40%);
+    }
+    0.00138%{
+      transform:rotate(2deg) translatey(-40%);
+    }
+    0.00417%{
+      transform:rotate(-1.5deg) translatey(-40%);
+    }
+    0.00556%{
+      transform:rotate(0deg) translatey(-40%);
+    }
+    100%{
+      transform:rotate(0deg) translatey(-40%);
+    }
+  }
+  </style>
+</head>
+<body>
+  <div class="clock-face">
+    <span>1</span>
+    <span>2</span>
+    <span>3</span>
+    <span>4</span>
+    <span>5</span>
+    <span>6</span>
+    <span>7</span>
+    <span>8</span>
+    <span>9</span>
+    <span>10</span>
+    <span>11</span>
+    <span>12</span>
+    <section class="hour">
+      <div class="hour-hand">
+      </div>
+    </section>
+    <section class="min">
+      <div class="min-hand">
+      </div>
+    </section>
+    <section class="sec">
+      <div class="sec-hand">
+      </div>
+    </section>
+  </div>
+</body>
+</html>

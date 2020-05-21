@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        position: relative;
+    }
+
+    .a1 {
+        background: rgb(255, 178, 178);
+        width: 100px;
+        height: 100px;
+        line-height: 100px;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        top: 0;
+    }
+
+    .a2 {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        background: rgb(181, 255, 149);
+        vertical-align: middle;
+    }
+</style>
+
+<body>
+    <div class="a1">
+        <div class="a2"></div>
+    </div>
+</body>
+<script>
+    var a1 = document.getElementsByClassName('a1')[0]
+    var a2 = document.getElementsByClassName('a2')[0]
+
+    function ani(element,target) {
+        clearInterval(element.tim)
+        element.tim = setInterval(function () {
+            var step = (target - parseInt(element.style.left) || 0 + 100) * 0.05
+            element.style.left = parseInt(element.style.left || 0) + step + 1 + 'px'
+            if ((target - parseInt(element.style.left) <= step)) {
+                element.style.left = target+'px'
+                clearInterval(element.tim);
+            }
+        }, 18)}
+    a1.addEventListener('click',function(){ani(a1,800) }
+    )
+</script>
+
+</html>

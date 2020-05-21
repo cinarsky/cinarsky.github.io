@@ -1,0 +1,30 @@
+doctype 
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Document
+        include titlestyle.pug
+        style.
+           *{
+            margin:0 auto;
+            }
+            .welcome{
+                text-align:center;
+                font-size: 25px;
+            }
+            .welcome>a{
+             display:block;
+             width:100px;
+             height:30px;
+             margin: 30px auto;
+         }
+    body
+        include title.html
+        div(class='welcome')
+           span Welcome,#{username}
+           a(href='/create') 创建投票
+           a(href='/logout') 登出
+
+        

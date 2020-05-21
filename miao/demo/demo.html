@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en" id='a1'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Demo</title>
+    <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="./font_4pmpc1t04g3/iconfont.js"></script>
+    <script src="./font_al0pilw54ev/iconfont.js"></script>
+</head>
+<style>
+    .icon {
+        width: 1em;
+        height: 1em;
+        vertical-align: -0.15em;
+        fill: currentColor;
+        overflow: hidden;
+    }
+.icontext{
+    width: 100%;
+    height: 80px;
+    /* line-height: 80px; */
+    color: rgb(255, 183, 89);
+    /* font-size: 25px; */
+    background-image: url(./leetcode.svg);
+    background-size: 80px 50px;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+    * {
+        margin: 0;
+        padding: 0;
+    }
+
+    html,
+    body {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    .main {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    .sidebar {
+        background: rgba(0, 0, 0,0.8);
+        /* background-image: url("./bg1.jpg");
+        background-position: top;
+        background-size: cover;
+        background-repeat: no-repeat; */
+        width: 40%;
+        height: 100%;
+        position: fixed;
+        top: 0px;
+        left: -100%;
+        /* background: rgb(206, 206, 206); */
+        text-align: center;
+        transition: ease-in-out 0.25s;
+        z-index: 10;
+    }
+
+    .avatar {
+        color: white;
+        width: 100%;
+        /* height: 100px; */
+        /* line-height: 100px; */
+        /* background: rgb(156, 180, 134); */
+    }
+
+    .avatar img {
+        width: 70px;
+        height: 70px;
+        margin-top: 10px;
+        border-radius: 50%;
+    }
+
+    .avatar div {
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 25px;
+    }
+
+    .list a {
+        text-decoration: none
+    }
+
+    .list li {
+        color: white;
+        font-size: 20px;
+        width: 100%;
+        height: 80px;
+        line-height: 80px;
+        /* background: rgb(219, 108, 108); */
+        text-align: center;
+        border-top: 1px solid rgb(155, 153, 153);
+        transition: 0.3s;
+    }
+
+    li:hover {
+        background: rgba(189, 203, 221, 0.5);
+    }
+
+    .list svg {
+        width: 50px;
+        height: 50%;
+        vertical-align: middle;
+    }
+
+    .list span {
+        display: inline-block;
+        min-width: 100px;
+        height: 30px;
+        line-height: 30px;
+        vertical-align: middle;
+        text-align: left;
+        color: white;
+    }
+
+    .back {
+        border-bottom: 1px solid rgb(155, 153, 153);
+    }
+
+    .content {
+        width: 100%;
+        height: 100%;
+        /* overflow: hidden; */
+        /* height: 5000px; */
+        /* background: rgb(223, 224, 163); */
+    }
+
+    .menu {
+        position: fixed;
+        width: 70px;
+        height: 70px;
+        line-height: 70px;
+        /* background: rgba(158, 158, 158, 0.5); */
+        text-align: center;
+        z-index: 8;
+    }
+
+    .menu svg {
+        display: inline-block;
+        width: 50%;
+        height: 50px;
+        vertical-align: middle;
+    }
+
+    .welcome {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0px;
+        background-image: url("./bg2.jpg");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+        z-index: 9;
+        text-align: center;
+        transition: ease-in 0.2s;
+    }
+
+    .title {
+        position: relative;
+        width: 100%;
+        height: 65%;
+        /* background: rgb(199, 198, 198); */
+    }
+
+    .title>div:nth-child(1) {
+        position: absolute;
+        width: 90%;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        font-size: 50px;
+        color: rgba(255, 255, 255, 0.6);
+    }
+
+    .welcome button {
+        width: max-content;
+        font-size: 20px;
+        color: rgb(100, 100, 100);
+        height: 50px;
+        padding: 5px 20px;
+        background: rgba(236, 236, 236, 0.3);
+        border: 1px solid rgb(100, 100, 100);
+        border-radius: 10px;
+    }
+
+    .welcome button:hover {
+        background: rgba(129, 129, 129, 0.3);
+    }
+
+    .page {
+        display: none;
+        width: 100%;
+        height: 100%;
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        text-align: center;
+        position: relative;
+    }
+
+    .page::before {
+        content: '';
+        display: inline-block;
+        vertical-align: middle;
+        height: 100%;
+    }
+
+    .page:nth-of-type(1) {
+        background-image: url(./bg1.jpg);
+    }
+
+    .page:nth-of-type(2) {
+        background-image: url(./bg5.jpg);
+    }
+
+    .page:nth-of-type(3) {
+        background-image: url(./bg8.jpg);
+    }
+    .page:nth-of-type(4) {
+        background-image: url(./bg4.jpg);
+    }
+    .page .shows {
+        position: absolute;
+        top: 17%;
+        left: 50%;
+        transform: translateX(-50%);
+        vertical-align: middle;
+        width: 70%;
+        height: 60%;
+        /* background: rgb(214, 30, 30); */
+        text-align: center;
+    }
+
+    .page .show {
+        
+        /* display: inline-block; */
+        text-align: center;
+        font-size:25px;
+        margin-bottom:30px;
+        width: 100%;
+        height: 33.3%;
+        box-sizing: border-box;
+        border-bottom: 1px solid rgb(129, 129, 129);
+        /* background: rgba(255, 255, 255, 0.2); */
+    }
+    .show a{
+        text-decoration-line: none;
+    }
+    .show:first-child {
+        border: none;
+        height: 20%;
+    }
+    .show div{
+        width: 100%;
+        height: 90%;
+        color: rgb(255, 255, 255);
+        background: rgba(88, 88, 88, 0.1);
+        border-radius: 8px;
+        transition: 0.5s;
+    }
+    .show div:hover{
+        background: rgba(0, 0, 0, 0.2);
+        
+    }
+    .show:first-child div{
+        color: rgb(172, 170, 170);
+        background: none;
+        font-size: 35px;
+    }
+    .show:first-child div:hover{
+        background: none;
+        
+    }
+    .show div::after{
+        content: '';
+        height: 100%;
+        display: inline-block;
+        vertical-align: middle;
+    }
+
+
+ 
+</style>
+
+<body>
+
+    <div class="main">
+        <!-- 侧边栏 -->
+        <div class="sidebar">
+            <!-- 头像 -->
+            <div class="avatar">
+                <img src="./avatar.jpg" alt="">
+                <div>cinarsky</div>
+            </div>
+            <!-- 侧边栏信息列表 -->
+            <ul class="list">
+
+                <li>
+                    <a target="_blank" href="https://github.com/cinarsky">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-Github"></use>
+                        </svg>
+                        <!-- <span>Github</span> -->
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://leetcode.com/cinarsky/">
+                        <div class="icontext" >
+                            
+                        </div>
+                        <!-- <span>Github</span> -->
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://cinarsky.github.io/miao/demo/qq.html">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-weixin1"></use>
+                        </svg>
+                        <!-- <span>Github</span> -->
+                    </a>
+                </li>
+                <li>
+                    <a target="_blank" href="https://cinarsky.github.io/miao/demo/qq.html">
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-qq"></use>
+                        </svg>
+                        <!-- <span>QQ</span> -->
+                    </a>
+                </li>
+                <!-- <li>
+                    <a target="_blank" >
+                        <svg class="icon" aria-hidden="true">
+                            <use xlink:href="#icon-wode-"></use>
+                        </svg>
+                        
+                    </a>
+                </li> -->
+                <li class='back'>
+                    <svg class="icon" aria-hidden="true">
+                        <use xlink:href="#icon-shouqi"></use>
+                    </svg>
+                    <!-- <span>收起</span> -->
+                </li>
+            </ul>
+        </div>
+        <!-- 页面主体 -->
+        <div class="content">
+            <div class="menu">
+                <svg class="icon" aria-hidden="true">
+                    <use xlink:href="#icon-menu1153767easyiconnet"></use>
+                </svg>
+            </div>
+            <div class="welcome">
+                <div class="title">
+                    <div>Welcome To My Demo Show Website</div>
+                </div>
+                <button class="demo">进入Demo</button>
+            </div>
+            <span class="page">
+                    <div class="shows">
+                            <div class="show">
+                            <div>基础demo</div>
+                             </div>
+                        <div class="show">
+                         <a href="https://cinarsky.github.io/miao/mi/index.html" target="_blank" ><div>纯css还原小米官网（demo）</div></a>  
+                        </div>
+                        <div class="show">
+                            <a href="https://cinarsky.github.io/miao/domPractice/贪吃蛇.html" target="_blank" ><div>小游戏demo</div></a>  
+                        </div>
+                       
+                    </div>
+            </span>
+            <span class="page">
+                <div class="shows">
+                    <div class="show">
+                       </a><div>node&React漫语点餐</div>
+                    </div>
+                    <div class="show">
+                        <a href="http://cinarsky.club:40715
+                        " target="_blank" ><div>管理员(用户名及密码:admin)</div></a> 
+                    </div>
+                    <div class="show">
+                        <a href="http://cinarsky.club:40715/#/landing/r/5/d/9" target="_blank" ><div>顾客入口</div></a>  
+                    </div>
+                </div>
+            </span>
+            <span class="page">
+                <div class="shows">
+                    <div class="show">
+                        <div>node&React 拼室友</div>
+                    </div>
+                    <div class="show">
+                        <a href="http://cinarsky.club:5001" target="_blank" ><div>拼室友小论坛</div></a>  
+                       
+                        
+                    </div>
+                    <div class="show">
+                       
+                        
+                       
+                    </div>
+                </div>
+            </span>
+         
+            <span class="page">
+                <div class="shows">
+                    <div class="show">
+                        <div>node demo</div>
+                    </div>
+                    <div class="show">
+                        <a href="http://cinarsky.club:3005
+                        " target="_blank" ><div>简单投票系统</div></a>  
+                    </div>
+                    <div class="show">
+                        <a href="" target="_blank" ></a><div></div></a>  
+                    </div>
+                </div>
+            </span>
+        </div>
+    </div>
+
+
+</body>
+<script type="text/javascript">
+    var menu = document.querySelector('.menu')
+    var sidebar = document.querySelector('.sidebar')
+    var back = document.querySelector('.back')
+    var demo = document.querySelector('.demo')
+    var pages = document.querySelectorAll('.page')
+    menu.addEventListener('click', (e) => {
+        console.log(sidebar.style)
+        if (sidebar.style.left == '') {
+            sidebar.style.left = '0px'
+
+        } else {
+
+        }
+    })
+    back.addEventListener('click', (e) => {
+
+        sidebar.style.left = ''
+    })
+    demo.addEventListener('click', (e) => {
+        e.target.parentNode.style.top = '-100%'
+        for (var i = 0; i < pages.length; i++) {
+            pages[i].style.display = 'block'
+        }
+    })
+</script>
+
+</html>

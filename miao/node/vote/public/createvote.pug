@@ -1,0 +1,101 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='UTF-8')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(http-equiv='X-UA-Compatible', content='ie=edge')
+    title Document
+    style.
+      * {
+      margin: 0 auto;
+      }
+      .createvote {
+      text-align: center;
+      }
+      input {
+      vertical-align: middle;
+      }
+      .createvote div {
+      width: 300px;
+      margin: 10px auto;
+      /* background: rgb(208, 145, 145); */
+      font-size: 25px;
+      }
+      div>span {
+      display: inline-block;
+      width: 120px;
+      margin-left: -20px;
+      }
+      div.anony>span {
+      margin-left: -135px;
+      }
+      div.anony>input {
+      width: 20px;
+      height: 20px;
+      }
+      .options {
+      /* background: rgb(221, 159, 159); */
+      padding-bottom: 15px;
+      border:1px solid black;
+      }
+      .options * {
+      vertical-align: middle;
+      }
+  body
+    .createvote
+      form(method='POST', action='/')
+        div
+          | &#x6295;&#x7968;&#x9898;&#x76EE;
+          input.title(type='text')
+        div
+          | &#x6295;&#x7968;&#x63CF;&#x8FF0;
+          input.desc(type='text')
+        div
+          | &#x521B;&#x5EFA;&#x7528;&#x6237;
+          input(type='text', value="username+'(id='+userid+')'", readonly='')
+        .options
+          div
+            span &#x9009;&#x9879;
+            button(type='button', onclick='ins()') &#x65B0;&#x5EFA;&#x9009;&#x9879;
+          div
+            input(type='text')
+            button.del(type='button') &#x5220;&#x9664;
+        div
+          span &#x6295;&#x7968;&#x9009;&#x9879;
+          |                 &#x5355;&#x9009;
+          input.singlesel(type='radio', name='sle', value='1', checked='')
+          |                 &#x591A;&#x9009;
+          input.singlesel(type='radio', name='sle', value='0')
+        div
+          | &#x622A;&#x6B62;&#x65E5;&#x671F;
+          input.deadline(type='date')
+        .anony
+          span &#x533F;&#x540D;&#x521B;&#x5EFA;
+          input.anony(type='checkbox')
+        div
+          input(type='submit', value='创建投票')
+  script.
+    let options=document.querySelector('.options')
+    let del=document.querySelector('.del')
+    del.addEventListener('click',e =>{
+    var par=e.target.parentNode
+    par.remove()
+    })
+    function ins(){
+    let newDiv=document.createElement('DIV')
+    let newInput=document.createElement('INPUT')
+    newInput.type="text"
+    let newBr=document.createTextNode('\\r\n')
+    let newButton=document.createElement('BUTTON')
+    newButton.type="button"
+    newButton.innerText='删除'
+    newButton.classList.add('del')
+    newButton.addEventListener('click',e =>{
+    var par=e.target.parentNode
+    par.remove()
+    })
+    newDiv.appendChild(newInput)
+    newDiv.appendChild(newBr)
+    newDiv.appendChild(newButton)
+    options.appendChild(newDiv)
+    }

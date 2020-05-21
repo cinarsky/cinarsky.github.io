@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+        }
+
+        html,
+        body {
+            min-width: 341px;
+        }
+
+        /* 表格布局 */
+        table {
+            /* border:5px solid blue; */
+            border-collapse: collapse;
+            border: 10px solid blue;
+        }
+
+        tr {
+            border: 10px solid blue;
+        }
+
+        col {
+            border: 10px solid blue;
+        }
+
+        td {
+            text-align: center;
+            width: 100px;
+            height: 100px;
+            /* border-right:10px solid blue;
+        border-bottom:10px solid blue; */
+        }
+
+        td:hover {
+            border: 10px solid red;
+            background: rgb(204, 204, 204);
+        }
+
+        /* 行内布局 */
+        .kuai {
+            display: inline-block;
+            width: 330px;
+            height: 10px;
+            line-height: 10px;
+            text-align: center;
+        }
+
+        .main {
+            font-size: 0;
+            margin: 10px 0;
+            width: 330px;
+            height: 330px;
+            background: rgb(255, 255, 255);
+            border-left: 10px solid blue;
+            border-top: 10px solid blue;
+        }
+
+        .main span {
+            box-sizing: border-box;
+            font-size: 16px;
+            text-align: center;
+            vertical-align: middle;
+            margin: 0;
+            display: inline-block;
+            width: 110px;
+            height: 110px;
+            line-height: 110px;
+            border-right: 10px solid blue;
+            border-bottom: 10px solid blue;
+        }
+
+        .main span:hover {
+            border-right: 10px solid red;
+            border-bottom: 10px solid red;
+            box-shadow: -5px -5px 0 5px red;
+        }
+
+        /* 浮动 */
+        .fd {
+            width: 333px;
+            height: 333px;
+            background: rgb(255, 255, 255);
+            border-left: 10px solid blue;
+            border-top: 10px solid blue;
+            box-sizing: padding-box;
+        }
+
+        .fd div {
+            box-sizing: border-box;
+            width: 111px;
+            height: 111px;
+            float: left;
+            text-align: center;
+            line-height: 97px;
+            border-right: 10px solid blue;
+            border-bottom: 10px solid blue;
+
+
+        }
+
+        .fd div:hover {
+            border-right: 10px solid red;
+            border-bottom: 10px solid red;
+            box-shadow: -5px -5px 0 5px red;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <caption>表格</caption>
+        <col>
+        <col>
+        <col>
+        <thead></thead>
+        <tr>
+            <td>1</td>
+            <td>2</td>
+            <td>3</td>
+        </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>4</td>
+                <td>5</td>
+                <td>6</td>
+            </tr>
+            <tr>
+                <td>7</td>
+                <td>8</td>
+                <td>9</td>
+            </tr>
+        </tbody>
+    </table>
+    <span class="kuai">块级</span>
+    <div class="main">
+        <div class="a">
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+        </div>
+        <div class="b">
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+        </div>
+        <div class="c">
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+        </div>
+    </div>
+    <span class="kuai">浮动</span>
+    <div class="fd">
+
+        <div>1</div>
+        <div>2</div>
+        <div>3</div>
+        <div>4</div>
+        <div>5</div>
+        <div>6</div>
+        <div>7</div>
+        <div>8</div>
+        <div>9</div>
+
+    </div>
+</body>
+
+</html>

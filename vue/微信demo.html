@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+  <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+</head>
+<style>
+  .indexMain {
+    height: 300px;
+  }
+
+  .footbar {
+    text-align: center;
+  }
+</style>
+
+<body>
+  <div id="weChat">
+    <router-view></router-view>
+  </div>
+</body>
+<script>
+  var index = {
+    template: `
+<div class='index container col-xs-12'>
+    <div class='h2'>微信</div>
+    <div class='indexMain'>
+     <router-view></router-view>
+    </div>
+    <div>
+        <div  class='footbar container col-xs-3'>
+        <router-link to="/index/chat">聊天</router-link>
+        </div>
+        <div  class='footbar container col-xs-3'>
+        <router-link to="/index/friends">联系人</router-link>
+        </div>
+        <div  class='footbar container col-xs-3'>
+        <router-link to="/index/find">发现</router-link>
+        </div>
+        <div  class='footbar container col-xs-3'>
+        <router-link to="/index/me">我</router-link>
+        </div>
+    <div>
+<div>
+`
+  }
+
+  var chat = {
+    template: `
+        <div>
+          <ul>
+            <li><router-link to="/chat/zhangshan">张三</router-link></li>
+            <li><router-link to="/chat/lishi">李四</router-link></li>
+          </ul>
+        </div>
+      `
+  }
+  var friends = {
+    template: `<div>
+          <ul>
+            <li><router-link to="/profile/zhangshan">张三</router-link></li>
+            <li><router-link to="/profile/lishi">李四</router-link></li>
+            <li><router-link to="/profile/wantwu">王五</router-link></li>
+          </ul>
+          </div>`
+  }
+  var find = {
+    template: `<div>
+    <ul>
+            <li><router-link to="/friend-circle">票圈</router-link></li>
+            <li><router-link to="/see-around">看一看</router-link></li>
+          </ul>
+
+</div>`
+  }
+  var me = {
+    template: `<div>
+    <div><router-link to="/me/15">我的信息</router-link></div>
+    <div><router-link to="/index/me/t/15">同级我的信息</router-link></div>
+    <router-view></router-view>
+
+</div>`
+  }
+  var meid = {
+    template: `<div>我叫me </div>`
+  }
+  var FriendCircle = {
+    template: `
+        <div>
+          朋友圈
+        </div>
+      `
+  }
+  var SeeAround = {
+    template: `
+        <div>
+          看一看
+        </div>
+      `
+  }
+
+  var Chatting = {
+    template: `
+        <div>
+          <button @click="$router.go(-1)" class="btn btn-primary">返回</button>
+          正在跟 {{$route.params.id}} 聊天
+          <router-link :to=" '/profile/' + $route.params.id ">查看此人信息</router-link>
+        </div>
+      `
+  }
+
+  var Profile = {
+    template: `
+        <div>
+          <button @click="back" class="btn btn-primary">返回</button>
+          <div>
+            正在查看 {{$route.params.id}} 的详细信息
+          </div>
+          <router-link class="btn btn-primary" :to="'/chat/' + $route.params.id">跟他聊天</router-link>
+        </div>
+      `,
+    methods: {
+      back() {
+        this.$router.go(-1)
+      }
+    }
+  }
+
+  var router = new VueRouter({
+    routes: [
+      {
+        path: '/',
+        redirect: '/index'
+      },
+      {
+        path: '/index',
+        component: index,
+        children: [{
+            path: 'chat',
+            component: chat,
+          },
+          {
+            path: 'friends',
+            component: friends,
+          },
+          {
+            path: 'find',
+            component: find,
+          },
+          {
+            path: 'me/t/:id',
+            component: meid,
+          },
+          {
+            path: 'me',
+            component: me,
+            children: [{
+              path: '/me/:id',
+              component: meid
+            }]
+          },
+        ]
+      },
+
+      {
+        path: '/friend-circle',
+        component: FriendCircle,
+      }, {
+        path: '/see-around',
+        component: SeeAround,
+      }, {
+        path: '/chat/:id',
+        component: Chatting,
+      }, {
+        path: '/profile/:id',
+        component: Profile,
+      }
+    ]
+  })
+
+  var app = new Vue({
+    el: '#weChat',
+    router: router
+  })
+</script>
+
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+function addScriptTag(src){
+    var script = document.createElement('script');
+    script.setAttribute('type', 'text/javascript');
+    script.src = src;
+    document.body.appendChild(script);
+};
+//如：在onload后，跨域请求
+window.onload = function(){
+    addScriptTag('http://127.0.0.1:8080/jsonp?callback=monkey');
+};
+//回调的方法,且必须为全局方法，不然会报错
+function monkey(data){
+    alert(data.name);
+};
+
+</script>
+</html>

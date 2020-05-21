@@ -1,0 +1,96 @@
+html,body{
+    width: 100%;
+    height: 100%;
+    margin:0 auto;  
+}
+.top{
+    background-color: rgb(255, 116, 116);
+    width: 100%;
+    height: 68%;
+    margin-bottom: 3px;
+    background:url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559129206344&di=b92df148d8011ebb8d8e0535a14097cb&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180705%2F4642ae1f0fc24c31b0b618054e2f4e1b.jpeg);
+    background-size: cover;
+    background-position: center;
+    }
+    .main {
+    width: calc(100% + 3px);
+    height: 200px;
+    background: rgb(255, 255, 255);
+    margin-bottom: 3px;
+    margin-left: -3px;
+}
+.main div{
+    width: 100%;
+    height: 300px;
+    background: rgb(172, 247, 129);
+    margin-bottom: 3px;
+    float: left;
+    box-sizing: border-box;
+    border-left: 3px solid white;
+
+
+}
+div.main1{
+    background:url(http://spider.nosdn.127.net/ade2c1fcac531c512eb0e7a20b9d94ed.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+div.main2{
+    background-size: cover;
+    background-position: center;
+    background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559129139945&di=d61193e48a7dcd61594d030e86494f6f&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180404%2Fc87de8e4e4d940f0a1c27a063a605829.jpeg);
+}
+
+div.main3{
+    background:url(http://www.91wzg.com/uploads/allimg/170607/0931063052_0.jpeg);
+    background-size: cover;
+    background-position: center;
+}
+div.main4{
+
+    background:url(http://image.uczzd.cn/15267522061614682937.jpg?id=0);
+    background-size: cover;
+    background-position: center;
+    
+}
+.ad{
+    /* background-color: rgb(128, 234, 253); */
+    width: calc(100% + 3px);
+    height:150px;
+    margin-bottom: 3px;
+    margin-left: -3px;
+}
+.ad div{
+    background-color: rgb(79, 106, 255);
+    border-left: 3px solid white;
+    box-sizing: border-box;
+    height:75px;
+    margin-bottom: 3px;
+    float: left;
+}
+div.ad2{
+    background: rgb(255, 79, 79);
+}
+.logo{
+    clear: left;
+    width: calc(100% + 3px);
+    background-color: aqua;
+    margin-left: -3px;
+}
+.logo1{
+    border-left: 3px solid white;
+    box-sizing: border-box;
+    background: #000;
+}
+.logo2{
+    border-left: 3px solid white;
+    box-sizing: border-box;
+    height: 200px;
+    background: rgb(235, 95, 228);
+}
+.logo3{
+    border-left: 3px solid white;
+    box-sizing: border-box;
+    height: 200px;
+    background: rgb(230, 76, 76);
+}

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0 auto;
+        }
+
+        .createvote {
+            text-align: center;
+        }
+
+        input {
+            vertical-align: middle;
+        }
+
+        .createvote div {
+            width: 300px;
+            margin: 10px auto;
+            /* background: rgb(208, 145, 145); */
+            font-size: 25px;
+        }
+
+        div>span {
+            display: inline-block;
+            width: 120px;
+            margin-left: -20px;
+        }
+
+        div.anony>span {
+            margin-left: -135px;
+        }
+
+        div.anony>input {
+            width: 20px;
+            height: 20px;
+        }
+
+        .options {
+            /* background: rgb(221, 159, 159); */
+            padding-bottom: 15px;
+            border:1px solid black;
+        }
+
+        .options * {
+            vertical-align: middle;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="createvote">
+        <form method="POST" action="/">
+            <div>投票题目<input type="text" class='title'></div>
+            <div>投票描述<input type="text" class='desc'></div>
+            <div>创建用户<input type="text" value="username+'(id='+userid+')'"  readonly></div>
+            <div class="options">
+                <div>
+                    <span>选项</span><button type="button" onclick="ins()">新建选项</button>
+                </div>
+                <div>
+                    <input type="text">
+                    <button class="del" type="button">删除</button>
+                </div>
+            </div>
+            <div><span>投票选项</span>
+                单选<input type="radio" class='singlesel' name='sle' value=1 checked>
+                多选<input type="radio" class='singlesel' name='sle' value=0>
+            </div>
+            <div>截止日期<input type="date" class='deadline'></div>
+            <div class="anony">
+                <span>匿名创建</span>
+                <input type="checkbox" class='anony'>
+            </div>
+            <div><input type="submit" value='创建投票'></div>
+        </form>
+    </div>
+</body>
+<script>
+    let options=document.querySelector('.options')
+    let del=document.querySelector('.del')
+    del.addEventListener('click',e =>{
+        var par=e.target.parentNode
+        par.remove()
+    })
+function ins(){
+    let newDiv=document.createElement('DIV')
+    let newInput=document.createElement('INPUT')
+    newInput.type="text"
+    let newBr=document.createTextNode('\r\n')
+    let newButton=document.createElement('BUTTON')
+    newButton.type="button"
+    newButton.innerText='删除'
+    newButton.classList.add('del')
+    newButton.addEventListener('click',e =>{
+        var par=e.target.parentNode
+        par.remove()
+    })
+    newDiv.appendChild(newInput)
+    newDiv.appendChild(newBr)
+    newDiv.appendChild(newButton)
+    options.appendChild(newDiv)
+}
+
+
+
+</script>
+
+</html>

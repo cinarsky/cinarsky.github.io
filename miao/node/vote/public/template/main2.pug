@@ -1,0 +1,30 @@
+doctype 
+html
+  head
+    meta(charset="UTF-8")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    meta(http-equiv="X-UA-Compatible", content="ie=edge")
+    title Document
+    include titlestyle.pug
+    style.
+         *{
+         margin:0 auto;
+         }
+         .vote{
+             text-align:center;
+         }
+         .vote>a{
+             display:block;
+             width:100px;
+             height:30px;
+             margin: 10px auto;
+             font-size: 25px;
+         }
+        
+
+  body
+    include title.html
+    div(class='vote')
+      a(href='/register') 注 册
+      a(href='/login') 登 录
+

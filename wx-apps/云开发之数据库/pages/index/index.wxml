@@ -1,0 +1,3 @@
+<button bindtap="addData">添加数据</button>
+<button bindtap="searchData">查询数据</button>
+<button bindtap="delData">查询数据</button>

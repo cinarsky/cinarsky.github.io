@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        html,body{
+            height:100%;
+            width:100%;
+        }
+        .main{
+            height:100%;
+            width:100%;
+            min-width: 600px;
+        }
+        .main1{
+            height: 100%;
+            
+            width: 200px;
+            background: rgb(107, 201, 255);
+            float:left;
+        }
+        .main2{
+            height: 100%;
+            /* width: calc(100% - 600px); */
+            background: rgb(119, 255, 107);
+            /* float:left; */
+            overflow: hidden;
+        }
+        /* .main21{
+            box-sizing:padding-box;
+            height: 50px;
+            width: 100%;
+            padding:15% 0;
+            background: rgb(71, 71, 71);
+            float:left;
+
+        }
+        .main22{
+            height:calc(100% - 50px);
+            width: 100%;
+            
+            background: rgb(228, 228, 228);
+            float:left;
+        } */
+        .main3{
+            height:100%;
+            width: 200px;
+            background: rgb(255, 107, 156);
+            float: right;
+        }
+        .main4{
+            height: 100%;
+            width: 200px;
+            background: rgb(233, 255, 107);
+            float: right;
+        }
+    </style>
+</head>
+<body>
+<div class="main">
+    <div class="main1">123</div>
+    
+    <div class="main3">123</div>
+    <div class="main4">123</div>
+    <div class="main2">
+        <div class="main21">123</div>
+        <div class="main22">123</div>
+    </div>
+</div>
+
+</body>
+</html>

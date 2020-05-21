@@ -1,0 +1,11 @@
+﻿users,,,,,,
+"id integer primary key,","name not null,","age integer,","password not null,",email not null),,
+,,,,,,
+vote,,,,,,
+"id integer primary key,","title string,","desc string,","createuserid integer not null,","singlesel integer default 1,","deadline integer,",anony integer default 0)
+,,,,,,
+option,,,,,,
+"id integer primary key,","voteid integer not null,",optionid integer not null),,,,
+,,,,,,
+voteup,,,,,,
+"id integer primary key,","voteid integer not null,","userid integer not null,",optionid integer not null),,,

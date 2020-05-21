@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+    body>div{
+        background: rgb(255, 146, 119);
+        width: 300px;
+        height: 300px;
+        margin-bottom: 20px;
+    }
+    div div{
+        background: rgb(26, 111, 240);
+        width: 100px;
+        height: 100px;
+    }
+    .b{
+        position: relative;
+    }
+    .b1{
+        position: absolute;
+        top:calc(50% - 50px);
+        left:calc(50% - 50px);
+    }
+    .ib{
+       line-height: 300px;
+       text-align: center;
+       display: inline-block;
+    }
+    .ib1{
+      line-height:initial;
+       display: inline-block;
+       vertical-align: middle;
+    }
+    .f{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+}
+
+    </style>
+</head>
+<body>
+        <div class="b">
+        <div class="b1"> 閸э拷</div>
+    </div>
+    <div class="ib">
+        <div class="ib1">鐞涘苯鍞�</div>
+     </div>
+     <div class="f">
+            <div class="f1">flex</div>
+     </div>
+
+
+</body>
+</html>function frame() {
+      tim=new Date();
+    if(lasttim){
+       angle+=(tim-lasttim)*0.005;
+    }
+    lasttim=tim
+    moon.style.top=Math.sin(angle)*150+200+'px';
+    moon.style.left=Math.cos(angle)*150+300+'px';
+} 
+</script>
+</html>

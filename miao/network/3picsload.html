@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+</head>
+
+<body>
+
+</body>
+<script>
+  var xhr = new XMLHttpRequest()
+  xhr.open('get', 'http://xieranmaya.github.io/images/cats/cats.json')
+  xhr.onload = function () {
+
+
+
+
+
+
+    var res = JSON.parse(xhr.response)
+    // 图片依次加载
+    var sym = 0
+    var ini=0
+    function load(num) {
+      function loading(num) {
+        if (res[num]) {
+          var img = document.createElement('img')
+          img.onload = function () {
+            loading(ini++)
+          document.body.appendChild(img)
+          }
+          img.src = `http://xieranmaya.github.io/images/cats/${res[num].url}`
+        }
+      }
+      loading(num)
+      sym++
+    }
+      while (sym < 3) {
+        load(ini)
+        ini++
+      }
+
+  }
+
+
+
+
+  xhr.send()
+</script>
+
+</html>

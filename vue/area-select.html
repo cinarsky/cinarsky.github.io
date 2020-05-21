@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src='china-city-area-zip.js'></script>
+</head>
+
+<body>
+  <div id='cs'>
+    <span>请选择省份</span>
+    <select class="provinces" v-model='prov'>
+      <option  v-for='(province,index) in provinces'  v-bind:value="province.child" >{{province.name}}</option>
+    </select>
+    <span>请选择城市</span>
+    <select class="cities"  v-model='city'>
+      <option v-for="(cities,index) in prov" v-bind:value="cities.child">{{cities.name}}</option>
+    </select>
+    <span>请选择所在区域</span>
+    <select class="areas">
+      <option v-for="(areas,index) in city" v-bind:value="areas.name">{{areas.name}}</option>
+    </select>
+    <div>{{prov.name}}</div>
+  </div>
+</body>
+
+<script>
+  var a = new Vue({
+    el:'#cs',
+    data:{
+      provinces:jsdata,
+      prov:'',
+      city:'',
+      area:'',
+      
+    },
+    computed:{
+     
+    },
+    // methods: {
+    //   func1:function () {
+    //      this.vModel=this.value
+
+    //   },
+    //   func2:function () {
+    //     city=this.value
+    //   },
+    // },
+  })
+</script>
+
+</html>

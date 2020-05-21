@@ -1,0 +1,11 @@
+function code(){
+        var uname=document.getElementById('username').value
+        var uemail=document.getElementById('useremail').value
+        var xml=new XMLHttpRequest()
+        xml.open("POST","/emailcode")
+        xml.setRequestHeader("CONTENT-TYPE", "application/x-www-form-urlencoded")
+        console.log(`name=${uname}&email=${uemail}`)
+        xml.send(`name=${uname}&email=${uemail}`)
+        document.getElementById('btn').value='已发送,请查看'
+        document.getElementById('btn').disabled='disabled'
+    }

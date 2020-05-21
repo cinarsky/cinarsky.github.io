@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=600">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+  <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+  <!-- <script src="axios.js"></script> -->
+  <script src="./axios.min.js"></script>
+</head>
+
+<style>
+  *{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
+  html,
+  body {
+    width: 100%;
+    background: rgb(224, 224, 224);
+    height: max-content;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  .top {
+    margin: 5px 0;
+    background-color: rgb(69, 69, 69);
+    color: aliceblue;
+  }
+
+  .logo {
+    padding: 10px 20px 0;
+    font-size: 25px;
+
+  }
+
+  .nav {
+    height: 30px;
+    padding: 10px;
+  }
+
+  .nav span {
+    display: inline-block;
+    padding: 0 10px;
+  }
+
+  /* .main {
+
+
+
+  } */
+
+  .query {
+    height: max-content;
+    margin: 0 auto;
+    width: 100%;
+    background: rgb(243, 243, 243);
+  }
+
+  .query>span {
+    display: inline-block;
+    margin: 5px;
+    border-radius: 6px;
+  }
+
+  .query>span:hover {
+    background: rgb(182, 189, 2);
+  }
+  .query a {
+    display: inline-block;
+    border-radius: 6px;
+
+    padding: 5px;
+    height: 25px;
+  }
+  .click{
+
+    background: rgb(182, 189, 2);
+  }
+  .article{
+    height: max-content;
+    background-color: rgb(255, 255, 255);
+  }
+  .articleTitle{
+    margin:0;
+    padding: 0;
+    height: 60px;
+    display: inline-block;
+    width: 100%;
+    border: 1px solid rgb(208, 208, 208);
+    overflow: hidden;
+  }
+  .avatar{
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    vertical-align: middle;
+    /* background-image: url(https://avatars2.githubusercontent.com/u/14975630?v=4&s=120); */
+    background-size:100%;
+  }
+  .titleName{
+    display: inline-block;
+    height: 60px;
+    line-height:60px;
+    vertical-align: middle;
+    max-width: 90%;
+  }
+  .articleContent{
+    width: 90%;
+    padding: 15px;
+    margin: 0 auto;
+    border: 2px solid rgb(216, 216, 216);
+  }
+  .comment{
+    border-bottom:2px solid darkgoldenrod;
+    border-top:2px solid darkgoldenrod
+  }
+</style>
+
+<body>
+
+  <div id="cnblogs">
+    <div class="top">
+      <div class="logo">cnode</div>
+      <div class="nav">
+        <span href="">首页</span>
+        <span href="">新手入门</span>
+        <span href="">API</span>
+        <span href="">关于</span>
+        <span href="">注册</span>
+        <span href="">登录</span>
+      </div>
+    </div>
+    <div class="main">
+      <div class="query">
+        <span class="queryName">
+          <router-link to="/all" @click.native='cl'>全部</router-link>
+        </span>
+        <!-- <span class="queryName">
+          <router-link to="/essence" @click.native='cl'>精华</router-link>
+        </span> -->
+        <span class="queryName">
+          <router-link to="/share" @click.native='cl'>分享</router-link>
+        </span>
+        <span class="queryName">
+          <router-link to="/qa" @click.native='cl'>问答</router-link>
+        </span>
+        <!-- <span class="queryName">
+          <router-link to="/hire" @click.native='cl'>招聘</router-link>
+        </span>
+        <span class="queryName">
+          <router-link to="/test" @click.native='cl'>客户端测试</router-link>
+        </span> -->
+        <div>
+          <router-view></router-view>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+</body>
+<script>
+
+  //等同于 var all = Vue.component('all', {})
+  var all ={
+    template:`
+    <div class='article'>
+      <div class='articleTitle' v-for='(item,index) of this.jsondata'>
+        <span class='avatar' :style="'background-image:url('+ item.author.avatar_url+');'"></span>
+
+            <router-link class='titleName' :to="'/article/'+item.id">
+
+              {{item.title}}
+            </router-link>
+          </div>
+          </div>
+    `
+    ,
+     data() {
+      return {
+        jsondata:0
+      }
+    },
+    created() {
+      axios.get('https://cnodejs.org/api/v1/topics').then(response=>{
+        this.jsondata=response.data.data
+        }).catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+    },
+ 
+  }
+  // 文章详情页
+  var articleContent={
+    template: `
+    <div>
+    <div  class='articleContent'>题目：{{this.content.title}}</div>
+    <div class='articleContent'>创建事件：{{this.content.last_reply_at}} </div>
+    <div class='articleContent'>总访问量：{{this.content.visit_count}}</div>
+    <div class='articleContent'>创建时间：{{this.content.create_at}}</div>
+    <div v-html='this.content.content' class='articleContent'></div>
+    <div class='articleContent'>
+      <div style="font-size:25px">留言板</div>
+      <div v-for='(item, index) of this.content.replies' class='comment'>
+            <div>留言用户：{{item.author.loginname}}</div>
+            <div>留言时间：{{item.create_at}}</div>
+            <div v-html='item.content'></div>
+      </div>
+    </div>
+    </div>
+    `
+    ,
+      data() {
+        return {
+          id:this.$route.params.id,
+          content:'',
+        }
+      },
+      created() {
+      axios.get('https://cnodejs.org/api/v1/topic/'+this.id).then(response=>{
+        this.content=response.data.data
+        console.log(response.data)
+        }).catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+    },
+
+  }
+
+  // 精华
+  var essence = {
+    template: `
+        <div>
+          精华
+        </div>
+      `
+  }
+  // 分享
+  var share = {
+    template:`
+    <div class='article'>
+      <div class='articleTitle' v-for='(item,index) of this.jsondata' v-if="item.tab=='share'">
+        <span class='avatar' :style="'background-image:url('+ item.author.avatar_url+');'"></span>
+
+            <router-link class='titleName' :to="'/article/'+item.id">
+
+              {{item.title}}
+            </router-link>
+          </div>
+          </div>
+    `
+    ,
+     data() {
+      return {
+        jsondata:0
+      }
+    },
+    created() {
+      axios.get('https://cnodejs.org/api/v1/topics').then(response=>{
+        this.jsondata=response.data.data
+        }).catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+    },
+  }
+  // 问答
+  var qa = {
+    template:`
+    <div class='article'>
+      <div class='articleTitle' v-for='(item,index) of this.jsondata' v-if="item.tab=='ask'">
+        <span class='avatar' :style="'background-image:url('+ item.author.avatar_url+');'"></span>
+
+            <router-link class='titleName' :to="'/article/'+item.id">
+
+              {{item.title}}
+            </router-link>
+          </div>
+          </div>
+    `
+    ,
+     data() {
+      return {
+        jsondata:0
+      }
+    },
+    created() {
+      axios.get('https://cnodejs.org/api/v1/topics').then(response=>{
+        this.jsondata=response.data.data
+        }).catch(function (error) {
+          // handle error
+          console.log(error);
+        })
+    },
+  }
+  // 招聘
+  var hire = {
+    template: `
+        <div>
+          招聘
+        </div>
+      `
+  }
+  // 客户端测试
+  var test = {
+    template: `
+        <div>
+          客户端测试
+        </div>
+      `
+  }
+  // 路由
+  var router = new VueRouter({
+    routes: [{
+        path: '/',
+        redirect: '/all'
+      },
+      {
+        path: '/all',
+        component: all
+      },
+      {
+        path: '/essence',
+        component: essence,
+      },
+      {
+        path: '/share',
+        component: share,
+      },
+      {
+        path: '/qa',
+        component: qa,
+      },
+      {
+        path: '/hire',
+        component: hire,
+      },
+      {
+        path: '/test',
+        component: test,
+      },
+      {
+        path: '/article/:id',
+        component: articleContent,
+      }
+    ]
+  })
+  const app = new Vue({
+    el: '#cnblogs',
+    router,
+    data() {
+      return {
+       hhh:0
+      }
+    },
+    methods: {
+      cl(e){
+         e.target.classList.add('click')
+      }
+    },
+    mounted() {
+      var bar=Array.from(document.querySelectorAll('.click'))
+      for (item of bar){
+        console.log(item,item.classList)
+        item.classList.remove("click")
+      }
+    },
+  })
+</script>
+
+</html>

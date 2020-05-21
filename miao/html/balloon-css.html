@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            margin: 0%;
+            padding: 0%
+        }
+    body>button{
+        display: block;
+        width: 150px;
+        height: 75px;
+        /* line-height: 100px; */
+        border: 0;
+        margin: 100px auto;
+        background: rgb(255, 197, 197);
+        text-align: center;
+        
+    }
+
+    [data-balloon]{
+        position: relative;
+    }
+    [data-balloon]::before{
+        content:attr(data-balloon);
+        width:fit-content;
+        position: absolute;
+        padding: 10px;
+        background-color: rgb(68, 65, 255);
+        border-radius: 10px;
+        opacity: 0;
+        transition: 0.2s linear;
+    }
+    [data-balloon]::after{
+        content:'';
+        position: absolute;
+        width: 0;
+        height: 0;
+        border:10px solid rgb(68, 65, 255);
+        opacity: 0;
+        transition: 0.2s linear;
+    }
+
+
+
+    [data-pos="top"]:hover::before{
+        top: -0%;
+        left: 50%;
+        transform: translateX(-50%) translatey(-145%);
+        opacity: 1;
+    }
+    [data-pos="bottom"]:hover::before{
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) translatey(50%);
+        opacity: 1;
+    }
+    [data-pos="left"]:hover::before{
+        top: 50%;
+        left: -100%;
+        transform:translateX(50%) translatey(-50%);
+        opacity: 1;
+    }
+    [data-pos="right"]:hover::before{
+        top: 50%;
+        left: 100%;
+        transform:translateX(29%) translatey(-50%);
+        opacity: 1;
+    }
+
+
+
+
+    [data-pos="top"]::before{
+        top: 0%;
+        left: 50%;
+        transform: translateX(-50%) translatey(-110%);
+
+  
+    }
+    [data-pos="bottom"]::before{
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) translatey(10%);
+
+       
+    }
+    [data-pos="left"]::before{
+        top: 50%;
+        left: 0%;
+        transform: translateX(-110%)  translatey(-50%);
+ 
+      
+    }
+    [data-pos="right"]::before{
+        top: 50%;
+        left: 100%;
+        transform:translateX(10%) translatey(-50%);
+
+    
+    }
+
+
+
+
+
+    [data-pos="top"]:hover::after{
+        top: 0%;
+        left: 50%;
+        transform: translateX(-50%) translatey(-180%);
+        border-bottom: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        opacity: 1;
+    }
+    [data-pos="bottom"]:hover::after{
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) translatey(100%);
+        border-top: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        opacity: 1;
+    }
+    [data-pos="left"]:hover::after{
+        top: 50%;
+        left: 0%;
+        transform:translateX(-250%) translatey(-50%);
+        border-right: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        opacity: 1;
+    }
+    [data-pos="right"]:hover::after{
+        top: 50%;
+        left: 100%;
+        transform: translateX(155%) translatey(-50%);
+        border-left: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+        opacity: 1;
+    }
+    span{
+        display: block;
+        height: 80px;
+        width: 150px;
+        margin: 50px auto;
+        background-color: rgb(202, 93, 93);
+    }
+
+
+
+    [data-pos="top"]::after{
+        top: 0%;
+        left: 50%;
+        transform: translateX(-50%) translatey(-40%);
+        border-bottom: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+        
+    }
+    [data-pos="bottom"]::after{
+        top: 100%;
+        left: 50%;
+        transform: translateX(-50%) translatey(-55%);
+        border-top: 0;
+        border-left: 10px solid transparent;
+        border-right: 10px solid transparent;
+    }
+    [data-pos="left"]::after{
+        top: 50%;
+        left: 0%;
+        transform: translatex(-90%) translatey(-50%);
+        border-right: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+    }
+    [data-pos="right"]::after{
+        top: 50%;
+        left: 100%;
+        transform: translatex(-10%) translatey(-50%);
+        border-left: 0;
+        border-top: 10px solid transparent;
+        border-bottom: 10px solid transparent;
+    }
+    </style>
+</head>
+<body>
+    <button data-balloon="hello world" data-pos="top">hover me</button>
+    <button data-balloon="hello world" data-pos="bottom">hover me</button>
+    <button data-balloon="hello world" data-pos="left">hover me</button>
+    <button data-balloon="hello world" data-pos="right">hover me</button>
+
+
+<span data-balloon="hello world" data-pos="top">dsfhfghdgf</span>
+</body>
+</html>

@@ -1,0 +1,378 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=z, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>小小贪吃蛇</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+        integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+</head>
+<style>
+    body {
+        background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1572671200189&di=4a195396731c0f12c5e789c69a96e6d2&imgtype=0&src=http%3A%2F%2Fimg.zcool.cn%2Fcommunity%2F038966655dea2750000015995b65891.jpg);
+        position: relative;
+        margin: 0 auto;
+        /* text-align: center; */
+    }
+
+    .setting {
+        margin: 15px auto;
+        text-align: center;
+    }
+    .setting *{
+        vertical-align: middle;
+    }
+    .main {
+        margin: 10px auto;
+        width: max-content;
+        /* background-color: rgb(255, 255, 255); */
+        font-size: 0;
+        border: 1px solid rgb(139, 139, 139);
+        border-radius: 10px;
+    }
+    .logo{
+        font-size: 30px;
+        padding:0 10px;
+        color: rgb(218, 128, 86);
+    }
+    .form-control {
+        display: inline-block;
+        width: 50px;
+    }
+
+    .cell {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border: 1px solid rgba(233, 233, 233, 0.1);
+        /* background: rgba(255, 255, 255, 0.2); */
+        /* border-radius: 30%; */
+    }
+
+    .body {
+        background: #05c9ff;
+        border-radius: 30%;
+    }
+
+    .apple {
+        background: rgb(247, 10, 10);
+        border-radius: 30%;
+    }
+
+    .head {
+        background: rgb(78, 46, 255);
+        border-radius: 30%;
+    }
+</style>
+
+<body>
+    <div>
+        <div class=setting>
+            <button id="begin" class="btn btn-success">开始游戏</button>
+            <button id="new1" class="btn btn-primary">新的一轮</button>
+            <span class="logo">小小贪吃蛇</span>
+            长度<input id='wei' class="form-control">
+            宽度<input id='hei' class="form-control">
+            <button id='btn' class="btn btn-warning">重设长宽</button>
+        </div>
+    </div>
+</body>
+<script>
+    let wi = 30
+    let he = 20
+    class Snake {
+        constructor(width = 25, height = 20) {
+            this.width = width
+            this.height = height
+            this.item = new Array(height).fill('.').map(function (item, index) {
+                return new Array(width).fill('.')
+            })
+        }
+        initial() {
+            var main = document.getElementsByClassName('main')[0]
+            for (var i = 0; i < main.children.length; i++) {
+                for (var s = 0; s < main.children[i].children.length; s++) {
+                    main.children[i].children[s].classList.remove('body')
+                    main.children[i].children[s].classList.remove('head')
+                    main.children[i].children[s].classList.remove('apple')
+                }
+            }
+        }
+        apple() {
+            var that = this
+            var x = Math.floor(Math.random() * that.width)
+            var y = Math.floor(Math.random() * that.height)
+            if (that.item[y][x] == '.') {
+                that.item[y][x] = 'Q'
+                that.ax = x;
+                that.ay = y
+                var main = document.getElementsByClassName('main')[0]
+                main.children[y].children[x].classList.add('apple')
+                return that.item
+            } else {
+                return that.apple()
+            }
+        }
+
+        snakeHead() {
+            var x = Math.floor(Math.random() * this.width)
+            var y = Math.floor(Math.random() * this.height)
+            if (x != (this.width - 1) && y != (this.height - 1) && this.item[y][x] == '.') {
+                this.item[y][x] = '>'
+                this.hx = x
+                this.hy = y
+                this.tx = x
+                this.ty = y
+                var main = document.getElementsByClassName('main')[0]
+                main.children[this.hy].children[this.hx].classList.add('head')
+                return this.item
+            } else {
+                return this.snakeHead()
+            }
+        }
+
+        next() {
+            var main = document.getElementsByClassName('main')[0]
+            // 头
+            console.log(1)
+            // debugger
+            if (this.item[this.hy][this.hx] == '>') {
+                if (this.item[this.hy][this.hx + 1]) {
+                    if (this.item[this.hy][this.hx + 1] == "Q") {
+                        this.item[this.hy][this.hx + 1] = '>'
+                        main.children[this.hy].children[this.hx + 1].classList.remove('apple')
+                        main.children[this.hy].children[this.hx + 1].classList.add('head')
+                        main.children[this.hy].children[this.hx].classList.remove('head')
+                        main.children[this.hy].children[this.hx].classList.add('body')
+                        this.apple()
+                        this.hx++
+                    } else if (this.item[this.hy][this.hx + 1] == ".") {
+                        this.item[this.hy][this.hx + 1] = '>'
+                        main.children[this.hy].children[this.hx + 1].classList.add('head')
+                        main.children[this.hy].children[this.hx].classList.remove('head')
+                        main.children[this.hy].children[this.hx].classList.add('body')
+                        this.hx++
+                        this.deleteTail()
+                    } else {
+                        alert('game over')
+                        clearInterval(timer1)
+                    }
+                } else {
+                    alert('game over')
+                    clearInterval(timer1)
+                    timer1 = null
+                }
+            } else if (this.item[this.hy][this.hx] == '<') {
+                if (this.item[this.hy][this.hx - 1]) {
+                    if (this.item[this.hy][this.hx - 1] == "Q") {
+                        this.item[this.hy][this.hx - 1] = '<'
+                        main.children[this.hy].children[this.hx - 1].classList.remove('apple')
+                        main.children[this.hy].children[this.hx - 1].classList.add('head')
+                        main.children[this.hy].children[this.hx].classList.remove('head')
+                        main.children[this.hy].children[this.hx].classList.add('body')
+                        this.apple()
+                        this.hx--
+
+                    } else if (this.item[this.hy][this.hx - 1] == ".") {
+                        this.item[this.hy][this.hx - 1] = '<'
+                        main.children[this.hy].children[this.hx - 1].classList.add('head')
+                        main.children[this.hy].children[this.hx].classList.remove('head')
+                        main.children[this.hy].children[this.hx].classList.add('body')
+
+                        this.hx--
+                        this.deleteTail()
+                    } else {
+                        alert('game over')
+                        clearInterval(timer1)
+                    }
+                } else {
+                    alert('game over')
+                    clearInterval(timer1)
+                }
+            } else if (this.item[this.hy][this.hx] == 'A') {
+                if (this.item[this.hy - 1]) {
+                    if (this.item[this.hy - 1][this.hx] == "Q") {
+                        this.item[this.hy - 1][this.hx] = 'A'
+                        main.children[this.hy - 1].children[this.hx].classList.remove('apple')
+                        main.children[this.hy - 1].children[this.hx].classList.add('head')
+                        main.children[this.hy].children[this.hx].classList.remove('head')
+                        main.children[this.hy].children[this.hx].classList.add('body')
+                        this.apple()
+                        this.hy--
+
+                    } else if (this.item[this.hy - 1][this.hx] == ".") {
+                        this.item[this.hy - 1][this.hx] = 'A'
+                        main.children[this.hy - 1].children[this.hx].classList.add('head')
+                        main.children[this.hy].children[this.hx].classList.remove('head')
+                        main.children[this.hy].children[this.hx].classList.add('body')
+                        this.hy--
+
+                        this.deleteTail()
+                    } else {
+                        alert('game over')
+                        clearInterval(timer1)
+                    }
+                } else {
+                    alert('game over')
+                    clearInterval(timer1)
+                }
+            } else if (this.item[this.hy][this.hx] == 'V') {
+                if (this.item[this.hy + 1]) {
+                    if (this.item[this.hy + 1][this.hx] == "Q") {
+                        this.item[this.hy + 1][this.hx] = 'V'
+                        main.children[this.hy + 1].children[this.hx].classList.remove('apple')
+                        main.children[this.hy + 1].children[this.hx].classList.add('head')
+                        main.children[this.hy].children[this.hx].classList.remove('head')
+                        main.children[this.hy].children[this.hx].classList.add('body')
+                        this.apple()
+                        this.hy++
+
+
+                    } else if (this.item[this.hy + 1][this.hx] == ".") {
+                        this.item[this.hy + 1][this.hx] = 'V'
+                        main.children[this.hy + 1].children[this.hx].classList.add('head')
+                        main.children[this.hy].children[this.hx].classList.remove('head')
+                        main.children[this.hy].children[this.hx].classList.add('body')
+                        this.hy++
+                        this.deleteTail()
+                    } else {
+                        alert('game over')
+                        clearInterval(timer1)
+                    }
+                } else {
+                    alert('game over')
+                    clearInterval(timer1)
+                }
+            }
+            // 尾
+
+            return this.item
+        }
+
+        deleteTail() {
+            var main = document.getElementsByClassName('main')[0]
+            main.children[this.ty].children[this.tx].classList.remove('body')
+            if (this.item[this.ty][this.tx] == '>') {
+                this.item[this.ty][this.tx] = '.'
+                this.tx++
+            } else if (this.item[this.ty][this.tx] == '<') {
+                this.item[this.ty][this.tx] = '.'
+                this.tx--
+            } else if (this.item[this.ty][this.tx] == 'A') {
+                this.item[this.ty][this.tx] = '.'
+                this.ty--
+            } else if (this.item[this.ty][this.tx] == 'V') {
+                this.item[this.ty][this.tx] = '.'
+                this.ty++
+            }
+        }
+
+        paint() {
+            var main = document.createElement('div')
+            main.classList.add('main')
+            document.body.appendChild(main)
+            for (let i = 0; i < this.height; i++) {
+                var col = document.createElement('div')
+                col.classList.add('col')
+                main.appendChild(col)
+                for (let s = 0; s < this.width; s++) {
+                    var cell = document.createElement('div')
+                    cell.classList.add('cell')
+                    col.appendChild(cell)
+                }
+            }
+        }
+
+    }
+    // 初始化
+    var a = new Snake(wi, he)
+    a.paint()
+    a.initial()
+    a.apple()
+    a.snakeHead()
+    // var tim = 800 - prompt('请输入速度值(范围0~100，参考值为50)', 50) * 10
+    var tim = 250
+    // 计时器处理
+    let timer1
+    var timer = function () {
+        if (typeof timer1 == "number") {
+            return
+        }
+        // clearInterval(timer1)
+        timer1 = setInterval(a.next.bind(a), tim)
+    }
+
+    function throttle(func, wait) {
+        let previous = 0;
+        return function () {
+            let now = Date.now();
+            let context = this;
+            let args = arguments;
+            if (now - previous > wait) {
+                func.apply(context, args);
+                previous = now;
+            }
+        }
+    }
+    // 键盘事件处理
+    var abc = function () {
+        if (event.keyCode == 38) {
+            if (a.item[a.hy][a.hx] != 'V') {
+                a.item[a.hy][a.hx] = 'A'
+            }
+            // a.next()
+        } else if (event.keyCode == 37) {
+            if (a.item[a.hy][a.hx] != '>') {
+                a.item[a.hy][a.hx] = '<'
+            }
+            // a.next()
+        } else if (event.keyCode == 39) {
+            if (a.item[a.hy][a.hx] != '<') {
+                a.item[a.hy][a.hx] = '>'
+            }
+            // a.next()
+        } else if (event.keyCode == 40) {
+            if (a.item[a.hy][a.hx] != 'A') {
+                a.item[a.hy][a.hx] = 'V'
+            }
+            // a.next()
+        }
+    }
+    window.addEventListener('keydown', throttle(abc, 0))
+    var begin = document.getElementById('begin')
+    var new1 = document.getElementById('new1')
+    var ev = function () {
+        a.initial()
+        a.apple()
+        a.snakeHead()
+        clearInterval(timer1)
+        timer1 = null
+    }
+    begin.addEventListener('click', timer)
+    new1.addEventListener('click', ev)
+    // 重新设置宽高
+    btn.addEventListener('click', function () {
+        wi = Number(wei.value)
+        he = Number(hei.value)
+        if (wi <= 1||wi>25) {
+            wi = 25
+        }
+        if (he <= 1||he>15) {
+            he = 15
+        }
+        var main = document.getElementsByClassName('main')[0]
+        document.body.removeChild(main)
+        clearInterval(timer1)
+        timer1 = null
+        a = new Snake(wi, he)
+        a.paint.call(a)
+        a.initial.call(a)
+        a.apple.call(a)
+        a.snakeHead.call(a)
+        // timer1 = setInterval(a.next.bind(a), tim)
+    })
+</script>
+
+</html>

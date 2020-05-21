@@ -1,0 +1,14 @@
+{
+    "name": "Vote",
+    "version": "0.0.1",
+    "description": "A simple voting system",
+    "dependencies": {
+        "cookie-parser": "^1.4.4",
+        "express": "^4.17.1",
+        "nodemailer": "^6.3.0",
+        "pug": "^2.0.4",
+        "sqlite": "^3.0.3",
+        "sqlite3": "^4.1.0",
+        "ws": "^7.1.2"
+    }
+}

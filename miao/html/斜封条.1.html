@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .two{
+      font-size:24px;
+      padding:.5em 2em .5em;
+      display:inline-block;
+      position: absolute;
+      z-index: 20;
+      transform: translate(344px,25px)rotate(45deg)
+}
+.p{
+    width: 500px;
+    height: 500px;
+    background-color: rgb(150, 209, 40);
+    position:relative;
+    z-index: 0;
+}
+.two::before {
+content:'';
+  position:absolute;
+  top:0; right:0; bottom:0; left:0;
+  background:#F6DEE9;
+  z-index:-1;
+  transform: scaleY(2.5) perspective(100px) rotateX(67deg);
+  transform-origin: bottom;
+
+ 
+
+}
+    /* .ft{
+        width: 200px;
+        height: 200px;
+        background: rgb(219, 127, 41);
+        perspective: 500px;
+    }
+    .ft1{
+        width: 100px;
+        height: 50px;
+        background-color: rgb(59, 206, 79);
+        transform-origin: center;
+        transform: rotateX(70deg);
+    } */
+    </style>
+</head>
+<body>
+    <div class="p">
+        <div class="two">trapezoid</div>
+    <!-- <div class="ft">
+        <div class="ft1"></div>
+    </div> -->
+</div>
+</body>
+</html>

@@ -1,0 +1,62 @@
+/api
+
+// 获取桌面信息如餐厅名称，桌面名称////////////////////////////////////////////
+// 将会在landing页面请求并展示
+// /desinfo?rid=5&did=8
+app.get('/deskinfo'
+
+//返回某餐厅的菜单
+// /menu/restaurant/25
+app.get('/menu/restaurant/:rid'
+
+
+
+// 用户下单///////////////////////////////////////////////////////////////////
+// {
+//   deskName:
+//   customCount:
+//   totalPrice:
+//   foods: [{id, amount}, {}, {}]
+// }
+app.post('/restaurant/:rid/desk/:did/order'
+
+
+
+// 订单管理///////////////////////////////////////////////////////////////////
+获取订单菜单
+app.route('/restaurant/:rid/order')
+删除菜品
+app.route('/restaurant/:rid/order/:oid')
+
+
+
+// 菜品管理api/////////////////////////////////////////////////////////////
+app.route('/restaurant/:rid/food')
+获取菜单
+ .get(async (req, res, next)
+上传菜品照片
+  .post(uploader.single('img')
+  
+app.route('/restaurant/:rid/food/:fid')
+删除菜品
+  .delete(async (req, res, next) 
+  修改菜品照片
+ .put(uploader.single('img')
+ 
+ 
+ //桌面管理api////////////////////////////////////////////////////////////////////
+app.route('/restaurant/:rid/desk')
+   .get(async (req, res, next) => {获取
+   .post(async (req, res, next) 增
+   
+   
+   app.route('/restaurant/:rid/desk/:did')
+     .delete(async (req, res, next)删
+     .put(async (req, res, next) 改
+	 
+	 
+	 
+	 
+	 
+	 
+ 

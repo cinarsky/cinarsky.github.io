@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0 auto;
+        }
+      .main{
+          display: inline-block;
+          width: 900px;
+          height: 700px;
+          line-height: 700px;
+          margin: 50px ;
+          background-color: rgb(253, 253, 253);
+          text-align: center;
+      }
+
+      .main>div{
+          display: inline-block;
+          height: 600px;
+          width:200px;
+          margin: 0 auto;
+          position: relative;
+          vertical-align: middle;
+          border: 1px solid red;
+          overflow: hidden;
+      }
+      .main>div img{
+          display: inline-block;
+          vertical-align: middle;
+          position: absolute;
+          left: -200px;
+          transition: 0.5s ;
+          animation: leave1 0.5s;
+      }
+      @keyframes leave1{
+        from{
+          top: 0px;
+        left: 0px;
+        }
+        to{
+          top: 0px;
+        left: 200px;
+        }
+      }
+   
+
+
+
+
+      input:nth-child(1):checked~div:nth-of-type(1)>img:nth-of-type(1){
+        top: 0px;
+        left: 0px;
+        animation: none;
+        z-index: 60;
+        transition: 0.5s;
+      }
+      input:nth-child(1):checked~div:nth-of-type(2)>img:nth-of-type(1){
+        top: 0px;
+        left: 0px;
+        animation: none;
+        z-index: 60;
+
+        transition: 0.5s;
+      }
+      input:nth-child(1):checked~div:nth-of-type(3)>img:nth-of-type(1){
+        top: 0px;
+        left: 0px;
+
+        transition: 0.5s;
+        animation: none;
+        z-index: 60;
+      }
+      input:nth-child(1):checked~div:nth-of-type(4)>img:nth-of-type(1){
+        top: 0px;
+        left: 0px;
+
+        transition: 0.5s;
+        animation: none;
+        z-index: 60;
+      }
+
+
+
+
+      input:nth-child(2):checked~div:nth-of-type(1)>img:nth-of-type(2){
+        top: 0px;
+        left: 0px;
+        animation: none;
+        z-index: 60;
+ 
+        transition: 0.5s;
+      }
+      input:nth-child(2):checked~div:nth-of-type(2)>img:nth-of-type(2){
+        top: 0px;
+        left: 0px;
+        animation: none;
+        z-index: 60;
+ 
+        transition: 0.5s;
+      }
+      input:nth-child(2):checked~div:nth-of-type(3)>img:nth-of-type(2){
+        top: 0px;
+        left: 0px;
+        animation: none;
+        z-index:60;
+      
+        transition: 0.5s;
+      }
+      input:nth-child(2):checked~div:nth-of-type(4)>img:nth-of-type(2){
+        top: 0px;
+        left: 0px;
+      
+        transition: 0.5s;
+
+        animation: none;
+        z-index: 60;
+      }
+
+
+
+
+      input:nth-child(3):checked~div:nth-of-type(1)>img:nth-of-type(3){
+        top: 0px;
+        left: 0px;
+       
+        transition: 0.5s;
+ 
+        animation: none;
+        z-index: 60;
+      }
+      input:nth-child(3):checked~div:nth-of-type(2)>img:nth-of-type(3){
+        top: 0px;
+        left: 0px;
+       
+        transition: 0.5s;
+    
+        animation: none;
+        z-index: 60;
+      }
+      input:nth-child(3):checked~div:nth-of-type(3)>img:nth-of-type(3){
+        top: 0px;
+   
+        transition: 0.5s;
+        left: 0px;
+ 
+        animation: none;
+        z-index:60;
+      }
+      input:nth-child(3):checked~div:nth-of-type(4)>img:nth-of-type(3){
+        top: 0px;
+        left: 0px;
+     
+        transition: 0.5s;
+  
+        animation: none;
+        z-index: 60;
+      }
+
+
+
+
+
+
+      input:nth-child(4):checked~div:nth-of-type(1)>img:nth-of-type(4){
+        top: 0px;
+        left: 0px;
+ 
+     
+        transition: 0.5s;
+        animation: none;
+        z-index: 60;
+      }
+      input:nth-child(4):checked~div:nth-of-type(2)>img:nth-of-type(4){
+        top: 0px;
+        left: 0px;
+   
+        transition: 0.5s;
+
+        animation: none;
+        z-index: 60;
+      }
+      input:nth-child(4):checked~div:nth-of-type(3)>img:nth-of-type(4){
+        top: 0px;
+        left: 0px;
+       
+        transition: 0.5s;
+
+        animation: none;
+        z-index: 60;
+      }
+      input:nth-child(4):checked~div:nth-of-type(4)>img:nth-of-type(4){
+        top: 0px;
+        left: 0px;
+     
+        transition: 0.5s;
+     
+        animation: none;
+        z-index: 60;
+      }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+input{
+    display: none;
+}
+ label{
+     display: inline-block;
+     position: absolute;
+     top: 500px;
+     left: 70px;
+     z-index: 100;
+     width: 60px;
+     height: 60px;
+ }
+ label>div{
+  display: inline-block;
+          height: 50px;
+          line-height: 50px;
+          width: 50px;
+          background: rgb(168, 168, 168);
+          margin-right: 130px;
+          border: 5px solid rgb(204, 204, 204);
+          border-radius: 70px;
+         font-size: 30px;
+         z-index: 101;
+         color: black;
+         vertical-align: top;
+      }
+ label>div:hover{
+    background: rgb(128, 128, 128);
+ }
+
+
+    </style>
+</head>
+<body>
+    <div class="main">
+              <input type="radio" name="pic" id="pic1" checked>
+              <input type="radio" name="pic" id="pic2">
+              <input type="radio" name="pic" id="pic3">
+              <input type="radio" name="pic" id="pic4">
+         
+         <div class="pic1">
+            <img src="pic/11.png" alt="">
+            <img src="pic/21.png" alt="">
+            <img src="pic/31.png" alt="">
+            <img src="pic/41.png" alt="">
+                <label for="pic1"><div>缁撅拷</div></label>
+         </div><!--
+       --><div class="pic2">
+            <img src="pic/12.png" alt="">
+            <img src="pic/22.png" alt="">
+            <img src="pic/32.png" alt="">
+            <img src="pic/42.png" alt="">
+                <label for="pic2"><div>缂侊拷</div></label>
+        </div><!--
+    --><div class="pic3">
+            <img src="pic/13.png" alt="">
+            <img src="pic/23.png" alt="">
+            <img src="pic/33.png" alt="">
+            <img src="pic/43.png" alt="">
+                <label for="pic3"><div>閽冿拷</div></label>
+        </div><!--
+     --><div class="pic4">
+            <img src="pic/14.png" alt="">
+            <img src="pic/24.png" alt="">
+            <img src="pic/34.png" alt="">
+            <img src="pic/44.png" alt="">
+                <label for="pic4"><div>缁憋拷</div></label>
+        </div>
+    </div>
+
+
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+doctype 
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Document
+        include titlestyle.pug
+        style.
+           *{
+            margin:0 auto;
+            font-size:20px;
+            }
+            .forgot{
+             text-align:center;
+             margin:0 0 0 -30px;
+            }
+            .forgot div{
+                width:600px;
+                height:35px;
+                padding:1px;
+                margin:20px auto;
+             }
+             .forgot div span{
+              display:inline-block;
+              width:170px;
+             }
+             .forgot div input{
+              width:200px;
+             }
+    body
+        include title.html
+        form(action='/forgot', method='post')
+            div(class='forgot')
+               div
+                  span 请输入你的用户名
+                  input(type='text', name='name')
+               div
+                  span  请输入你的邮箱
+                  input(type='text', name='email')
+               input(type='submit', value='确定')
+            

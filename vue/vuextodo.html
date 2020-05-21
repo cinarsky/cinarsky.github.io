@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  <script src="https://unpkg.com/vuex@2.0.0"></script>
+</head>
+
+<body>
+  <div id="todoapp">
+    <todo-app></todo-app>
+  </div>
+</body>
+
+
+<script>
+  const store = new Vuex.Store({
+    state: {
+      show: 'show',
+      todos: [{
+          'content': 'apple',
+          'state': 0
+        },
+        {
+          'content': 'orange',
+          'state': 0
+        },
+        {
+          'content': 'banana',
+          'state': 1
+        },
+        {
+          'content': 'water',
+          'state': 1
+        },
+        {
+          'content': 'coffee',
+          'state': 0
+        }
+      ],
+
+    },
+    getters: {
+      todoCopy: (state) => state.todos,
+      allItems: (state) => state.todos.length,
+      TodoTodo: state => state.todos.filter(it => it.state == 1).length,
+      TodoDone: state => state.todos.filter(it => it.state == 0).length,
+      filter: (state) => (item) => {
+        if (state.show == 'show') {
+          return true
+        } else {
+          return item.state == state.show
+        }
+      }
+      
+    },
+
+    mutations: {
+      addItem(state, newItem) {
+        state.todos.push({
+          'content': newItem,
+          'state': 1
+        })
+        console.log('addItem')
+      },
+      delItem(state, index) {
+        state.todos = state.todos.filter((it, idx) => idx != index)
+      },
+      changeState(state, index) {
+        state.todos[index].state = 1 - state.todos[index].state
+        console.log(state.todos.map(it => it.state))
+      },
+      delAllDone(state) {
+        state.todos = state.todos.filter(it => it.state == 1)
+      },
+      showAll(state) {
+        state.show = 'show'
+
+      },
+      showTodo(state) {
+        state.show = 1
+      },
+      showDone(state) {
+        state.show = 0
+      },
+
+    },
+
+  })
+
+  var TodoInput = {
+    data() {
+      return {
+        newItem: '',
+      }
+    },
+    template: `
+    <div>
+      <input v-model='newItem' @keyup.enter='addItem'>
+    </div>
+     `,
+    methods: {
+      addItem() {
+        if (this.newItem.trim() != '') {
+          this.$store.commit('addItem', this.newItem.trim())
+        }
+        this.newItem = ''
+      }
+    },
+  }
+
+  var TodoCount = {
+    template: `
+    <div>
+      <span>--items:{{this.$store.getters.allItems}}</span>
+      <button @click='showAll'>all</button>
+    </div>
+     `,
+    methods: {
+      showAll() {
+        this.$store.commit('showAll')
+      }
+    },
+  }
+
+  var TodoTodo = {
+    template: `
+    <div>
+     <span>--todo:{{this.$store.getters.TodoTodo}}</span>
+     <button @click='showTodo'>todo</button>
+    </div>
+     `,
+    methods: {
+      showTodo() {
+        this.$store.commit('showTodo')
+      }
+    },
+  }
+
+  var TodoDone = {
+    template: `
+    <div>
+     <span>--done:{{this.$store.getters.TodoDone}}</span>
+     <button @click='showDone'>done</button>
+    </div>
+     `,
+    methods: {
+      showDone() {
+        this.$store.commit('showDone')
+      }
+    },
+  }
+
+  var TodoDelDone = {
+    template: `
+      <button @click='delAllDone'>清空已完成</button>
+     `,
+    methods: {
+      delAllDone() {
+        this.$store.commit('delAllDone')
+      }
+    },
+  }
+
+  var TodoItem = {
+    props: ['item', 'index', 'state'],
+    template: `
+    <div>
+      <div>
+      <input type='checkbox' :checked="state==0" @click='changeState'>
+      <input  :value='item'>
+      <button @click='delItem'> - </button>
+      </div>
+    </div>
+      `,
+    methods: {
+      delItem() {
+        this.$store.commit('delItem', this.index)
+      },
+      changeState() {
+
+        this.$store.commit('changeState', this.index)
+      }
+    },
+  }
+  //----------------------------------------------------
+  var TodoList = {
+    components: {
+      'todo-item': TodoItem,
+    },
+    // v-show的处理利用了getter，调用getter方法并传值，得到相应的返回值
+    template: `
+        <div>
+          <todo-item v-for='(item,index) of this.$store.getters.todoCopy' 
+          v-show='$store.getters.filter(item)'
+          :item='item.content' :index='index' :state='item.state'>
+            </todo-item>
+        </div>
+       `,
+
+    // methods: {
+    //   filter(item,index) {
+    //       this.$store.commit('filter',item,index)
+    //     }
+    //   }
+  }
+
+  var TodoFooter = {
+    components: {
+      'todo-count': TodoCount,
+      'TodoTodo': TodoTodo,
+      'todo-done': TodoDone,
+      'todo-delDone': TodoDelDone,
+    },
+    template: `
+      <div>
+        <todo-count>todo-count</todo-count>
+        <todo-todo>todo-todo</todo-todo>
+        <todo-done>todo-done</todo-done>
+        <todo-delDone>todo-delDone</todo-delDone>
+        </div>
+        `,
+  }
+
+  Vue.component('todo-app', {
+    components: {
+      'todo-input': TodoInput,
+      'todo-list': TodoList,
+      'todo-footer': TodoFooter,
+    },
+    template: `
+     <div>
+     <todo-input></todo-input>
+     <todo-list></todo-list>
+     <todo-footer></todo-footer>
+     </div>
+     `,
+  })
+
+  var app = new Vue({
+    el: '#todoapp',
+    store,
+    data() {
+      return {
+
+      }
+    },
+  })
+</script>
+
+</html>

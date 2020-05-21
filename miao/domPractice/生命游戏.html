@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0 auto;
+    }
+
+    .main {
+        margin: 100px 100px;
+        border: 1px solid black;
+        font-size: 0;
+        width: max-content;
+    }
+
+    .col {
+        height: 52px;
+        width: max-content;
+    }
+
+    .cell {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background: rgb(255, 130, 130);
+        border: 1px solid gainsboro;
+    }
+
+    .cellalive {
+        background: rgb(133, 255, 182);
+    }
+</style>
+
+<body>
+
+
+    <button id='b1'>下一轮</button>
+    <button id='b2'>自动</button>
+    <button id='b3'>停止</button>
+    <button id='b4'>新一轮</button>
+
+
+</body>
+<script>
+    var b1 = document.getElementById('b1')
+    var b2 = document.getElementById('b2')
+    var b3 = document.getElementById('b3')
+    var b4 = document.getElementById('b4')
+    class Life {
+        constructor(width = 10, height = 8) {
+            this.width = width;
+            this.height = height;
+            this.item = new Array(height).fill('.').map(function (item, index) {
+                return new Array(width).fill('.')
+            });
+        }
+
+        initial() {
+            var that=this
+            that.item.map(function (item1, index1) {
+                item1.map(function (item2, index2) {
+                    if (Math.random() <0.2) {
+                        that.item[index1][index2] = '0'
+                    }
+                    else{
+                        that.item[index1][index2] = '.'
+                    }
+                })
+            })
+            return that.item
+        }
+
+        next() {
+            var that = this
+            var item = new Array(that.height).fill('.').map(function () {
+                return new Array(that.width).fill('.')
+            });
+            that.item.forEach(function (item1, index1) {
+                item1.forEach(function (item2, index2) {
+                    var cell = 0
+                    for (var i = index1 - 1; i <= index1 + 1; i++) {
+                        for (var s = index2 - 1; s <= index2 + 1; s++) {
+                            if (that.item[i]) {
+                                if(i==index1&&s==index2){}
+                                else if (that.item[i][s] == '0') {
+                                    cell++
+                                }
+                            }
+                        }
+                    }
+                    if (that.item[index1][index2] == '0') {
+                        if(cell<2||cell>3){
+                                item[index1][index2] = '.'
+                        }
+                        else {
+                                item[index1][index2] = '0'
+                        }
+                    } 
+                    else {
+                        if(cell==3){
+                            item[index1][index2] = '0'
+                        }
+                        else{
+                            item[index1][index2] = '.'
+                        }
+                    }
+                })
+            })
+            that.item = item
+            return that.item
+        }
+
+        paint() {
+            var main = document.createElement('div')
+            main.classList = 'main'
+            for (var i = 0; i < this.height; i++) {
+                var col = document.createElement('div')
+                col.classList.add('col')
+                for (let s = 0; s < this.width; s++) {
+                    var cell = document.createElement('div')
+                    cell.classList.add('cell')
+                    col.appendChild(cell)
+                }
+                main.appendChild(col)
+            }
+            document.body.appendChild(main)
+            return this.item
+        }
+
+        color() {
+            for (var i = 0; i < this.width; i++) {
+                for (var s = 0; s < this.height; s++) {
+                    var a = document.getElementsByClassName('main')[0].children[s].children[i]
+                    a.classList.add('cell')
+                    if (this.item[s][i] == '.') {
+                        a.classList.remove('cellalive')
+                    } else {
+                        a.classList.add('cellalive')
+                    }
+
+                }
+            }
+            return this.item
+
+
+        }
+        stop(){
+        a.initial()
+        a.color()
+        clearInterval(timer)
+        }
+
+        setState(width, height) {
+            if (this.item[height][width] == '.') {
+                this.item[height][width] == '0'
+            } else {
+                this.item[height][width] == '.'
+            }
+            return this.item
+        }
+
+
+    }
+    var a = new Life()
+    a.paint()
+    a.initial()
+    a.color()
+    document.addEventListener('click',function(e){
+        if(e.target.matches('.cell')){
+            var index1=[].indexOf.call(e.target.parentNode.parentNode.children,e.target.parentNode)
+            var index2=[].indexOf.call(e.target.parentNode.children,e.target)
+            console.log(index1,index2,a.item[index1][index2])
+            if(e.target.classList.contains('cellalive')){
+                e.target.classList.remove('cellalive')
+                a.item[index1][index2]='.'
+            }else{
+                e.target.classList.add('cellalive')
+                a.item[index1][index2]='0'
+            }
+            console.log(index1,index2, a.item[index1][index2])
+        }
+    })
+    b1.addEventListener('click', function () {
+        a.next()
+        a.color()
+        clearInterval(timer)
+    })
+
+    b2.addEventListener('click',function(){
+        timer=setInterval(function(){
+        a.next()
+        a.color()
+    },800)
+    })
+    b3.addEventListener('click',function(){
+        clearInterval(timer)
+    })
+    b4.addEventListener('click', function () {
+        a.initial()
+        a.color()
+        clearInterval(timer)
+    })
+</script>
+
+</html>

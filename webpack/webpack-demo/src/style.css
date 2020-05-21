@@ -1,0 +1,8 @@
+.hello {
+    /* color: red; */
+    background: blue;
+    background: url('./Screenshot_20200311_101510_com.alibaba.android.rimet.jpg');
+  }
+  button{
+    color: green;
+  }

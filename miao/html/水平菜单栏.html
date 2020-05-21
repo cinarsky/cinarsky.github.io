@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+    *{margin: 0 auto;
+    padding:0;
+    }
+    ul{
+      list-style-type:none; 
+    }
+/* nav */
+.nav{
+   background-color: rgb(255,103,0)
+}
+.nav>p{
+  color:aliceblue;
+  text-align: center;
+  height:50px;
+  line-height: 50px;
+}
+.hl{
+  height: 100px;
+
+}
+/* 菜单左边栏 */
+.main{
+  margin:0 auto 0 0;
+  width: 300px;
+  height:250px;
+  background-color: rgb(89,97,96);
+}
+.main>ul>li>div{
+  width: 300px;
+  height:50px;
+  text-align: center;
+  line-height: 50px;
+  position: relative;
+
+}
+
+.main>ul>li>div:hover{
+  background-color: rgb(255,103,0)
+
+}
+.main>ul>li>div>div>ul>li>div:hover{
+ background-color: aquamarine;
+}
+.main>ul>li>div>div{
+  width: 300px;
+  text-align: center;
+  line-height: 50px;
+  background-color: rgb(218, 58, 156);
+  position: absolute;
+  left:300px;
+  top: 0px;
+  display: none;
+}
+
+.main>ul>li>div:hover>div{
+  display: block;
+}
+
+    </style>
+</head>
+<body>
+<div class="nav"><p>小米菜单</p></div>
+<div class="hl"></div>
+<!--  菜单 -->
+<div class="main">
+  <ul>
+    <li>
+
+      <div class="main01">小米
+        <div>
+        <ul>
+          <li>
+            <div>1</div>
+          </li>
+          <li>
+            <div>2</div>
+          </li>
+          <li>
+            <div>3</div>
+          </li>
+       
+        </ul>
+      </div>
+      </div>
+
+    <div class="main02">小米
+        <div>
+        <ul>
+          <li>
+            <div>1</div>
+          </li>
+        
+          <li>
+            <div>3</div>
+          </li>
+          <li>
+            <div>4</div>
+          </li>
+          <li>
+            <div>5</div>
+          </li>
+          <li>
+            <div>6</div>
+          </li><li>
+              <div>5</div>
+            </li>
+            <li>
+              <div>6</div>
+            </li><li>
+                <div>5</div>
+              </li>
+              <li>
+                <div>6</div>
+              </li>
+        </ul>
+      </div>
+      </div>
+
+<div class="main03">小米
+        <div>
+        <ul>
+          <li>
+            <div>1</div>
+          </li>
+          <li>
+            <div>2</div>
+          </li>
+          <li>
+            <div>3</div>
+          </li>
+         
+          <li>
+            <div>5</div>
+          </li>
+          <li>
+            <div>6</div>
+          </li>
+        </ul>
+      </div>
+      </div><div class="main04">小米
+          <div>
+          <ul>
+            <li>
+              <div>1</div>
+            </li>
+            <li>
+              <div>2</div>
+            </li>
+           
+            <li>
+              <div>4</div>
+            </li>
+            <li>
+              <div>5</div>
+            </li>
+            <li>
+              <div>6</div>
+            </li>
+          </ul>
+        </div>
+        </div><div class="main05">小米
+            <div>
+            <ul>
+              <li>
+                <div>1</div>
+              </li>
+              <li>
+                <div>2</div>
+              </li>
+              <li>
+                <div>3</div>
+              </li>
+              <li>
+                <div>4</div>
+              </li>
+              <li>
+                <div>5</div>
+              </li>
+             
+            </ul>
+          </div>
+          </div>
+
+    </li>
+  </ul>
+</div>
+
+</body>
+
+</html>

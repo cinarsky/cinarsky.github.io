@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div {
+            width: 30px;
+            height: 30px;
+            background: rgb(159, 199, 168);
+            /* transition: 0.01s;
+             */
+        }
+
+        div:nth-child(2) {
+            background: rgb(174, 89, 89);
+        }
+
+        div:nth-child(3) {
+            background: rgb(89, 164, 174);
+        }
+    </style>
+</head>
+
+
+
+<body>
+    <div id="element1"></div>
+    <div id="element2"></div>
+    <div id="element3"></div>
+</body>
+<!-- <script>
+    element1.style.height = (element1.clientHeight * 2) + 'px'
+    var h1 = element1.clientHeight
+console.log(h1);
+
+element2.style.height = (h1* 2) + 'px'
+var h2 = element2.clientHeight
+console.log(h2);
+
+element3.style.height = (h2 * 2) + 'px'
+var h3 = element3.clientHeight
+console.log(h3);
+
+</script> -->
+
+<script>
+// 读
+var h1 = element1.clientHeight
+var h2 = element2.clientHeight
+var h3 = element3.clientHeight
+
+// 写（无效布局）
+element1.style.height = (h1 * 2) + 'px'
+element2.style.height = (element1.clientHeight * 2) + 'px'
+element3.style.height = (element2.clientHeight * 2) + 'px'
+</script>
+
+<!-- <script>
+    // 读
+    var h1 = element1.clientHeight
+    // 写
+    requestAnimationFrame(() => {
+        element1.style.height = (h1 * 2) + 'px'
+        console.log(1);
+        
+    })
+    console.log(2);
+    
+    // console.log(element1.clientHeight);
+
+    // 读
+    var h2 = element2.clientHeight
+    // 写
+    requestAnimationFrame(() => {
+        element2.style.height = (element1.clientHeight * 2) + 'px'
+        console.log(3);
+
+    })
+    // console.log(element2.clientHeight);
+    console.log(4);
+
+    // 读
+    var h3 = element3.clientHeight
+    // 写
+    requestAnimationFrame(() => {
+        element3.style.height = (element2.clientHeight * 2) + 'px'
+        console.log(5);
+
+    })
+    // console.log(element3.clientHeight);
+    console.log(6);
+
+</script> -->
+
+</html>

@@ -1,0 +1,24 @@
+doctype 
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Document
+        include titlestyle.pug
+        style.
+           *{
+            margin:0 auto;
+            }
+            .welcome{
+                text-align:center;
+                font-size: 25px;
+            }
+    body
+        include title.html
+        //- -var name=name
+        //- -var tokenid=token
+        div(class='welcome')
+           |密码更改成功，请登录
+
+        

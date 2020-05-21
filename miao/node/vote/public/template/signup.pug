@@ -1,0 +1,63 @@
+doctype 
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Document
+        include titlestyle.pug
+        style.
+           *{
+            margin:0 auto;
+            }
+            .welcome{
+                margin-left:-130px;
+                text-align:center;
+                font-size: 25px;
+            }
+            .welcome div{
+                padding:5px 0;
+                width:350px;
+                height:35px;
+                //- background:rgb(123,32,145)
+            }
+             .welcome div span{
+                 display:inline-block;
+                 width:150px;
+                //-   background:rgb(13,32,145)
+             }
+            .email{
+                position:relative;
+            }
+            #btn{
+                position:absolute;
+                left:100%;
+                top:15px;
+            }
+            #sbm{
+                dispaly:inline-block;
+                margin-left:150px;
+                font-size:20px;
+            }
+    body
+        include title.html
+        div(class='welcome')
+           form(action='register' method='post')
+               div
+                   span 用户名
+                   input(type='text' id='username' name='name' )
+               div(class='email')
+                   span 邮 箱
+                   input(type='text' id='useremail' name='email' )
+                   input(type='button' id='btn' onclick='code()' value='发送邮件验证码')
+               div
+                   span 邮箱验证码
+                   input(type='text' name='emailcode' )
+               div
+                   span 密 码
+                   input(type='password' name='password')
+               input(type='submit' id="sbm")
+    script          
+        include xml.html
+
+        

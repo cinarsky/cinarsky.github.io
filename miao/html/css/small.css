@@ -1,0 +1,30 @@
+.main div{
+    width: 100%;
+}
+.ad div{
+    width: 40%;    
+}
+.logo{
+    height: 400px;
+
+}
+.logo1{
+    width: 50%;
+    height: 400px;
+    float: left;
+}
+.logo110{
+    width: 50%;
+    height: 400px;
+    float: right;
+}
+.logo2{
+    width: 100%;
+    height: 50%;
+    float: left;
+}
+.logo3{
+    width: 100%;
+    height: 50%;
+    float: left;
+}

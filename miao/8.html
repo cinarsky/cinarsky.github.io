@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title></title>
+        <style type="text/css">
+            body{
+                padding-top: 30px;
+            }
+            .open-app {
+                margin: 30px;
+                border-radius: 5px;
+                padding: 10px 20px;
+                border: 1px solid #ccc;
+            }
+        </style>
+        <script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+    </head>
+    <body>
+
+        <a class="open-app">click me to store</a>
+        
+        <script type="text/javascript">
+
+            var iosLinkUrl = "http://apps.apple.com/cn/app/id387682726" // 淘宝 app store 下载地址
+            var androidLinkurl = "https://a.app.qq.com/o/simple.jsp?pkgname=com.lucky.luckyclient" //(找不到淘宝应用宝地址，这里以lucky coffee为例)
+
+            var u = navigator.userAgent, isAndroid, isIOS
+
+            window.onload = function() {
+                init()
+            }
+
+            function init() {
+                isAndroid = u.indexOf('Android') > -1 || u.indexOf('Linux') > -1; //android终端
+                isIOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+
+                var link = isIOS ? iosLinkUrl : androidLinkurl
+
+                $('a').attr('href', link)
+            }
+            
+        </script>
+    </body>
+</html>

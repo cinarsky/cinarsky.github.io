@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+<script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+<!-- 生产环境中不建议使用 -->
+<script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+<style>
+
+</style>
+
+<body>
+  <div id="root"></div>
+</body>
+<script type="text/babel">
+class Input extends React.Component {
+   constructor (props) {
+    super(props)
+  }
+  
+  render () {
+    return (
+      <div>
+        <input type='number' onChange={(e)=>this.props.Change(e.target.value)}/>
+      </div>
+    )
+  }
+}
+
+class PercentageShower extends React.Component {
+    constructor (props) {
+    super(props)
+    this.state = { 
+
+      
+    }
+  }
+  render () {
+    return (
+      <div>{((this.props.num)*100).toFixed(2)}%</div>
+    )
+  }
+}
+
+class PercentageApp extends React.Component {
+   constructor () {
+    super()
+    this.state = { 
+      num:0,
+    }
+  }
+  
+  Change(num){
+    console.log(num)
+    this.setState({
+      num:num
+    })
+  }
+  render () {
+    return (
+      <div>
+      <Input Change={this.Change.bind(this)}/>
+      <PercentageShower num={this.state.num}/>
+      </div>
+    )
+  }
+}
+
+ReactDOM.render(
+  <PercentageApp/>,
+  document.getElementById('root')
+)
+
+</script>
+
+</html>

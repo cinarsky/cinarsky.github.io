@@ -1,0 +1,27 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>无标题页 </title>
+    <script type="text/javascript">
+    function AddHeight()
+    {
+      var div = document.getElementById("container");
+      var height=div.clientHeight ;
+      alert(height);
+      height+=200;
+      alert(height);
+      div.style.height=height+"px";
+    }
+    </script>
+</head>
+<body>
+    <form id="form1" runat="server">
+ 
+    <div id="container" runat="server" style="width:700px;height:200px; background-color:#469ff3"> </div>
+    <div style=" background-color:Red;">
+        <input type="button" value="Button" onclick="AddHeight()" />
+    </div>
+    <div>
+    </div>
+    </form>
+</body>
+</html>

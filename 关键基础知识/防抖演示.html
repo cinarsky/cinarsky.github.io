@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" id='a1'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    div {
+        background: rgb(129, 77, 77);
+        width: 300px;
+        height: 300px;
+        position: relative;
+    }
+</style>
+
+<body>
+    <div id='a'>
+        'debounce(fun,20)'
+    </div>
+</body>
+<script type="text/javascript">
+    // function fun(a){
+    //     console.log(a)
+    // }
+
+    function fun() {
+        console.log(this.num)
+    }
+
+    function debounce(f) {
+        let timeout
+        // console.log(this)
+        return function (...args) {
+            var self = this
+           
+            if (timeout) {
+                clearTimeout(timeout)
+            } else {
+                // 立即执行版加上下面
+                //  f.apply(self, args)
+            }
+            timeout = setTimeout(() => {
+                f.apply(self, args)
+
+                // 此时timeout已发生，清除与否没有影响
+                // clearTimeout(timeout)
+
+                //立即执行版加上下面
+                timeout = null
+            }, 200);
+        }
+    }
+
+    a.addEventListener('mousemove', debounce(
+        obj.fun
+    ))
+
+    // a.onmousemove=debounce(
+    //     obj.fun,200
+    // )
+</script>
+
+</html>

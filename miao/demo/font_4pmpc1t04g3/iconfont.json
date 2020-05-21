@@ -1,0 +1,44 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "285813",
+      "name": "menu",
+      "font_class": "menu1153767easyiconnet",
+      "unicode": "e600",
+      "unicode_decimal": 58880
+    },
+    {
+      "icon_id": "3248467",
+      "name": "收起",
+      "font_class": "shouqi",
+      "unicode": "e611",
+      "unicode_decimal": 58897
+    },
+    {
+      "icon_id": "4411851",
+      "name": "QQ",
+      "font_class": "qq",
+      "unicode": "e59a",
+      "unicode_decimal": 58778
+    },
+    {
+      "icon_id": "6383462",
+      "name": "我 的-02",
+      "font_class": "wode-",
+      "unicode": "e50e",
+      "unicode_decimal": 58638
+    },
+    {
+      "icon_id": "6696657",
+      "name": "Github",
+      "font_class": "Github",
+      "unicode": "e605",
+      "unicode_decimal": 58885
+    }
+  ]
+}

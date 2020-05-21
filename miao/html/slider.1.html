@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+     input{
+       display: none;
+     }
+     label{
+       display: inline-block;
+       position: absolute;
+       top: 470px;
+       left: 60px;
+       z-index: 100;
+     }
+     label>div{
+       height: 50px;
+       line-height: 50px;
+       text-align: center;
+       width: 50px;
+       background-color: aqua;
+       border:15px solid green;
+       border-radius: 80px;
+     }
+     .main{
+       width: 1000px;
+       height: 800px;
+       line-height: 800px;
+       background-color: rgb(194, 194, 194);
+       font-size: 0;
+       text-align: center;
+     }
+    .main>div{
+      display: inline-block;
+      width: 200px;
+      height: 600px;
+      /* overflow: hidden; */
+      /* background-color: rgb(219, 144, 144); */
+      border: 2px solid rgb(51, 51, 51);
+      vertical-align: middle;
+      position: relative;
+    }
+    div>span{
+      width: 200px;
+      height: 600px;
+      
+      position: absolute;
+      left: -100%;
+     
+     animation: leave 1.4s -0.7s linear;
+
+    }
+    @keyframes leave{ 
+      from{
+        left: -200px;
+      }
+      to{
+        left: 100%;
+      }
+    }
+    @keyframes leave1{ 
+      from{
+        left: -200px;
+      }
+      to{
+        left: 0;
+      }
+    }
+    input:nth-of-type(1):checked~.main>div>span:nth-of-type(1),
+    input:nth-of-type(2):checked~.main>div>span:nth-of-type(2){
+      left: 0px;
+      transition: 0.7s linear;
+      animation: none;
+      z-index: 10;
+      
+    }
+    div>span:nth-child(1){
+      background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559995216374&di=befb9be8abc7354c9b4448cee6f26696&imgtype=0&src=http%3A%2F%2Fgss0.baidu.com%2F-vo3dSag_xI4khGko9WTAnF6hhy%2Fzhidao%2Fpic%2Fitem%2F1c950a7b02087bf4074a70aff6d3572c10dfcfd5.jpg);
+    }
+    div>span:nth-child(2){
+      background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559994443193&di=7d7d48f012f78b976094dd286f123d79&imgtype=0&src=http%3A%2F%2Fimg.mp.itc.cn%2Fupload%2F20160330%2Fea2e371dc92f44f8b535b59e1366ea35_th.jpg);
+    }
+    .main>div:nth-of-type(1)>span{
+       background-position: 0 0;
+    }
+    .main>div:nth-of-type(2)>span{
+       background-position: -100% 0;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  </style>
+</head>
+<body>
+  <input type="radio" name="pic" id="pic1" checked>
+  <input type="radio" name="pic" id="pic2">
+  <div class="main">
+       <div>
+        <span></span>
+        <span></span>
+
+        <label for="pic1"><div>1</div></label>
+      </div>
+      <div>
+        <label for="pic2"><div>2</div></label>
+        <div>
+  </div>
+</body>
+</html>

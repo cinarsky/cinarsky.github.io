@@ -1,0 +1,2 @@
+<button bindtap="addddd" >addddd</button>
+<button bindtap="getsql" >sql</button>

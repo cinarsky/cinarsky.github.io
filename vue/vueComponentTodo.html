@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+  <script src="https://unpkg.com/vue-router@2.0.0/dist/vue-router.js"></script>
+</head>
+<style>
+
+</style>
+
+<body>
+    <div id="app">
+      <todo-app></todo-app>
+    </div>
+</body>
+
+<script>
+// 输入框
+Vue.component('todoInput',{
+  template:`
+<div>
+<input @keyup.enter='add'>
+</div>
+`,
+methods: {
+  add(e){
+    var newItem=e.target.value.trim()
+    if(newItem!=''){
+      console.log(newItem)
+      // 传事件给父级todoinput
+      this.$emit('add', {content:newItem,state:0})
+    }
+    e.target.value=''
+  }
+},
+})
+// 列表项
+Vue.component('todoItem',{
+  props:['item','index'],
+  template:`
+<div>
+    <input type="checkbox" :checked='item.state' @click='changeState'>
+    <input type="text" :value='item.content'>
+    <button @click='delItem'> - </button>
+</div>
+`,
+methods: {
+  delItem(){
+    this.$emit('delItem',this.index)
+    // console.log(this.index)
+  },
+  changeState(){
+    this.$emit('changeState',this.index)
+  }
+},
+})
+// 列表
+Vue.component('todoList',{
+  props:['todos','show'],
+  template:`
+<div>
+   <todoItem  
+   @delItem='delItem' 
+   @changeState='changeState'
+   v-for='(item,index) of todos' 
+   v-if='ifshow(item)'
+   :item='item' 
+   :index='index'></todoItem>
+</div>
+`,
+methods: {
+  delItem(index){
+    this.$emit('delItem',index)
+  },
+  changeState(index){
+    this.$emit('changeState',index)
+  },
+  ifshow(item){
+   if(this.show===true){
+     return true
+   }
+   else {
+     return item.state==this.show
+   }
+  }
+
+},
+})
+// 展示完成项
+Vue.component('todoDone',{
+  props:['todos'],
+    template:`
+<div>
+  <button @click='showDone'>done</button>
+{{done}}
+</div>
+`,
+computed: {
+  done(){
+    return this.todos.filter(it=>it.state==1).length
+  },
+},
+methods: {
+  showDone(){
+    this.$emit('showDone')
+  }
+},
+})
+// 展示未完成项
+Vue.component('todoTodo',{
+  props:['todos'],
+  template:`
+<div>
+  <button @click='showTodo'>todo</button>
+{{todo}}
+</div>
+`,
+computed: {
+  todo(){
+    return this.todos.filter(it=>it.state==0).length
+  },
+
+},
+methods: {
+  showTodo(){
+    this.$emit('showTodo')
+  }
+},
+})
+// 展示全部
+Vue.component('todoAll',{
+  props:['todos'],
+  template:`
+<div>
+  <button @click='showAll'>all</button>
+{{all}}
+</div>
+`,
+computed: {
+  all(){
+    return this.todos.length
+  }
+},
+methods: {
+  showAll(){
+    this.$emit('showAll')
+  }
+},
+})
+// 尾部状态栏
+Vue.component('todoFooter',{
+  props:['todos'],
+  template:`
+<div>
+    <todoAll :todos='todos' @showAll='showAll' ></todoAll>
+    <todoTodo :todos='todos'  @showTodo='showTodo'></todoTodo>
+    <todoDone @showDone='showDone'   :todos='todos'></todoDone>
+    <button @click='delAll'>删除全部已完成</button>
+</div>
+`,
+methods: {
+  delAll(){
+    this.$emit('delAll')
+  },
+  showDone(){
+    this.$emit('showDone')
+  },
+  showTodo(){
+    this.$emit('showTodo')
+  },
+  showAll(){
+    this.$emit('showAll')
+  }
+},
+})
+
+
+// 总组件
+Vue.component('todoApp',{
+// 监听子级传来的事件，触发自身函数（不传值，默认将子级传来的值代入）
+template:`
+<div>
+  <todoInput @add='addItem'></todoInput>
+  <todoList @delItem='delItem'  @changeState='changeState' :todos='todos' :show='show'></todoList>
+  <todoFooter @showDone='showDone' @showTodo='showTodo' @showAll='showAll' @delAll='delAll'  :todos='todos'></todoFooter>
+</div>
+`,
+data() {
+  return {
+    todos:[
+       {'content':'吃饭','state':0},
+       {'content':'睡觉','state':1},
+       {'content':'打豆豆','state':0},
+       {'content':'玩游戏','state':1},
+       {'content':'学习','state':0},
+     ],
+     show:true,
+  }
+},
+methods: {
+  addItem(newItem){
+      this.todos.push(newItem)
+      console.log(this.todos)
+    },
+    delItem(index){
+      this.todos=this.todos.filter((it, idx) => idx != index)
+      // console.log(index,this.todos.length)
+  },
+  changeState(index){
+    this.todos[index].state=1-this.todos[index].state
+    // console.log(this.todos)
+  },
+  delAll(){
+    this.todos=this.todos.filter((it, idx) => it.state!=1)
+  },
+  showDone(){
+    this.show=1
+    console.log(1)
+  },
+  showTodo(){
+    this.show=0
+    console.log(0)
+  },
+  showAll(){
+    this.show=true
+    console.log(true)
+  }
+},
+})
+// 实例
+const app = new Vue({
+  el:'#app',
+  data:{
+    
+  },
+  methods: {
+    
+  },
+})
+
+</script>
+
+</html>

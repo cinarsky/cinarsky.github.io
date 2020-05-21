@@ -1,0 +1,51 @@
+doctype 
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Document
+        style
+        include createvotecss.pug
+        include titlestyle.pug
+    body
+        include title.html
+        
+        div(class='createvote')
+            form(method='POST', action='/create')
+                  div
+                    | 投票题目
+                    input.title(type='text',class='title',name='title')
+                  div
+                    | 投票描述
+                    input.desc(type='text',class='desc',name='desc')
+                  div
+                    | 创建用户
+                  
+                    input(type='text', value=`用户 ${username} ，id:${id}`, readonly='')
+                    input(type='text', value=id, readonly='',name='createuserid',hidden)
+                  div(class='options')
+                    div
+                      span 选项
+
+                      button(type='button', onclick='ins()') 新建选项
+                    div
+                      input(type='text',name='option',required)
+                      button.del(type='button') 删除
+                  div
+                    span 投票选项
+                    | 单选
+                    input.singlesel(type='radio', name='sle', value='1', checked='')
+                    | 多选
+                    input.singlesel(type='radio', name='sle', value='0')
+                  div
+                    | 截止日期
+                    input.deadline(type='date',name='deadline')
+                  .anony
+                    span 匿名创建
+                    input.anony(type='checkbox',name='anony')
+                  div
+                    input(type='submit', value='创建投票')
+       
+    script
+         include createvotejs.html

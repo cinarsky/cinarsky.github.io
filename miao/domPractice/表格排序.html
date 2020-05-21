@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body {
+        margin: 0;
+    }
+
+    table {
+        border-collapse: collapse;
+    }
+    tr {
+        border: 1px solid black;
+    }
+    tr,td,th{
+        width: 50px;
+        height: 50px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <table>
+        <tr>
+            <th>756</th>
+            <th>546
+            </th>
+            <th>582</th>
+        </tr>
+        <tbody>
+        <tr>
+            <td>36</td>
+            <td>14</td>
+            <td>85</td>
+        </tr>
+    </tbody>
+    <tbody>
+            <tr>
+                <td>3</td>
+                <td>14</td>
+                <td>5</td>
+            </tr>
+        </tbody>
+        <tbody>
+                <tr>
+                    <td>6</td>
+                    <td>4</td>
+                    <td>6241</td>
+                </tr>
+            </tbody>
+
+
+    </table>
+</body>
+<script>
+    var table=document.getElementsByTagName('table')[0]
+    var sortedRows = Array.from(table.rows).slice(1)
+    var ths=document.getElementsByTagName('th')
+    function sortTable(num){
+        sortedRows.sort(function(a,b){
+            return a.cells[num].innerHTML-b.cells[num].innerHTML
+        })
+    }
+    document.addEventListener('click',function(e){
+        if(e.target.matches('th')){
+            var num=Array.from(ths).indexOf(e.target)
+            sortTable(num)
+            table.tBodies[0].append(...sortedRows);
+        }
+    })
+    
+
+</script>
+
+</html>

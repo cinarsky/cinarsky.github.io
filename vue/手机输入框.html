@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.0"></script>
+</head>
+<style>
+  input {
+    border: 0px;
+    border-bottom: 2px solid black;
+    width: 50px;
+    height: 70px;
+    margin: 0 2px;
+    font-size: 25px;
+    outline: none;
+    text-align: center;
+
+  }
+</style>
+
+<body>
+  <div id="reg">
+
+    <code-input v-model='code'></code-input>
+
+  </div>
+</body>
+<script>
+  Vue.component('code-input', {
+    template: `
+    <div>
+    <div></div>
+    <input
+      maxlength=1
+      v-for='(val,index) of this.value'
+      @input='kuinput($event,index)'
+      @keyup='delkeyup($event,index)'
+      @keydown='prekeydown($event,index)'
+      v-model='val'
+      >
+      <div>输入值：{{this.value.join('')}}</div>
+      </div>
+    `,
+    props: ['value'],
+    data() {
+      return {
+        res: Array(6).fill(''),
+      }
+    },
+    methods: {
+      prekeydown(e,index){
+        if (index ==5 && e.keyCode == 8) {
+          e.preventDefault()
+        }
+      },
+      delkeyup(e,index) {
+        if (e.keyCode == 8) {
+          if (index != 0) {
+            if(index ==5 && e.target.value){
+              // e.target.value=''
+              this.res[index]=''
+            }else{
+              // e.target.previousSibling.value=''
+              this.res[index-1]=''
+              e.target.previousSibling.focus()
+            }
+          }
+          this.$emit('input',this.res.map(it=>it))
+        }
+      },
+      kuinput(e, index) {
+        if(Number(e.target.value)!=Number(e.target.value)){
+          e.target.value=''
+        }else{
+        this.res[index]=e.target.value
+        this.$emit('input',this.res.map(it=>it))
+        if (e.keyCode == 8) {
+          e.preventDefault();
+        }
+        // else{
+        if (index != 5) {
+          e.target.nextSibling.focus()
+        }}
+        // if (index == 5) {
+
+        // }
+        // }
+      }
+
+    },
+  })
+  var app = new Vue({
+    el: '#reg',
+    data: {
+      code: ['', '', '', '', '', ''],
+
+    },
+    
+
+  })
+</script>
+
+</html>

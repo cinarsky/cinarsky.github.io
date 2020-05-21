@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,body{
+            /* width: 100%; */
+            font-size: 40px;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        .content{
+            margin: 0 auto;
+            max-width: 1080px;
+        }
+        body{
+            /* font-size: 500px; */
+        }
+        span{
+            display: inline-block;
+        }
+        .navLeft,.search{
+            background: rgb(202, 202, 202);
+        }
+        header{
+            width: 1080px;
+        }
+        .search {
+            width: 1080px;
+
+            vertical-align: middle;
+        } 
+        .search input{
+            width: 770px;
+            height: 90px;
+            vertical-align: middle;
+        }      
+        .search span{
+            width: 100px;
+            height: 90px;
+            line-height: 90px;
+            background: rgb(241, 213, 213);
+            vertical-align: middle;
+        }
+        .navLeft{
+            display: inline-block;
+            float: left;
+            width:85%;
+            height: 100px;
+            background: rgb(233, 196, 196);
+            overflow-x: scroll;
+            overflow-y: hidden;
+        }
+        .navLeft>div{
+            display: inline-block;
+            height: 100px;
+            width: max-content;
+        }
+        .navLeft span{
+            background: rgb(247, 238, 163);
+            width: 150px;
+            height: 100px;
+           
+        } 
+        .navRight{
+            width: 15%;
+            height: 100px;
+            background: rgb(233, 196, 196);
+            float: right;
+        }
+        .pic{
+            clear: both;
+            width: 1080px;
+            height: 540px;
+            background: rgb(90, 191, 204);
+        }
+        .touch{
+            width: 1080px;
+            height: 225px;
+        }
+        .touch span{
+            width: 216px;
+            height: 225px;
+            line-height: 225px;
+            background: rgb(253, 186, 231);
+        }
+        footer {
+            width: 1080px;
+        }
+        footer div{
+            display: inline-block;
+            width: 50%;
+            height: 380px;
+            float: right;
+            background: rgb(142, 165, 41);
+        }
+        footer div:nth-child(3){
+            background: rgb(41, 165, 159);
+        }
+        footer div:first-child{
+            width: 50%;
+            height: 760px;
+            float: left;
+            background: rgb(41, 165, 57);
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <header>
+            <div class="search">
+            <span>mi</span>
+            <input type="text">
+            <span>mi</span>
+            </div>
+            
+            <div class="navLeft">
+                <div>
+                <span>推荐</span><!--
+             --><span>推荐</span><!--
+             --><span>推荐</span><!--
+             --><span>推荐</span><!--
+             --><span>推荐</span><!--
+             --><span>推荐</span><!--
+             --><span>推荐</span>
+                </div>
+            </div>
+            <span class="navRight">V</span>
+        
+        </header>
+        <div class="pic">
+
+        </div>
+        <main>
+            <div class="touch">
+                <span>小米秒杀</span><!--
+             --><span>小米秒杀</span><!--
+             --><span>小米秒杀</span><!--
+             --><span>小米秒杀</span><!--
+             --><span>小米秒杀</span>
+            </div>
+            <div class="touch">
+                    <span>小米秒杀</span><!--
+                 --><span>小米秒杀</span><!--
+                 --><span>小米秒杀</span><!--
+                 --><span>小米秒杀</span><!--
+                 --><span>小米秒杀</span>
+                </div>
+        </main>
+        <footer>
+         <div>小米mix</div><!--
+        --><div>小米特惠</div><!--
+             --><div>预售</div>
+        </footer>
+    </div>
+</body>
+<script>
+//    function setRootFontSize() {
+//         var width = document.documentElement.clientWidth 
+//         // || document.body.clientWidth;
+//         if(width>1000){
+//             width=1000
+//         }
+//         fontSize = (width / 10.8);
+//         document.getElementsByTagName('html')[0].style['font-size'] = fontSize + 'px';
+//     }
+//     setRootFontSize();
+//     window.addEventListener('resize', function() {
+//         setRootFontSize();
+//     }, false)
+
+</script>
+</html>

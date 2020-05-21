@@ -1,0 +1,53 @@
+doctype 
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Document
+        include titlestyle.pug
+        style.
+           *{
+            margin:0 auto;
+            }
+            .welcome{
+                text-align:center;
+                font-size: 25px;
+            }
+            .welcome div{
+             width:250px;
+             
+             margin: 30px auto;
+            //-  background:rgb(89,4,65)
+            }
+            .welcome div span{
+                display:inline-block;
+                 width:80px;
+                 margin:0 0 0 -30px;
+             }
+            .welcome div input{
+                vertical-align:middle;
+                width:150px;
+            }
+            form>input{
+                font-size: 20px;
+                margin:0 20px 0 120px;
+            }
+            form>a{
+                font-size: 15px;
+               
+            }
+    body
+        include title.html
+        div(class='welcome')
+           form(action='/login', method='post')
+              div(class='user')
+                 span 用户名 
+                 input(type='text', name='name')
+              div(class='user')
+                 span 密  码 
+                 input(type='password', name='password')
+              input(type='submit', value='登 录')
+              a(href='/forgot') 忘记密码
+
+        

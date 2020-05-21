@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+
+</style>
+
+<body>
+    <button onclick="crt()">创建笔记</button>
+    <select id="list" style="width:100px;height:20px"></select><br>
+    <textarea name="" id="currentnote" style="width:100%;height:100px"></textarea>
+
+</body>
+<script>
+    var select = document.getElementById('list')
+    // var currentOption=document.getElementById('list')
+    var currentnote = document.getElementById('currentnote')
+    var notes = (JSON.parse(localStorage.getItem('notes')) || {})
+    for (var name in notes) {
+        var option = new Option(name, name)
+        select.appendChild(option)
+        currentnote.value = notes[name]
+    }
+
+    function crt() {
+        var newNote = prompt('请输入新笔记名称')
+        if (notes.hasOwnProperty(newNote)) {
+            select.value = newNote
+            currentnote.value = notes[newNote]
+            return
+        }
+        var option = new Option(newNote, newNote)
+        select.appendChild(option)
+        notes[newNote] = '';
+        localStorage.setItem("notes", JSON.stringify(notes))
+        select.value = newNote
+        currentnote.value = notes[newNote]
+    }
+    currentnote.addEventListener('change', function () {
+        notes[select.value] = currentnote.value
+        localStorage.setItem("notes", JSON.stringify(notes))
+    })
+    select.addEventListener('change', function () {
+        currentnote.value = notes[select.value]
+    })
+</script>
+
+</html>

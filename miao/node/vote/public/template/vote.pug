@@ -1,0 +1,79 @@
+doctype 
+html
+    head
+        meta(charset="UTF-8")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        meta(http-equiv="X-UA-Compatible", content="ie=edge")
+        title Document
+        style
+        include titlestyle.pug
+        include votecss.pug
+        
+    body
+        include title.html
+        div(class='vote')
+            div 投票题目
+               span.title #{title}
+            div 投票描述
+               span.desc  #{desc}
+            div(class='items') 
+                .sp 
+                form(method='post',action='')
+                    //- div(class='item') 苹果  
+                    //- div(class='item') 苹果  
+                    //- div(class='item') 苹果
+                    //- input(type='text',name='userid',hidden,value=voter)
+                    each val in option
+                       label(class='label',for=val.optionname)
+                           input(id=val.optionname,class='optsel',type='checkbox',value=val.optionname,name='ckbox',hidden)
+                           div(class='item')= val.optionname
+                    button(onclick='sub()') 提交
+
+
+script.
+     var voteid=Number('#{id}')
+     var title='#{title}'
+     var desc='#{desc}'
+     var username='#{username}'
+     var createuserid=Number('#{createuserid}')
+     var singlesel=Number('#{singlesel}')
+     var anony=Number('#{anony}')
+     var sp=document.querySelector('div.sp')
+     if(singlesel==1){
+        sp.innerText+='选项(单选)'
+     }else{
+        sp.innerText+='选项(多选)'
+     }
+     if(anony==1){
+         sp.innerText+='\r\n\r\n 由匿名用户\r\n创建'
+     }
+     else{
+         sp.innerText+='\r\n\r\n 由用户#{username}\r\n创建'
+     }
+
+     document.addEventListener('click',e=>{
+         if(e.target.matches('label.label')){
+           event.preventDefault() 
+         }
+         if(singlesel==1){
+            //-  console.log('sss')
+             var ckboxes=Array.from(document.getElementsByClassName('optsel'))
+             var num=0
+             for(item of ckboxes){
+                 if(item.checked){
+                     num++
+                 }
+             }
+            //-  console.log(num)
+             if(e.target.matches('div.item')){
+                //-   console.log('LABEL')
+               if(num!=0){
+                 e.target.parentNode.childNodes[0].checked='false'
+               }
+             }
+     
+         }
+    })
+     function sub(){
+
+     }

@@ -1,0 +1,36 @@
+.main div{
+    width: 25%;
+}
+.top{
+    height: 100%;
+    }
+.ad {
+    height:75px;    
+}
+.ad div{
+    width: 33.3%;    
+}
+.logo{
+    height: 200px;
+    clear: both;
+    font-size: 0;
+}
+.logo *{
+    font-size: initial;
+}
+.logo1{
+    width: 40%;
+    height: 200px;
+    float: left;
+
+}
+.logo110{
+    width: 60%;
+    height: 200px;
+    float: right;
+}
+div.logo2,div.logo3{
+    float: left;
+    width: 50%;
+
+}

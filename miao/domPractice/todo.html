@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    * {
+        margin: 0 auto;
+        border: 0;
+        padding: 0;
+    }
+
+    body {
+        text-align: center;
+    }
+
+    .main {
+        margin-top: 100px;
+        display: inline-block;
+        background: rgb(255, 255, 255);
+        border: 1px solid rgb(198, 198, 198);
+        box-shadow: 0 0 5px rgb(76, 74, 74);
+    }
+
+    .all {
+        display: inline-block;
+        width: 80px;
+        height: 80px;
+        background: rgb(98, 211, 190);
+        vertical-align: middle;
+    }
+
+    .next {
+        position: relative;
+        width: 100%;
+        height: 80px;
+        border-top: 1px solid rgb(224, 224, 224);
+
+
+    }
+
+    .checked {
+        position: absolute;
+        left: 20px;
+        top: 10px;
+        width: 60px;
+        height: 60px;
+        background: rgb(255, 255, 255);
+        border: 1px solid rgb(189, 189, 189);
+        border-radius: 100%;
+    }
+
+    .event {
+        height: 100%;
+        width: 350px;
+        position: absolute;
+        left: 75px;
+        background: rgb(255, 255, 255);
+    }
+
+    .delete {
+        position: absolute;
+        right: 10px;
+        top: 10px;
+        width: 60px;
+        height: 60px;
+        background: rgb(255, 255, 255);
+        border: 1px solid rgb(118, 118, 118);
+        border-radius: 100%;
+    }
+    .delete:hover {
+        background: rgb(240, 118, 118);
+    }
+    .state{
+        position: absolute;
+        left: 360px;
+        top:120px;
+        width: 100px;
+        height: 50px;
+        line-height: 50px;
+       background: rgb(208, 123, 123);
+    }
+    .left{
+
+    }
+    .done{
+       
+    }
+    .checked1{
+        background: rgb(60, 224, 145);
+    }
+    input {
+        margin: 0 25px;
+        width: 400px;
+        height: 80px;
+        background: rgb(255, 255, 255);
+        outline: none;
+        vertical-align: middle;
+    }
+    #tall{
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        border: 1px solid black;
+        left:350px;
+        top: 200px;
+    }
+    #tdone{
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left:350px;
+        top: 300px;
+    }
+    #tleft{
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left:350px;
+        top: 400px;
+    }
+</style>
+
+<body>
+    <div id="state" class="state">
+    </div>
+    <input type="radio" name='teamsort' id='tall' checked>
+    <input type="radio" name='teamsort' id='tdone'>
+    <input type="radio" name='teamsort' id='tleft'>
+    <div class="main" id="main">
+        <div class="all" id="all"></div>
+        <!--
+    --><input type="text" id="add" placeholder="what to do?">
+        <!-- <div class="next">
+            <div class="checked">
+            </div>
+            <input type="text" class="event"> 
+            <div class="delete">
+delete
+            </div>
+        </div> -->
+
+    </div>
+</body>
+<script>
+    // 状态显示
+    var state=document.getElementById('state')
+function freshstate(){
+    var items=document.getElementsByClassName('next')
+    var num=0
+    for(var i=0;i<items.length;i++){
+        if(!items[i].classList.contains('done')){
+          num++
+        }
+    }
+    state.innerHTML=num+'left';
+}
+
+
+    var main=document.getElementById('main')
+    var add=document.getElementById('add')
+    // var tall=document.getElementById('tall')
+    tall.addEventListener('click',function(){
+        var items=document.getElementsByClassName('next')
+        for(var i=0;i<items.length;i++){
+            items[i].hidden='';
+        }
+    })
+    tdone.addEventListener('click',function(){
+        var items=document.getElementsByClassName('next')
+        for(var i=0;i<items.length;i++){
+            if(items[i].classList.contains('done')){
+            items[i].hidden=''}
+            else{
+            items[i].hidden='true'
+            }
+        }
+    })
+    tleft.addEventListener('click',function(){
+        var items=document.getElementsByClassName('next')
+        for(var i=0;i<items.length;i++){
+            if(!items[i].classList.contains('done')){
+            items[i].hidden=''}
+            else{
+            items[i].hidden='true'
+            }
+        }
+    })
+    // 输入栏
+    add.addEventListener('keydown',function(){
+        if(event.keyCode == "13") {
+            var value=add.value
+            addEvent(value)
+            add.value=""
+            freshstate()
+    }
+    })
+    
+    document.body.addEventListener('dblclick',function(e){
+        if(e.target.classList.contains('event')){
+            e.target.disabled='';
+            e.target.addEventListener('blur',function(){
+                e.target.disabled='true';
+            })
+        }
+    })
+
+
+    // 项目栏的两边按钮点击事件
+    document.body.addEventListener('click',function(e){
+        if(e.target.classList.contains('delete')){
+            main.removeChild(e.target.parentNode)
+            freshstate()
+        }
+        else if(e.target.classList.contains('checked')){
+            if(e.target.parentNode.classList.contains('done')){
+                e.target.classList.remove('checked1')
+                e.target.parentNode.classList.remove('done')
+            }
+            else{
+                e.target.classList.add('checked1')
+                e.target.parentNode.classList.add('done')
+            }
+        }
+        freshstate()
+    })
+    // 创建新项目
+    function addEvent(value){
+        var a=document.createElement('div')
+        a.classList.add('next')
+        var b=document.createElement('div')
+        b.classList.add('checked')
+        var c=document.createElement('div')
+        c.classList.add('delete')
+        var d=document.createElement('input')
+        d.type="text"
+        d.disabled="true";
+        d.value=value
+        d.classList.add('event')
+        a.appendChild(b)
+        a.appendChild(c)
+        a.appendChild(d)
+        main.appendChild(a)
+    }
+</script>
+
+</html>

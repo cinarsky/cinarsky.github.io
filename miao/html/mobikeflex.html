@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+*{
+    margin: 0;
+    padding: 0;
+}
+        html,body{
+            height: 100%;
+        }
+    .top{
+        width: 100%;
+
+        background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559129206344&di=b92df148d8011ebb8d8e0535a14097cb&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180705%2F4642ae1f0fc24c31b0b618054e2f4e1b.jpeg");
+        background-position: center;
+        background-size: cover;
+    }
+    .main{
+     width: 100%;
+     display: flex;
+     flex-wrap: wrap;
+     justify-content:space-between;
+    }
+    .main div{
+     background-image: url("https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1559129206344&di=b92df148d8011ebb8d8e0535a14097cb&imgtype=0&src=http%3A%2F%2F5b0988e595225.cdn.sohucs.com%2Fimages%2F20180705%2F4642ae1f0fc24c31b0b618054e2f4e1b.jpeg");
+     background-position: center;
+     background-size: cover;
+    }
+       
+@media screen and (max-width:720px) {
+    .top{
+        height: 70%;
+    }
+    .main div{
+        width: 100%;
+     height: 300px;
+     margin-top: 5px;
+}
+
+}
+
+@media screen  and (min-width:720px) and (max-width:1080px) {
+    .top{
+        height: 80%;
+    }
+    .main{
+        width: calc(100% + 5px);
+        margin-left: -5px;
+    
+    }
+    .main div{
+        width: 50%;
+     height: 250px;
+     box-sizing: border-box;
+     border-left: 5px solid white;
+     border-top: 5px solid white;
+}
+}
+
+@media screen  and (min-width:1080px){
+    .top{
+        height: 100%;
+    }
+    .main{
+        width: calc(100% + 5px);
+        margin-left: -5px;
+    }
+    .main div{
+     width: 25%;
+     height: 200px;
+     border-left: 5px solid white;;
+     box-sizing: border-box;
+     border-top: 5px solid white;
+}
+
+}
+
+    
+    
+    </style>
+</head>
+<body>
+    <div class="top"></div>
+    <div class="main">
+        <div class="main1"></div>
+        <div class="main2"></div>
+        <div class="main3"></div>
+        <div class="main4"></div>
+    </div>
+    
+</body>
+</html>

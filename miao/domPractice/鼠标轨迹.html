@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        position: relative;
+    }
+    .dot{
+        width: 15px;
+        height: 15px;
+        background: black;
+        position: absolute;
+        left:2px;
+        top:2px;
+        border-radius: 100%;
+    }
+</style>
+<body>
+    
+</body>
+<script>
+    for(var i=0;i<10;i++){
+        var a=document.createElement('div')
+        a.classList.add('dot')
+        document.body.appendChild(a)
+    }
+    var s=document.querySelectorAll('.dot')
+document.addEventListener('mousemove',function(event){
+        s[s.length-1].style.left=event.clientX-15+'px';
+        s[s.length-1].style.top=event.clientY-15+'px';
+for(i=0;i<s.length-1;i++){
+    var j=i
+        setTimeout(function(){
+        s[j].style.left=event.clientX-15+'px';
+        s[j].style.top=event.clientY-15+'px';  
+        // s[j].style.opacticy=(1-j*0.2)
+        },55*j-50*(j*0.7))
+}
+})
+</script>
+</html>
+

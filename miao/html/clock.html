@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin:0%;
+            padding: 0%;
+        }
+    .clock{
+        display: inline-block;
+        width: 340px;
+        height: 340px;
+        line-height:340px ;
+        background: rgb(190, 190, 190);
+        border: 20px solid rgba(255, 255, 255);
+        border-radius: 170px;
+        position: relative;
+        box-shadow: 0 0 10px 0 rgb(145, 145, 145) inset;
+        box-sizing: border-box;
+    }
+
+    .clock>div{
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        line-height: 50px;
+        text-align: center;
+        font-size: 38px;
+        /* background-color: rgb(231, 231, 231); */
+        position: absolute;
+        top: 5px;
+        left: 125px;
+        border-radius: 25px;
+        transform-origin: 25px 145px 0px;
+    }
+
+
+.clock>div:nth-child(1){
+    transform: rotateZ(30deg);
+}
+.clock>div:nth-child(1)>div{
+    transform: rotateZ(-30deg);
+}
+.clock>div:nth-child(2){
+    transform: rotateZ(60deg);
+}
+.clock>div:nth-child(2)>div{
+    transform: rotateZ(-60deg);
+}
+.clock>div:nth-child(3){
+    transform: rotateZ(90deg);
+}
+.clock>div:nth-child(3)>div{
+    transform: rotateZ(-90deg);
+}
+.clock>div:nth-child(4){
+    transform: rotateZ(120deg);
+}
+.clock>div:nth-child(4)>div{
+    transform: rotateZ(-120deg);
+}
+.clock>div:nth-child(5){
+    transform: rotateZ(150deg);
+}
+.clock>div:nth-child(5)>div{
+    transform: rotateZ(-150deg);
+}
+.clock>div:nth-child(6)>div{
+    transform: rotateZ(-180deg);
+}
+.clock>div:nth-child(6){
+    transform: rotateZ(180deg);
+}
+.clock>div:nth-child(7)>div{
+    transform: rotateZ(-210deg);
+}
+.clock>div:nth-child(7){
+    transform: rotateZ(210deg);
+}
+.clock>div:nth-child(8)>div{
+    transform: rotateZ(-240deg);
+}
+.clock>div:nth-child(8){
+    transform: rotateZ(240deg);
+}
+.clock>div:nth-child(9)>div{
+    transform: rotateZ(-270deg);
+}
+.clock>div:nth-child(9){
+    transform: rotateZ(270deg);
+}
+.clock>div:nth-child(10)>div{
+    transform: rotateZ(-300deg);
+}
+.clock>div:nth-child(10){
+    transform: rotateZ(300deg);
+}
+.clock>div:nth-child(11)>div{
+    transform: rotateZ(-330deg);
+}
+.clock>div:nth-child(11){
+    transform: rotateZ(330deg);
+}
+
+div.zhen{
+    display: inline-block;
+    /* background: rgb(255, 71, 71); */
+    height: 2px;
+    width: 0;
+    border-top: 2px solid rgba(255, 255, 255,0);
+    border-bottom: 2px solid rgba(255, 255, 255,0);
+    border-left: 150px solid rgb(20, 20, 20);
+    border-right: 0px solid rgb(255, 255, 255);
+    position: absolute;
+    top:170px;
+    left: 148px;
+    transform-origin: 25px 0px 0px;
+    transform: rotateZ(-90deg);
+    animation:autoclock 60s infinite normal;
+    animation-timing-function: steps(60) ;
+    /* animation-timing-function: cubic-bezier(0,2.04,0,.69); */
+    animation-delay:1s;
+}
+@keyframes autoclock{
+    0% {transform: rotateZ(-90deg);}
+    /* 1.6% {transform: rotateZ(-84deg);}
+    3.2% {transform: rotateZ(-78deg);}
+    4.8% {transform: rotateZ(-72deg);}
+    6.4% {transform: rotateZ(-66deg);}
+    8% {transform: rotateZ(-60deg);}
+    9.6% {transform: rotateZ(-54deg);}
+    11.2% {transform: rotateZ(-48deg);} */
+    100% {transform: rotateZ(270deg);}
+}
+
+
+
+
+
+
+
+
+
+
+    </style>
+</head>
+<body>
+    <div class="clock">
+        <div><div>1</div></div><!-- 
+     --><div><div>2</div></div><!-- 
+     --><div><div>3</div></div><!-- 
+     --><div><div>4</div></div><!-- 
+     --><div><div>5</div></div><!-- 
+     --><div><div>6</div></div><!-- 
+     --><div><div>7</div></div><!-- 
+     --><div><div>8</div></div><!-- 
+     --><div><div>9</div></div><!-- 
+     --><div><div>10</div></div><!-- 
+     --><div><div>11</div></div><!-- 
+     --><div><div>12</div></div><!-- 
+     -->
+    </div><!-- 
+    --><div class="zhen"></div>
+
+
+</body>
+</html>

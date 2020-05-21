@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        html,
+        body {
+            background: rgb(53, 53, 53);
+            height: 100%;
+            position: relative;
+        }
+
+        div.main {
+            width: max-content;
+            height: max-content;
+            /* background: rgb(206, 175, 175); */
+            position:absolute;
+            margin: auto;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+div{
+    text-align: center;
+    padding: 5px;
+    font-size: 20px;
+    color: rgb(228, 228, 228);
+}
+        span {
+            display: inline-block;
+            width: 14vw;
+            height: 18vw;
+            /* border: 1px solid; */
+            background-repeat: no-repeat;
+            background-size: 100% 90%;
+            margin: 0 20px;
+            text-align: center;
+        }
+
+        span:nth-of-type(1) {
+            background-image: url(./qrcode_1573784323102.jpg);
+        }
+
+        span:nth-of-type(2) {
+            width: 18vw;
+            background-image: url(./mmqrcode1573784355472.png);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <span></span>
+        <span></span>
+        <div>QQ&微信</div>
+    </div>
+</body>
+
+</html>

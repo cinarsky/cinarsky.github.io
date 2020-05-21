@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="https://cdn.staticfile.org/react/16.4.0/umd/react.development.js"></script>
+  <script src="https://cdn.staticfile.org/react-dom/16.4.0/umd/react-dom.development.js"></script>
+  <!-- 生产环境中不建议使用 -->
+  <script src="https://cdn.staticfile.org/babel-standalone/6.26.0/babel.min.js"></script>
+
+</head>
+<style>
+
+</style>
+
+<body>
+  <div id="root"></div>
+</body>
+<script type="text/babel">
+
+
+  // 输入框
+class TodoInput extends React.Component{
+  constructor(props){
+    super(props)
+    this.addItem=this.addItem.bind(this)
+    }
+  addItem(e){
+   
+    if(e.key=='Enter' && e.target.value.trim()!=''){
+        var newItem={
+            content:e.target.value,
+            state:0,
+           }
+        this.props.handleSubmit(newItem)
+        e.target.value=''
+    }
+    // 本次打出的并不是实时的
+    console.log(this.props.todos)
+  }
+     render() {
+       return (
+         <input onKeyUp={this.addItem}/>
+       )
+     }
+   }
+
+  //  列表项
+   class TodoItem extends React.Component{
+    constructor(props){
+    super(props)
+    }
+    render() {
+       return (
+        <div>
+            <input  type='checkbox' checked={this.props.item.state} onClick={(e)=>{this.props.changeState(e,this.props.index)}}/>
+            <input type="text" style={{border:'none',outline:'none'}} value={this.props.item.content}/>
+            <button onClick={(e)=>{this.props.delItem(e,this.props.index)}}> - </button>
+         </div>
+          )
+     }
+   }
+// 列表
+   class TodoList extends React.Component{
+    constructor(props){
+    super(props)
+    }
+      // map内部的return后面的括号不能少
+            // 内联样式需要有两个大括号
+            // 用this.todos不刷新，用this.props.todos可以
+     render() {
+       return (
+         <div>
+          {this.props.todos.map((item,index)=>{
+            if(this.props.showIf(item.state)){
+             return(
+             <TodoItem item={item} index={index} 
+             changeState={this.props.changeState} 
+             delItem={this.props.delItem} 
+             /> )
+            }
+        })}
+          </div>
+       )
+     }
+   }
+// 状态栏
+   class TodoFooter extends React.Component{
+    constructor(props){
+    super(props)
+
+    }
+
+     render() {
+       return (
+        <div>
+
+          <div>all:{this.props.todos.filter(it=>it).length}
+            <button onClick={this.props.showAll}>showAll</button> 
+          </div>
+          <div>todo:{this.props.todos.filter(it=>it.state==0).length}
+            <button onClick={this.props.showTodo}>showTodo</button> 
+          </div>
+          <div>done:{this.props.todos.filter(it=>it.state==1).length}
+            <button onClick={this.props.showDone}>showDone</button>
+          </div>
+
+          <button onClick={this.props.delAllDone}>删除已完成</button>
+        </div>
+       )
+     }
+   }
+
+// 总组件
+class TodoApp extends React.Component{
+  constructor(props){
+    super(props)
+    this.state={
+      show:true,
+      todos:[{
+         content:'吃饭',
+         state:0,
+      },
+      {
+         content:'睡觉',
+         state:1,
+      },
+      {
+         content:'打豆豆',
+         state:0,
+      },
+    ],
+    },
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.changeState = this.changeState.bind(this);
+    this.delItem = this.delItem.bind(this);
+    this.delAllDone = this.delAllDone.bind(this);
+    this.showIf = this.showIf.bind(this);
+    this.showAll = this.showAll.bind(this);
+    this.showDone = this.showDone.bind(this);
+    this.showTodo = this.showTodo.bind(this);
+  }
+  showIf(state){
+    if (this.state.show===true) {
+      return true
+    }
+    else{
+      return this.state.show==state
+    }
+  }
+  handleSubmit(newItem){
+    this.setState({
+      todos: [newItem,...this.state.todos
+              ],
+      // todos: this.state.todos.push(newItem)
+    })
+   }
+   delAllDone(){
+    this.setState({
+      todos:this.state.todos.filter(item=>item.state!=1)
+    })
+   }
+   changeState(e,index){
+    this.setState({
+      todos:this.state.todos.filter((item,idx)=>{
+        if(idx==index){
+          item.state=1-item.state
+        }
+        // console.log(this.state.todos)
+        return true
+      })
+    })
+   }
+   delItem(e,index){
+    this.setState({
+      todos:this.state.todos.filter((item,idx)=>idx!=index)
+    })
+  }
+    showAll(){
+      this.setState({
+      show:true
+    })
+      }
+    showDone(){
+      this.setState({
+      show:1
+    })
+    }
+    showTodo(){
+      this.setState({
+      show:0
+    })
+    }
+
+  render() {
+    return (
+      <div>
+        <div>todos </div>
+       <TodoInput  todos={this.state.todos} handleSubmit={this.handleSubmit} ></TodoInput>
+       <TodoList showIf={this.showIf} todos={this.state.todos} changeState={this.changeState} delItem={this.delItem}></TodoList>
+       <TodoFooter todos={this.state.todos} 
+       showAll={this.showAll}
+       showDone={this.showDone}
+       showTodo={this.showTodo}
+       delAllDone={this.delAllDone}></TodoFooter>
+       </div>
+       )
+  }
+}
+
+
+
+
+
+ReactDOM.render(
+  <TodoApp></TodoApp>,
+  document.getElementById('root')
+)
+
+
+</script>
+
+</html>

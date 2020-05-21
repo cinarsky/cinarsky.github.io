@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    body{
+        position: relative;
+        margin:0 auto;
+        padding:0;
+    }
+
+    img {
+        position: absolute;
+        top:0px;
+        left: 0px;
+        display: inline-block;
+        vertical-align: middle;
+        width: 800px;
+        height: 650px;
+        z-index: 0;
+        transition: 0.6s all;
+    }
+
+    .pics {
+        /* overflow: hidden; */
+        position: relative;
+        width: 800px;
+        height: 650px;
+        margin:50px auto;
+        border: 2px solid black;
+    }
+    button{
+        width: 50px;
+        height: 100px;
+        position:absolute;
+        top:300px;
+    }
+    #l{
+         left: 5px;
+    }
+    #r{
+right:5px;
+    }
+</style>
+
+<body>
+        <div class="pics">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566444929676&di=331ec48090d0bff9e637f20752e40b2c&imgtype=0&src=http%3A%2F%2Fi8.17173.itc.cn%2Fv3%2Fgjqt2%2F2014%2F01%2F18%2F011819255560622137.jpg"
+            alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566444880501&di=c353da7f43da4d091f6f6eac2cd06120&imgtype=0&src=http%3A%2F%2Fpic34.nipic.com%2F20131020%2F12844826_143327516000_2.jpg"
+                alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566444929676&di=331ec48090d0bff9e637f20752e40b2c&imgtype=0&src=http%3A%2F%2Fi8.17173.itc.cn%2Fv3%2Fgjqt2%2F2014%2F01%2F18%2F011819255560622137.jpg"
+                alt="">
+            <img src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=963319421,956713088&fm=26&gp=0.jpg"
+                alt="">
+            <img src="https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1566445070654&di=20b3062d3ef1d2f0ae4199da57ca3d68&imgtype=0&src=http%3A%2F%2Fi0.hdslb.com%2Fbfs%2Farticle%2Fbaf7062b49a4d22e45d757e34fec45c5d42d2849.jpg"
+                alt="">
+                <button id='l'><</button>
+                <button id='r'>></button>
+        </div>
+
+</body>
+<script>
+var a=document.getElementsByTagName('IMG')
+for(var i=0;i<a.length;i++){
+    a[i].style.left=a[i].offsetWidth*(i-2)+'px'
+}
+var l=document.getElementById('l')
+l.addEventListener('click',function(){
+    for(var i=0;i<a.length;i++){
+        a[i].style.zIndex=0;
+                //无限轮播关键点
+    if(parseInt(a[i].style.left)<=-2*a[i].offsetWidth){
+        a[i].style.zIndex=a[i].style.zIndex-6
+        a[i].style.left= a[i].offsetWidth*(2)+'px'
+        continue
+    }
+    a[i].style.left=parseInt(a[i].style.left)-a[i].offsetWidth+'px'
+}
+})
+r.addEventListener('click',function(){
+    for(var i=0;i<a.length;i++){
+        a[i].style.zIndex=0;
+        //无限轮播关键点
+    if(parseInt(a[i].style.left)>=2*a[i].offsetWidth){
+        a[i].style.zIndex=a[i].style.zIndex-6
+        a[i].style.left= a[i].offsetWidth*(-2)+'px'
+        continue
+    }
+    a[i].style.left=parseInt(a[i].style.left)+a[i].offsetWidth+'px'
+}
+})
+
+</script>
+
+</html>

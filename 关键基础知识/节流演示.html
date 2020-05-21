@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" id='a1'>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+div{
+    background: rgb(129, 77, 77);
+    width: 300px;
+    height: 300px;
+    position: relative;
+}
+
+</style>
+<body>
+<div id='a' >
+     
+</div>
+</body>
+<script type="text/javascript">
+function fun(){
+    console.log(1)
+}
+// 定时器版
+function thtottle(f){
+    let timeout
+    return function(...args){
+        var self=this
+         if(!timeout){
+             f.apply(self,args)
+             timeout=setTimeout(() => {
+                f.apply(self,args)
+                timeout=null
+            }, 500);
+         }
+    }
+}
+
+
+// 时间戳版
+// function thtottle(f){
+//     let time=new Date()
+//     let ok
+//     return function(...args){
+//         var self=this
+//         var current=new Date()
+//         if(current-time>=1000){
+//             f.apply(self,args)
+//             time=current
+//         }
+//         if(!ok){
+//             f.apply(self,args)
+//             ok=!ok
+//         }
+//     }
+// }
+
+a.onmousemove=thtottle(fun)
+</script>
+
+</html>
